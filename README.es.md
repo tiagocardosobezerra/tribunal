@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Versión 1.3.0" src="https://img.shields.io/badge/versi%C3%B3n-1.3.0-e8c15a?style=flat-square" />
+  <img alt="Versión 1.4.0" src="https://img.shields.io/badge/versi%C3%B3n-1.4.0-e8c15a?style=flat-square" />
   <img alt="Skill de Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sin dependencias" src="https://img.shields.io/badge/dependencias-ninguna-2ea44f?style=flat-square" />
-  <img alt="45 pruebas" src="https://img.shields.io/badge/pruebas-45%20pasando-2ea44f?style=flat-square" />
+  <img alt="48 pruebas" src="https://img.shields.io/badge/pruebas-48%20pasando-2ea44f?style=flat-square" />
   <img alt="Licencia MIT" src="https://img.shields.io/badge/licencia-MIT-blue?style=flat-square" />
 </p>
 
@@ -59,7 +59,7 @@ Tribunal le da a cada papel lo que mejor hace y obliga a cada uno a justificarse
 | **Fiscal** | acusa: pre-mortem, inversión, riesgos | cada ataque tiene gravedad y un contraejemplo verificable |
 | **Verificador** | revisa de nuevo cada ataque FATAL | una etiqueta, un redondeo o un texto no son fatales |
 | **Defensa** | defiende y responde a cada ataque | rebatir solo insistiendo deja el ataque en pie |
-| **Jurado** | reacciona como gente de verdad | 25 votan en secreto **antes** del debate; 7 deciden |
+| **Jurado** | reacciona como gente de verdad | 25 votan en secreto **antes** del debate; 7 deciden; **3 modelos distintos** |
 | **Redactor del plan** | convierte la sentencia en pasos | el plan se ataca y se revisa antes de llegar a ti |
 | **Juez** | conduce y sentencia | no toma partido; un FATAL pendiente bloquea el veredicto pleno |
 | **Tú** | última instancia | aceptas o apelas ante un jurado nuevo |
@@ -99,6 +99,8 @@ jubilada que pregunta por las copias de seguridad, la Mãe Toinha, de 100 años,
   caen juntos.
 - **El rito del jurado brasileño:** 25 convocados, hasta 3 recusaciones por lado, 7 en el Consejo de Sentencia
   (Código de Proceso Penal de Brasil, CPP, arts. 447 y 468).
+- **Tres modelos en el jurado:** cada lote corre en un modelo distinto (Sonnet, Haiku y Opus). Las copias del mismo
+  modelo piensan parecido; el marcador muestra si los modelos coinciden, y la confianza baja cuando no.
 - **Apelación de verdad:** quien juzgó el caso original queda fuera del jurado nuevo.
 
 ## Qué recibes
@@ -132,6 +134,20 @@ Números de juicios reales, no de demostración.
 | Fiscal, defensa o réplica | ~80 mil | **~13 mil** |
 | Juicio completo | ~650 mil (versión 1.0) | **~150 a 260 mil** |
 
+**Validez.** El jurado juzgó 12 productos de desenlace conocido, descritos como eran antes del lanzamiento y sin el
+nombre (una app de tarjeta sin anualidad, un exprimidor conectado de 400 dólares, gafas con pantalla...). Cada
+jurado dijo también si reconocía el producto real, para separar juicio de memoria.
+
+| | Resultado |
+|---|---|
+| Aciertos en los casos decididos | **8 de 9** (3 empataron en 50% y no cuentan) |
+| Brier (0 es perfecto; tirar una moneda = 0,25) | **0,141** |
+| Votos que reconocieron el producto real | 6 de 120 (5%) |
+| Por modelo | Sonnet: Brier 0,127 · Haiku: 0,19 |
+
+Es una señal, no una prueba: 12 casos son pocos, y un modelo puede conocer un desenlace famoso sin decirlo. El kit
+está en [`validacao/`](validacao/) para que cualquiera lo repita y lo amplíe (`tribunal.py validacao`).
+
 **Consistencia.** El mismo caso, juzgado cinco veces, dio **el mismo veredicto en las cinco**, incluso con un jurado
 totalmente nuevo. Entre dos rondas, el 84% de los jurados repitió su voto.
 
@@ -150,7 +166,7 @@ que un torneo no da: cómo reaccionarían personas reales y cuánto confiar en e
 versión 1.3: la doble revisión corrigió, por ~12 mil tokens, un ataque fatal exagerado que el torneo también había
 señalado.
 
-**Ingeniería.** 45 pruebas automáticas, Python puro sin dependencias, expediente validado en cada fase.
+**Ingeniería.** 48 pruebas automáticas, Python puro sin dependencias, expediente validado en cada fase.
 
 ## Instalación
 
@@ -218,6 +234,8 @@ python tribunal.py status                          # foro, rodízio, Memory Card
 python tribunal.py novo "Título" --tipo ideia      # abre um caso
 python tribunal.py proximo <autos>                 # a próxima fase e o comando exato
 python tribunal.py plano --modo completo           # quantos subagentes e tokens
+python tribunal.py onda <autos> [--juntar]         # a fase atual: briefings e chamadas prontas; --juntar junta tudo
+python tribunal.py validacao preparar --pasta P     # júri contra casos de desfecho conhecido; depois: resultado
 python tribunal.py juri convocar --autos <autos>   # os 25 do rodízio, gravados nos autos
 python tribunal.py juri conselho <sessão> --acusacao IDS --defesa IDS --autos <autos>
 python tribunal.py briefing <autos> --rodada 1 --lote 1 --de 5
@@ -242,7 +260,9 @@ Pruebas: `python -m unittest discover -s testes`.
 
 ## Límites honestos
 
-- Los jurados son **simulaciones** que hace un modelo de lenguaje a partir de fichas calibradas. Amplían la
+- La validación tiene 12 casos, todos de productos conocidos: son pocos para afirmar acierto, y la filtración solo se
+  mide cuando el jurado admite reconocer el producto. Los desenlaces registrados en el Memory Card calibrarán la confianza.
+- Los jurados son **simulaciones** que hacen modelos de lenguaje a partir de fichas calibradas. Amplían la
   perspectiva; no reemplazan hablar con personas reales. Para eso existe el próximo paso de la sentencia.
 - Las cuotas del IBGE coinciden una por una; los cruces (ingreso por región, por ejemplo) son plausibles, no exactos.
 - Con 100 lugares, los grupos menores al 0,5% de la población quedan sin jurado. Para escucharlos, el juez llama a

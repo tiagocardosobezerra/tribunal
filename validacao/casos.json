@@ -1,0 +1,29 @@
+{
+  "sobre": "Casos de desfecho conhecido para medir se o júri acerta. Cada caso é descrito como era ANTES do lançamento, sem o nome do produto. 'sucesso' é 1 se o produto se firmou e cresceu, 0 se fracassou ou foi descontinuado. O júri vê só a descrição; o gabarito fica neste arquivo. Atenção: produtos famosos podem ser reconhecidos pelo modelo (vazamento); por isso cada voto diz se a pessoa reconheceu algo parecido, e o resultado é calculado com e sem esses votos.",
+  "casos": [
+    {"id": "cartao-app", "ano": 2013, "sucesso": 1,
+     "descricao": "Uma startup brasileira sem nenhuma agência quer lançar um cartão de crédito sem anuidade, pedido e controlado só pelo celular, com atendimento por chat. Os grandes bancos dominam o mercado e cobram anuidade."},
+    {"id": "comida-app", "ano": 2011, "sucesso": 1,
+     "descricao": "Um aplicativo brasileiro para pedir comida dos restaurantes do bairro pelo celular, escolher no cardápio e pagar na entrega ou pelo app. Hoje o costume é ligar para o restaurante ou pegar o folheto na porta."},
+    {"id": "espremedor-conectado", "ano": 2016, "sucesso": 0,
+     "descricao": "Um espremedor de suco ligado à internet que custa o equivalente a 400 dólares e só funciona com sachês de frutas picadas vendidos pela própria empresa, por assinatura semanal. O aparelho lê o código do sachê antes de espremer."},
+    {"id": "videos-curtos-premium", "ano": 2020, "sucesso": 0,
+     "descricao": "Um serviço de streaming por assinatura só para o celular, com séries e filmes caros, feitos com atores famosos, cortados em episódios de até 10 minutos para assistir no ônibus ou na fila. Não dá para assistir na TV nem compartilhar trechos."},
+    {"id": "oculos-tela", "ano": 2013, "sucesso": 0,
+     "descricao": "Óculos com uma pequena tela no canto do olho e uma câmera na armação, para o consumidor comum, que mostram mensagens e mapas e gravam vídeo por comando de voz. Custam o equivalente a 1.500 dólares."},
+    {"id": "quarto-de-desconhecidos", "ano": 2008, "sucesso": 1,
+     "descricao": "Um site onde qualquer pessoa anuncia um quarto, ou até um colchão inflável, na própria casa, para viajantes desconhecidos pagarem e dormirem lá. O site cobra uma taxa por reserva."},
+    {"id": "patinete-equilibrio", "ano": 2001, "sucesso": 0,
+     "descricao": "Um veículo elétrico de duas rodas lado a lado, em que a pessoa vai de pé e controla inclinando o corpo, apresentado como o futuro do transporte nas cidades. Custa o equivalente a 5.000 dólares e pesa uns 40 quilos."},
+    {"id": "idiomas-jogo", "ano": 2012, "sucesso": 1,
+     "descricao": "Um aplicativo gratuito para aprender idiomas em lições de 5 minutos, como um jogo, com pontos, vidas e sequência de dias. Não tem professor; o app corrige sozinho."},
+    {"id": "mercado-30-minutos", "ano": 1999, "sucesso": 0,
+     "descricao": "Uma empresa de supermercado só pela internet, com armazéns enormes e frota própria, que promete entregar as compras em casa em até 30 minutos, crescendo para várias cidades ao mesmo tempo, num tempo em que pouca gente compra pela internet."},
+    {"id": "pagamento-instantaneo", "ano": 2020, "sucesso": 1,
+     "descricao": "Um jeito de mandar e receber dinheiro na hora, 24 horas por dia, de graça para as pessoas, usando só uma chave (celular, e-mail ou CPF) ou um QR code, que funciona entre todos os bancos do Brasil."},
+    {"id": "fotos-quadradas", "ano": 2010, "sucesso": 1,
+     "descricao": "Um aplicativo de celular só para postar fotos quadradas com filtros que deixam a imagem com cara de antiga, e seguir os amigos para ver as fotos deles. Não tem versão para computador."},
+    {"id": "tv-3d-em-casa", "ano": 2010, "sucesso": 0,
+     "descricao": "Televisores 3D para a sala de casa, que precisam de óculos especiais e caros para cada pessoa da família, com poucos filmes e canais em 3D disponíveis."}
+  ]
+}

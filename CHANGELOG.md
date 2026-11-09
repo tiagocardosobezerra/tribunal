@@ -3,6 +3,25 @@
 Todas as mudanças relevantes do Tribunal. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.4.0] — 2026-11-09
+
+A versão que responde às três críticas mais duras: júri de um modelo só, validade nunca medida e orquestração
+pesada.
+
+### Novo
+- **Júri com 3 modelos.** Cada lote de jurados roda num modelo diferente (Sonnet, Haiku e Opus, alternados), com
+  os agentes `tribunal-jurado-haiku` e `tribunal-jurado-opus`. O `placar` mostra a maioria de cada modelo e avisa
+  quando eles discordam; a confiança sugerida cai 10 pontos nesse caso.
+- **Firmeza por lote.** Além da reamostragem por voto, o placar sorteia lotes inteiros: votos da mesma chamada não
+  são independentes, e essa firmeza é a mais honesta das duas.
+- **Validação contra a realidade** (`tribunal.py validacao preparar|resultado`): 12 produtos de desfecho
+  conhecido, descritos como eram antes do lançamento e sem o nome. Mede acerto, Brier e **vazamento** (quantos
+  jurados reconheceram o produto real). Primeiro resultado: 8 de 9 casos decididos, Brier 0,141 contra 0,25 do
+  chute, 5% dos votos com reconhecimento (`validacao/resultado-2026-11-09.md`).
+- **`tribunal.py onda`.** Uma fase com subagentes vira um comando: os briefings são gravados e as chamadas saem
+  prontas (tipo de agente e prompt com caminhos absolutos). `onda --juntar` junta votos e debate, aplica a parada
+  antecipada e avisa o reforço.
+
 ## [1.3.0] — 2026-11-09
 
 A versão que transforma a sentença em plano. Medida em um julgamento real contra um torneio de 16 agentes
@@ -60,4 +79,5 @@ A versão que transforma a sentença em plano. Medida em um julgamento real cont
 Primeira versão: perito, promotor, defesa, júri de 100 brasileiros fictícios calibrados pelo IBGE, voto
 secreto dos 25, conselho de 7, sentença com confiança, sala em pixel art com o malhete e o Memory Card.
 
+[1.4.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.4.0
 [1.3.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.3.0

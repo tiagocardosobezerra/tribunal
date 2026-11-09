@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Version 1.3.0" src="https://img.shields.io/badge/version-1.3.0-e8c15a?style=flat-square" />
+  <img alt="Version 1.4.0" src="https://img.shields.io/badge/version-1.4.0-e8c15a?style=flat-square" />
   <img alt="Claude Code skill" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-none-2ea44f?style=flat-square" />
-  <img alt="45 tests" src="https://img.shields.io/badge/tests-45%20passing-2ea44f?style=flat-square" />
+  <img alt="48 tests" src="https://img.shields.io/badge/tests-48%20passing-2ea44f?style=flat-square" />
   <img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" />
 </p>
 
@@ -60,7 +60,7 @@ Tribunal gives each role the job it does best and makes every role justify itsel
 | **Prosecutor** | attacks: pre-mortem, inversion, risks | every attack has a severity and a verifiable counterexample |
 | **Verifier** | rechecks every FATAL attack | a label, a rounding or a wording issue is not fatal |
 | **Defense** | defends and answers each attack | a rebuttal that only insists leaves the attack standing |
-| **Jury** | reacts like real people | 25 vote in secret **before** the debate; 7 decide |
+| **Jury** | reacts like real people | 25 vote in secret **before** the debate; 7 decide; **3 different models** |
 | **Plan writer** | turns the verdict into steps | the plan is attacked and revised before it reaches you |
 | **Judge** | runs the trial and rules | takes no side; an open FATAL blocks a full verdict |
 | **You** | final authority | accept, or appeal to a new jury |
@@ -98,6 +98,8 @@ engineer who wants backups, and Mãe Toinha, 100, who has never used a cell phon
   land together.
 - **Brazilian jury procedure:** 25 summoned, up to 3 strikes per side, 7 on the sentencing panel (articles 447 and
   468 of the CPP, Brazil's Code of Criminal Procedure).
+- **Three models on the jury:** each batch runs on a different model (Sonnet, Haiku and Opus). Copies of the same
+  model think alike; the score shows whether the models agree, and confidence drops when they do not.
 - **A real appeal:** jurors from the original case stay off the new jury.
 
 ## What you get
@@ -131,6 +133,20 @@ Numbers from real trials, not demos.
 | Prosecutor, defense or rebuttal | ~80k | **~13k** |
 | Full trial | ~650k (version 1.0) | **~150k to 260k** |
 
+**Validity.** The jury tried 12 products with a known outcome, described as they were before launch and without
+the name (a credit card app with no annual fee, a 400-dollar connected juicer, glasses with a screen...). Each juror
+also said whether they recognized the real product, to separate judgment from memory.
+
+| | Result |
+|---|---|
+| Correct on decided cases | **8 of 9** (3 tied at 50% and do not count) |
+| Brier score (0 is perfect; a coin flip = 0.25) | **0.141** |
+| Votes that recognized the real product | 6 of 120 (5%) |
+| By model | Sonnet: Brier 0.127 · Haiku: 0.19 |
+
+This is a signal, not proof: 12 cases are few, and a model can know a famous outcome without saying so. The kit is in
+[`validacao/`](validacao/) so anyone can repeat and extend it (`tribunal.py validacao`).
+
 **Consistency.** The same case, tried five times, got **the same verdict all five times**, including once with an
 entirely new jury. Between two rounds, 84% of jurors repeated their own vote.
 
@@ -149,7 +165,7 @@ brings what a tournament does not: how real people would react and how far to tr
 led to version 1.3. For ~12k tokens, the double check corrected an overstated fatal attack that the tournament had
 also raised.
 
-**Engineering.** 45 automated tests, pure Python with no dependencies, and the case file validated at every phase.
+**Engineering.** 48 automated tests, pure Python with no dependencies, and the case file validated at every phase.
 
 ## Installation
 
@@ -216,6 +232,8 @@ python tribunal.py status                          # foro, rodízio, Memory Card
 python tribunal.py novo "Título" --tipo ideia      # abre um caso
 python tribunal.py proximo <autos>                 # a próxima fase e o comando exato
 python tribunal.py plano --modo completo           # quantos subagentes e tokens
+python tribunal.py onda <autos> [--juntar]         # a fase atual: briefings e chamadas prontas; --juntar junta tudo
+python tribunal.py validacao preparar --pasta P     # júri contra casos de desfecho conhecido; depois: resultado
 python tribunal.py juri convocar --autos <autos>   # os 25 do rodízio, gravados nos autos
 python tribunal.py juri conselho <sessão> --acusacao IDS --defesa IDS --autos <autos>
 python tribunal.py briefing <autos> --rodada 1 --lote 1 --de 5
@@ -240,7 +258,9 @@ Tests: `python -m unittest discover -s testes`.
 
 ## Honest limits
 
-- The jurors are **simulations** produced by a language model from calibrated profiles. They widen your
+- The validation has 12 cases, all well-known products: too few to claim accuracy, and leakage is only measured
+  when a juror admits recognizing the product. Outcomes recorded in the Memory Card are what will calibrate confidence.
+- The jurors are **simulations** produced by language models from calibrated profiles. They widen your
   perspective. They do not replace talking to real people, which is what the verdict's next step is for.
 - The IBGE quotas match one by one. The crossings (income by region, for example) are plausible, not exact.
 - With 100 seats, groups smaller than 0.5% of the population get no juror. To hear them, the judge calls witnesses.

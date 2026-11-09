@@ -42,10 +42,14 @@ Um subagente `general-purpose` custa cerca de 70 mil tokens, quase tudo custo fi
 tamanho do trabalho.
 
 - **completo** (padrão), com **agentes enxutos** (só Ler e Gravar; custam uma fração de um `general-purpose`):
-  - jurados no `tribunal-jurado` (`sonnet`), em até 5 lotes;
+  - jurados em até 5 lotes, **um modelo por lote** (sonnet, haiku, opus alternados: `tribunal-jurado`,
+    `tribunal-jurado-haiku`, `tribunal-jurado-opus`). O `placar` mostra se os modelos concordam;
   - promotor, defesa, réplica e contraditório no `tribunal-advogado`; autores no `tribunal-autor`. O prompt
     sai de `debate <autos> --papel P [--id X1]`, literal, e a resposta entra com `juntar-debate`;
-  - sem os agentes instalados, use `general-purpose` (jurados com `model: "sonnet"`);
+  - sem os agentes instalados, use `general-purpose` com o `model` do lote;
+  - **`python tribunal.py onda <autos>`** faz cada fase com subagentes de uma vez: grava os briefings e lista
+    as chamadas prontas (tipo de agente e prompt). Lance todas juntas; depois `onda <autos> --juntar` junta
+    votos e debate, aplica parada antecipada e avisa o reforço;
   - **reforço:** se, com os 25 votos, `reforco <autos>` disser REFORÇO (sala estável em menos de 80%),
     rode os lotes 6 a 10 com `--de 10`;
   - **parada antecipada:** rode os lotes 1 a 3; se `parar` disser PARE, os lotes 4 e 5 são dispensados;
@@ -119,11 +123,8 @@ O que ele não conseguiu verificar entra como `lacuna`. O juiz aceita ou recusa 
 
 ### 3. Rodada 1: voto secreto dos 25
 
-1. Gere o prompt de cada lote com `briefing <autos> --rodada 1 --lote K --de 5`.
-2. Passe os lotes 1 a 3, em paralelo, a subagentes `tribunal-jurado`. Cada um grava
-   `votos/r1-loteK.json` e responde uma linha.
-3. Rode `juntar <autos>` e depois `parar <autos>`. Se o `placar` sinalizar voto fora do personagem que não
-   seja citação, refaça o lote.
+1. `onda <autos>` gera os lotes 1 a 3 (um modelo por lote) e lista as chamadas; lance em paralelo.
+2. `onda <autos> --juntar`. Se o `placar` sinalizar voto fora do personagem que não seja citação, refaça o lote.
    - **PARE:** a liderança já é estável em 95% ou mais das reamostragens, com 15 votos ou mais. Os
      lotes 4 e 5 ficam dispensados, e isso é registrado nos autos.
    - **CONTINUE:** rode os lotes 4 e 5 e junte.

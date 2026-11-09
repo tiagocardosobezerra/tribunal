@@ -158,6 +158,42 @@ def estabilidade(votos, ops, reamostras=REAMOSTRAS, semente=2026):
     return {'opcao': alvo, 'estabilidade': iguais / reamostras, 'n': len(votos)}
 
 
+def estabilidade_blocos(votos, ops, reamostras=REAMOSTRAS, semente=2026):
+    """Reamostragem por LOTE, não por voto: os votos de um mesmo lote saíram da mesma chamada ao mesmo modelo e
+    não são independentes. Sortear lotes inteiros dá uma firmeza mais honesta (e mais baixa). None se houver
+    menos de 3 lotes."""
+    import random
+    blocos = {}
+    for v in votos:
+        blocos.setdefault(v.get('lote'), []).append(v['voto'])
+    blocos.pop(None, None)
+    if len(blocos) < 3:
+        return None
+    alvo = _maioria(_contar(votos, ops))
+    if alvo in (None, 'empate'):
+        return 0.0
+    rng, lista, iguais = random.Random(semente), list(blocos.values()), 0
+    for _ in range(reamostras):
+        c = {o: 0 for o in ops}
+        for _ in lista:
+            for x in rng.choice(lista):
+                c[x] = c.get(x, 0) + 1
+        iguais += _maioria(c) == alvo
+    return iguais / reamostras
+
+
+def por_modelo(votos, ops, minimo=3):
+    """{modelo: {'n', 'contagem', 'maioria'}} e se os modelos com pelo menos `minimo` votos concordam na maioria."""
+    grupos = {}
+    for v in votos:
+        if v.get('modelo'):
+            grupos.setdefault(v['modelo'], []).append(v)
+    det = {m: {'n': len(vs), 'contagem': _contar(vs, ops), 'maioria': _maioria(_contar(vs, ops))} for m, vs in grupos.items()}
+    validos = {d['maioria'] for d in det.values() if d['n'] >= minimo}
+    concordam = None if len([d for d in det.values() if d['n'] >= minimo]) < 2 else len(validos) == 1
+    return det, concordam
+
+
 def parar_cedo(autos, minimo=PARAR_MINIMO, limiar=PARAR_LIMIAR):
     """Parada antecipada da rodada 1: com pelo menos `minimo` votos e a maioria estável em `limiar` das
     reamostragens, os lotes restantes não mudariam a liderança: dá para pular. Devolve (pode, info)."""
@@ -181,6 +217,9 @@ def confianca_sugerida(autos):
     m1, m2 = _maioria(_contar(r1, ops)), _maioria(_contar(r2, ops))
     if r1:
         partes.append(('sala concorda com o conselho' if m1 == m2 else 'sala discorda do conselho', 5 if m1 == m2 else -10))
+    _, concordam = por_modelo(r1, ops)
+    if concordam is False:
+        partes.append(('os modelos do júri discordam na sala', -10))
     lac = sum(1 for p in autos.get('provas', []) if p.get('tipo') == 'lacuna' and p.get('aceita', True))
     if lac:
         partes.append((f'{lac} lacuna(s) nas provas', -min(15, 5 * lac)))
@@ -256,6 +295,8 @@ def placar(autos):
             'segmentos': segmentos, 'mudancas': mudancas,
             'estabilidade1': estabilidade(r1, ops), 'estabilidade2': estabilidade(r2, ops),
             'parada': (autos.get('juri') or {}).get('rodada1_parada'),
+            'por_modelo1': por_modelo(r1, ops)[0], 'modelos_concordam1': por_modelo(r1, ops)[1],
+            'estabilidade_blocos1': estabilidade_blocos(r1, ops),
             'confianca_sugerida': confianca_sugerida(autos) if r2 else None,
             'fidelidade': fidelidade(autos)}
 
@@ -272,6 +313,12 @@ def placar_md(p):
         l += [f'**Estabilidade por reamostragem** ({REAMOSTRAS} sorteios): a maioria da sala ({e1["opcao"]}) se '
               f'mantém em **{pct(e1)}**' + (f'; a do conselho ({e2["opcao"]}), em **{pct(e2)}**' if e2 and e2['n'] else '')
               + '.', '']
+    if p.get('estabilidade_blocos1') is not None:
+        l += [f'**Firmeza por lote** (votos de um mesmo lote não são independentes): a maioria da sala se mantém em '
+              f'**{round(100 * p["estabilidade_blocos1"])}%** sorteando lotes inteiros.', '']
+    if p.get('por_modelo1') and len(p['por_modelo1']) > 1:
+        l += ['**Por modelo do júri:** ' + ' · '.join(f'{m} ({d["n"]}): {d["maioria"]}' for m, d in sorted(p['por_modelo1'].items()))
+              + {True: '. **Os modelos concordam.**', False: '. **Os modelos DISCORDAM: o veredito depende do modelo.**', None: '.'}[p.get('modelos_concordam1')], '']
     if p.get('confianca_sugerida'):
         v, partes = p['confianca_sugerida']
         l += [f'**Confiança sugerida: {v}%** (' + '; '.join(f'{k} {"+" if n > 0 else ""}{n}' for k, n in partes)

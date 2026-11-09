@@ -15,6 +15,7 @@ import json
 import math
 import os
 import random
+import re
 
 from . import autos as A
 from . import juri as J
@@ -22,6 +23,15 @@ from . import juri as J
 
 class OrquestraRecusada(RuntimeError):
     """O pedido de orquestração não pode seguir."""
+
+
+# Júri com modelos diferentes: o lote K vai para o modelo (K-1) % 3. Cópias do mesmo modelo pensam parecido;
+# três modelos dão diversidade de verdade e permitem medir se o veredito depende do modelo.
+MODELOS_JURI = (('sonnet', 'tribunal-jurado'), ('haiku', 'tribunal-jurado-haiku'), ('opus', 'tribunal-jurado-opus'))
+
+
+def modelo_do_lote(lote):
+    return MODELOS_JURI[(int(lote) - 1) % len(MODELOS_JURI)]
 
 
 def pasta_dos_autos(caminho):
@@ -111,6 +121,7 @@ def juntar(caminho, arquivos=None):
         raise OrquestraRecusada('nenhum arquivo de votos encontrado em votos/')
     novos, erros = [], []
     for f in arquivos:
+        m = re.match(r'r\d+-lote(\d+)\.json$', os.path.basename(f))
         try:
             with open(f, encoding='utf-8-sig') as h:
                 lista = json.load(h)
@@ -121,7 +132,11 @@ def juntar(caminho, arquivos=None):
             if not all(k in v for k in ('jurado', 'rodada', 'voto', 'motivo')):
                 erros.append(f'{os.path.basename(f)}: voto incompleto {v}')
                 continue
-            novos.append({k: v[k] for k in ('jurado', 'rodada', 'voto', 'confianca', 'motivo', 'reparou') if k in v})
+            nv = {k: v[k] for k in ('jurado', 'rodada', 'voto', 'confianca', 'motivo', 'reparou', 'reconhece') if k in v}
+            if m:
+                nv['lote'] = int(m.group(1))
+                nv['modelo'] = v.get('modelo') or modelo_do_lote(m.group(1))[0]
+            novos.append(nv)
     chaves = {(v['jurado'], v['rodada']) for v in novos}
     autos['votos'] = [v for v in autos.get('votos', []) if (v['jurado'], v['rodada']) not in chaves] + novos
     erros += A.validar(autos)
@@ -207,7 +222,7 @@ def proximo(caminho):
 TOKENS_POR_SUBAGENTE = 70_000   # general-purpose: medido de 63 a 85 mil (2026-11-09)
 TOKENS_JURADO = 11_000          # agente tribunal-jurado (só Ler e Gravar, sonnet): medido de 10,6 a 10,9 mil
 TOKENS_ADVOGADO = 13_000        # tribunal-advogado / tribunal-autor (só Ler e Gravar): medido de 10,4 a 15 mil (2026-11-09)
-MODELO_JURADOS = 'tribunal-jurado (sonnet)'
+MODELO_JURADOS = 'tribunal-jurado (sonnet, haiku e opus alternados por lote)'
 MODELO_ADVOGADOS = 'tribunal-advogado / tribunal-autor (modelo da conversa)'
 PROPOSTAS_PADRAO = 3
 
@@ -240,3 +255,106 @@ def sugerir_modo(reversivel=None, impacto=None):
     if reversivel and impacto in ('baixo', None):
         return 'rapido', 'reversível e de impacto baixo: o modo rápido basta'
     return 'completo', 'impacto médio: o completo com jurados enxutos custa pouco'
+
+
+# ------------------------------------------------------------------ onda: uma fase, um comando
+ADVOGADO = 'tribunal-advogado'
+
+
+def _chamada(agente, descricao, briefing_txt, destino, pasta_b, nome):
+    os.makedirs(pasta_b, exist_ok=True)
+    arq_b = os.path.join(pasta_b, nome + '.txt')
+    with open(arq_b, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(briefing_txt)
+    os.makedirs(os.path.dirname(destino), exist_ok=True)
+    return {'subagent_type': agente, 'description': descricao,
+            'prompt': f'Leia o briefing em {os.path.abspath(arq_b)} e siga-o à risca. '
+                      f'Grave o JSON exatamente em {os.path.abspath(destino)}.'}
+
+
+def _lotes_rodada1(autos):
+    """(de, [lotes a rodar]) da rodada 1: 3 primeiros lotes de início; depois os que faltam; com reforço, de 10."""
+    j = autos.get('juri') or {}
+    votantes = _votantes(autos, 1)
+    de = 10 if j.get('reforco') else 5
+    ja = {v['jurado'] for v in autos.get('votos', []) if v['rodada'] == 1}
+    faltam = [k for k in range(1, de + 1) if any(i not in ja for i in lote_de(votantes, k, de))]
+    if not ja:
+        faltam = faltam[:3]                       # parada antecipada: 3 lotes primeiro
+    return de, faltam
+
+
+def onda(caminho):
+    """A fase atual e a lista de chamadas de subagente, já com os briefings gravados em <autos>/briefings/.
+    Fases que dependem do orquestrador (perícia, recusas, sentença) voltam sem chamadas, com a instrução."""
+    from . import debate as DB
+    arq = arquivo_dos_autos(caminho)
+    autos = A.carregar(arq)
+    fase, passos = proximo(arq)
+    pasta = pasta_dos_autos(caminho)
+    pb = os.path.join(pasta, 'briefings')
+    ch = []
+    if fase.startswith('Rodada 1'):
+        de, lotes = _lotes_rodada1(autos)
+        for k in lotes:
+            txt, destino, meus = briefing(arq, 1, k, de)
+            mod, agente = modelo_do_lote(k)
+            ch.append(_chamada(agente, f'jurados r1 lote {k} ({mod})', txt, destino, pb, f'r1-lote{k}'))
+    elif fase.startswith('Deliberação'):
+        for k in (1, 2, 3):
+            txt, destino, meus = briefing(arq, 2, k, 3)
+            if meus:
+                mod, agente = modelo_do_lote(k)
+                ch.append(_chamada(agente, f'conselho lote {k} ({mod})', txt, destino, pb, f'r2-lote{k}'))
+    else:
+        papeis = {'Debates': ['promotor', 'defesa'], 'Réplica': ['replica'], 'Checagem do FATAL': ['checagem'],
+                  'Plano de ação': ['plano'], 'Ataque ao plano': ['plano_ataque'], 'Revisão do plano': ['plano_revisao']}.get(fase, [])
+        if fase == 'Réplica' and (autos.get('rito') or 1) >= 2 and any(
+                t.get('gravidade') == 'fatal' and not t.get('checagem') for t in (autos.get('acusacao') or {}).get('teses', [])):
+            papeis = ['replica', 'checagem']      # em paralelo
+        for papel in papeis:
+            txt, destino = DB.briefing(arq, papel)
+            ch.append(_chamada(ADVOGADO, papel, txt, destino, pb, papel))
+    return fase, ch, ([] if ch else passos)
+
+
+def onda_juntar(caminho):
+    """Junta votos e debate gravados, aplica parada antecipada e reforço, e diz a próxima fase."""
+    from . import debate as DB
+    arq = arquivo_dos_autos(caminho)
+    pasta = pasta_dos_autos(caminho)
+    linhas = []
+    if glob.glob(os.path.join(pasta, 'votos', '*.json')):
+        n, faltando, erros = juntar(arq)
+        linhas.append(f'{n} voto(s) juntado(s)')
+        linhas += [f'ERRO: {e}' for e in erros]
+        linhas += [f'faltam {len(ids)} na rodada {r}: rode a onda de novo (só os lotes que faltam)' for r, ids in faltando.items()]
+        autos = A.carregar(arq)
+        j = autos.setdefault('juri', {})
+        r1 = [v for v in autos.get('votos', []) if v['rodada'] == 1]
+        if r1 and not j.get('rodada1_parada') and faltando.get(1):
+            pode, e = A.parar_cedo(autos)
+            if pode and len({v['jurado'] for v in r1}) < len(_votantes(autos, 1)):
+                j['rodada1_parada'] = {'n': e['n'], 'estabilidade': e['estabilidade'], 'opcao': e['opcao']}
+                _gravar(arq, autos)
+                linhas.append(f'PARE: {e["n"]} votos bastam ({round(100 * e["estabilidade"])}% de firmeza); lotes restantes dispensados')
+        completos = not faltando.get(1)
+        if completos and r1 and not j.get('reforco') and not j.get('rodada1_parada'):
+            e = A.estabilidade(r1, A.opcoes(autos))
+            if (e['estabilidade'] or 0) < A.REFORCO_LIMIAR:
+                linhas.append(f'REFORÇO NECESSÁRIO: firmeza de {round(100 * (e["estabilidade"] or 0))}%. '
+                              f'Rode python tribunal.py reforco {arq} e depois a onda de novo.')
+    if glob.glob(os.path.join(pasta, 'debate', '*.json')):
+        entrou, erros = DB.juntar_debate(arq)
+        if entrou:
+            linhas.append('debate juntado: ' + ', '.join(entrou))
+        linhas += [f'aviso: {e}' for e in erros]
+    fase, passos = proximo(arq)
+    linhas.append(f'PRÓXIMA FASE: {fase}')
+    return linhas
+
+
+def _gravar(arq, autos):
+    with open(arq, 'w', encoding='utf-8', newline='\n') as h:
+        json.dump(autos, h, ensure_ascii=False, indent=2)
+        h.write('\n')

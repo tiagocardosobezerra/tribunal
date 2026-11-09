@@ -660,5 +660,65 @@ class Rito3(unittest.TestCase):
             shutil.rmtree(pasta, ignore_errors=True)
 
 
+class Versao14(unittest.TestCase):
+    """Júri com 3 modelos, comando onda e validação contra casos de desfecho conhecido."""
+
+    def test_modelos_e_blocos(self):
+        ops = ['Procedente', 'Procedente com condições', 'Improcedente']
+        self.assertEqual([O.modelo_do_lote(k)[0] for k in (1, 2, 3, 4)], ['sonnet', 'haiku', 'opus', 'sonnet'])
+        vs = ([{'voto': 'Procedente', 'modelo': 'sonnet', 'lote': 1}] * 5 + [{'voto': 'Procedente', 'modelo': 'haiku', 'lote': 2}] * 5
+              + [{'voto': 'Improcedente', 'modelo': 'opus', 'lote': 3}] * 5)
+        det, concordam = A.por_modelo(vs, ops)
+        self.assertFalse(concordam)
+        self.assertEqual(det['opus']['maioria'], 'Improcedente')
+        b = A.estabilidade_blocos(vs, ops)
+        self.assertLess(b, A.estabilidade(vs, ops)['estabilidade'])
+        self.assertIsNone(A.estabilidade_blocos(vs[:10], ops))
+
+    def test_onda_e_juntar_marcam_modelo(self):
+        pasta = tempfile.mkdtemp(prefix='tribunal-onda-')
+        try:
+            with open(EXEMPLO, encoding='utf-8') as f:
+                a = json.load(f)
+            a['votos'] = []
+            for k in ('acusacao', 'defesa', 'sentenca'):
+                a.pop(k, None)
+            arq = os.path.join(pasta, 'autos.json')
+            with open(arq, 'w', encoding='utf-8') as f:
+                json.dump(a, f, ensure_ascii=False)
+            fase, ch, _ = O.onda(arq)
+            self.assertTrue(fase.startswith('Rodada 1'))
+            self.assertEqual([c['subagent_type'] for c in ch], ['tribunal-jurado', 'tribunal-jurado-haiku', 'tribunal-jurado-opus'])
+            self.assertTrue(os.path.exists(os.path.join(pasta, 'briefings', 'r1-lote2.txt')))
+            _, _, meus = O.briefing(arq, 1, 2, 5)
+            with open(os.path.join(pasta, 'votos', 'r1-lote2.json'), 'w', encoding='utf-8') as f:
+                json.dump([{'jurado': i, 'rodada': 1, 'voto': 'Procedente', 'motivo': 'ok'} for i in meus], f)
+            linhas = O.onda_juntar(arq)
+            self.assertTrue(any('PRÓXIMA FASE' in x for x in linhas))
+            v = [x for x in A.carregar(arq)['votos'] if x['rodada'] == 1]
+            self.assertTrue(v and all(x['modelo'] == 'haiku' and x['lote'] == 2 for x in v))
+        finally:
+            shutil.rmtree(pasta, ignore_errors=True)
+
+    def test_validacao(self):
+        from motor import validacao as V
+        pasta = tempfile.mkdtemp(prefix='tribunal-val-')
+        try:
+            casos = V.carregar_casos(os.path.join(RAIZ, 'validacao', 'casos.json'))[:2]
+            ch = V.preparar(pasta, casos, lotes=2)
+            self.assertEqual(len(ch), 4)
+            for c, votos in zip(casos, (['Procedente'] * 4 + ['Improcedente'], ['Improcedente'] * 5)):
+                arq = os.path.join(pasta, c['id'], 'autos.json')
+                for k in (1, 2):
+                    _, _, meus = O.briefing(arq, 1, k, 2)
+                    with open(os.path.join(pasta, c['id'], 'votos', f'r1-lote{k}.json'), 'w', encoding='utf-8') as f:
+                        json.dump([{'jurado': i, 'rodada': 1, 'voto': v, 'motivo': 'x', 'reconhece': ''} for i, v in zip(meus, votos)], f)
+            r = V.resultado(pasta, casos)
+            self.assertEqual(r['n'], 2)
+            self.assertIn('Validação do júri', V.resultado_md(r))
+        finally:
+            shutil.rmtree(pasta, ignore_errors=True)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -17,6 +17,8 @@ Comandos:
     abrir       abre a sala do caso no navegador (sem argumento: o último caso; nada para digitar)
     novo        cria a pasta e os autos de um caso novo (na pasta fixa, se o usuário escolheu)
     pasta       onde os casos ficam: --fixa (~/tribunal-autos) ou --sessao
+    validacao   mede o júri contra casos de desfecho conhecido (acerto, Brier, vazamento)
+    onda        a fase atual em um comando: briefings, chamadas de subagente e --juntar
     entrega     o que se mostra ao usuário no fim: decisão, plano, problemas (montado dos autos)
     linguagem   termos de tribunal ou linguagem natural (vale para ata, placar e sala; os autos não mudam)
     fase        fim de fase: carimbo de hora, sala ao vivo e uma linha de narração para a conversa
@@ -64,7 +66,7 @@ try:
 except (AttributeError, ValueError):
     pass
 
-VERSAO = '1.3.0'
+VERSAO = '1.4.0'
 
 
 def _lista(x):
@@ -323,6 +325,46 @@ def cmd_novo(a):
     if not decidido:
         print(f'PERGUNTE AO USUÁRIO (uma vez só): "Guardo seus casos em {CS.PASTA_PADRAO}? (s/n)". '
               'Depois rode: python tribunal.py pasta --fixa  (sim)  ou  python tribunal.py pasta --sessao  (não)')
+
+
+def cmd_validacao(a):
+    from motor import validacao as V
+    casos = V.carregar_casos(a.casos or os.path.join(RAIZ, 'validacao', 'casos.json'))
+    if a.so:
+        casos = [c for c in casos if c['id'] in a.so.split(',')]
+    if a.acao == 'preparar':
+        ch = V.preparar(a.pasta, casos, lotes=a.lotes)
+        print(json.dumps(ch, ensure_ascii=False, indent=2) if a.json else
+              '\n'.join(f'- {c["subagent_type"]} | {c["description"]}\n  {c["prompt"]}' for c in ch))
+        print(f'{len(ch)} chamada(s); depois: python tribunal.py validacao resultado --pasta {a.pasta}', file=sys.stderr)
+    else:
+        r = V.resultado(a.pasta, casos)
+        md = V.resultado_md(r)
+        with open(os.path.join(a.pasta, 'resultado.md'), 'w', encoding='utf-8', newline='\n') as f:
+            f.write(md)
+        print(md)
+
+
+def cmd_onda(a):
+    if a.juntar:
+        for linha in O.onda_juntar(a.autos):
+            print(linha)
+        return 0
+    fase, chamadas, passos = O.onda(a.autos)
+    if a.json:
+        print(json.dumps({'fase': fase, 'chamadas': chamadas, 'passos': passos}, ensure_ascii=False, indent=2))
+        return 0
+    print(f'FASE: {fase}')
+    if not chamadas:
+        print('Sem subagentes nesta fase. Faça você:')
+        for x in passos:
+            print(f'  {x}')
+        return 0
+    print(f'{len(chamadas)} chamada(s), lance todas juntas numa mensagem (Agent, em paralelo):')
+    for c in chamadas:
+        print(f'- subagent_type: {c["subagent_type"]} | description: {c["description"]}')
+        print(f'  prompt: {c["prompt"]}')
+    print(f'Quando todas responderem: python tribunal.py onda {a.autos} --juntar')
 
 
 def cmd_entrega(a):
@@ -673,6 +715,19 @@ def main(argv=None):
     x.add_argument('titulo')
     x.add_argument('--tipo', choices=list(A.TIPOS), default='outro')
     x.set_defaults(f=cmd_novo)
+    x = sub.add_parser('validacao', help='mede o júri contra casos de desfecho conhecido (validacao/casos.json)')
+    x.add_argument('acao', choices=['preparar', 'resultado'])
+    x.add_argument('--pasta', required=True)
+    x.add_argument('--casos')
+    x.add_argument('--so', help='ids separados por vírgula')
+    x.add_argument('--lotes', type=int, default=2)
+    x.add_argument('--json', action='store_true')
+    x.set_defaults(f=cmd_validacao)
+    x = sub.add_parser('onda', help='a fase atual: briefings prontos e as chamadas de subagente; --juntar junta tudo')
+    x.add_argument('autos')
+    x.add_argument('--juntar', action='store_true')
+    x.add_argument('--json', action='store_true')
+    x.set_defaults(f=cmd_onda)
     x = sub.add_parser('entrega', help='o que se mostra ao usuário no fim, montado dos autos')
     x.add_argument('autos')
     x.add_argument('-o')
