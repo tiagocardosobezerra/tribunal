@@ -1,0 +1,185 @@
+{
+ "sobre": "Gabarito da validação cega. O júri nunca vê nome nem desfecho; as descrições foram escritas por um agente que recebeu só nome e ano, com instrução de não antecipar o desfecho.",
+ "casos": [
+  {
+   "id": "c01",
+   "nome": "Washio",
+   "ano": 2013,
+   "sucesso": 0
+  },
+  {
+   "id": "c02",
+   "nome": "Dafiti",
+   "ano": 2011,
+   "sucesso": 1
+  },
+  {
+   "id": "c03",
+   "nome": "QuintoAndar",
+   "ano": 2013,
+   "sucesso": 1
+  },
+  {
+   "id": "c04",
+   "nome": "Essential Phone",
+   "ano": 2017,
+   "sucesso": 0
+  },
+  {
+   "id": "c05",
+   "nome": "Coin (cartão eletrônico)",
+   "ano": 2013,
+   "sucesso": 0
+  },
+  {
+   "id": "c06",
+   "nome": "Olist",
+   "ano": 2015,
+   "sucesso": 1
+  },
+  {
+   "id": "c07",
+   "nome": "Liquid Death",
+   "ano": 2019,
+   "sucesso": 1
+  },
+  {
+   "id": "c08",
+   "nome": "Canva",
+   "ano": 2013,
+   "sucesso": 1
+  },
+  {
+   "id": "c09",
+   "nome": "Stone Pagamentos",
+   "ano": 2012,
+   "sucesso": 1
+  },
+  {
+   "id": "c10",
+   "nome": "Homejoy",
+   "ano": 2012,
+   "sucesso": 0
+  },
+  {
+   "id": "c11",
+   "nome": "Creditas",
+   "ano": 2012,
+   "sucesso": 1
+  },
+  {
+   "id": "c12",
+   "nome": "Teforia",
+   "ano": 2016,
+   "sucesso": 0
+  },
+  {
+   "id": "c13",
+   "nome": "Grow (patinetes Grin e Yellow)",
+   "ano": 2018,
+   "sucesso": 0
+  },
+  {
+   "id": "c14",
+   "nome": "Here One, da Doppler Labs",
+   "ano": 2016,
+   "sucesso": 0
+  },
+  {
+   "id": "c15",
+   "nome": "Color (app de fotos)",
+   "ano": 2011,
+   "sucesso": 0
+  },
+  {
+   "id": "c16",
+   "nome": "Zume Pizza",
+   "ano": 2015,
+   "sucesso": 0
+  },
+  {
+   "id": "c17",
+   "nome": "Gympass",
+   "ano": 2012,
+   "sucesso": 1
+  },
+  {
+   "id": "c18",
+   "nome": "Grammarly",
+   "ano": 2009,
+   "sucesso": 1
+  },
+  {
+   "id": "c19",
+   "nome": "Shyp",
+   "ano": 2013,
+   "sucesso": 0
+  },
+  {
+   "id": "c20",
+   "nome": "RD Station",
+   "ano": 2011,
+   "sucesso": 1
+  },
+  {
+   "id": "c21",
+   "nome": "Secret (app anônimo)",
+   "ano": 2014,
+   "sucesso": 0
+  },
+  {
+   "id": "c22",
+   "nome": "Jibo",
+   "ano": 2014,
+   "sucesso": 0
+  },
+  {
+   "id": "c23",
+   "nome": "Zapier",
+   "ano": 2011,
+   "sucesso": 1
+  },
+  {
+   "id": "c24",
+   "nome": "Baby.com.br",
+   "ano": 2011,
+   "sucesso": 0
+  },
+  {
+   "id": "c25",
+   "nome": "Strava",
+   "ano": 2009,
+   "sucesso": 1
+  },
+  {
+   "id": "c26",
+   "nome": "Typeform",
+   "ano": 2012,
+   "sucesso": 1
+  },
+  {
+   "id": "c27",
+   "nome": "Lily (drone)",
+   "ano": 2015,
+   "sucesso": 0
+  },
+  {
+   "id": "c28",
+   "nome": "Calendly",
+   "ano": 2013,
+   "sucesso": 1
+  },
+  {
+   "id": "c29",
+   "nome": "Hotmart",
+   "ano": 2011,
+   "sucesso": 1
+  },
+  {
+   "id": "c30",
+   "nome": "Beepi",
+   "ano": 2014,
+   "sucesso": 0
+  }
+ ]
+}

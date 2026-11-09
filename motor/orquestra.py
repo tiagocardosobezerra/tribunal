@@ -183,7 +183,7 @@ def proximo(caminho):
                                            f'python tribunal.py parar {arq}  (se disser PARE, pule os lotes 4 e 5)']
     if not (autos.get('acusacao') or {}).get('teses') or not (autos.get('defesa') or {}).get('teses'):
         return 'Debates', ['promotor e defesa em paralelo, com ataques estruturados (referencias/papeis.md)']
-    ids_atq = [x['id'] for x in (autos.get('acusacao') or {}).get('teses', []) if x.get('id')]
+    ids_atq = [x['id'] for x in (autos.get('acusacao') or {}).get('teses', []) if x.get('id') and not x.get('do_juiz')]
     respondidos = {r['ataque'] for r in (autos.get('defesa') or {}).get('respostas', [])}
     if ids_atq and set(ids_atq) - respondidos:
         return 'Réplica', ['a defesa concede ou rebate cada ataque: ' + ', '.join(sorted(set(ids_atq) - respondidos))]
@@ -196,13 +196,16 @@ def proximo(caminho):
         return 'Deliberação e rodada 2', [f'python tribunal.py briefing {arq} --rodada 2 --lote 1 --de 1',
                                           f'python tribunal.py juntar {arq}']
     if not autos.get('sentenca'):
+        if (autos.get('rito') or 1) >= 4:
+            return 'Sentença', [f'python tribunal.py debate {arq} --papel juiz  (tribunal-advogado: juiz independente, só lê os autos)',
+                                f'python tribunal.py juntar-debate {arq}', f'python tribunal.py validar {arq}']
         return 'Sentença', [f'python tribunal.py placar {arq}', 'juiz: veredito, confiança pela rubrica, status de cada ataque']
     if novo_rito and not autos.get('plano'):
         return 'Plano de ação', [f'python tribunal.py debate {arq} --papel plano  (tribunal-advogado, com o rascunho da sentença)',
                                  f'python tribunal.py juntar-debate {arq}', f'python tribunal.py validar {arq}']
     if (autos.get('rito') or 1) >= 3 and (autos.get('plano') or {}).get('pendencias_do_perito'):
         return 'Pendências do perito', ['o perito verifica cada item de plano.pendencias_do_perito agora e junta o resultado como prova',
-                                        'apague o plano (e debate/plano*.json) e rode debate --papel plano de novo']
+                                        f'python tribunal.py perito-feito {arq}  (apaga o plano e conta a rodada; o plano roda de novo)']
     if (autos.get('rito') or 1) >= 3 and autos.get('plano') and not autos.get('plano_ataques'):
         return 'Ataque ao plano', [f'python tribunal.py debate {arq} --papel plano_ataque  (tribunal-advogado)',
                                    f'python tribunal.py juntar-debate {arq}']
@@ -264,7 +267,7 @@ ADVOGADO = 'tribunal-advogado'
 def _chamada(agente, descricao, briefing_txt, destino, pasta_b, nome):
     os.makedirs(pasta_b, exist_ok=True)
     arq_b = os.path.join(pasta_b, nome + '.txt')
-    with open(arq_b, 'w', encoding='utf-8', newline='\n') as f:
+    with open(A.longo(arq_b), 'w', encoding='utf-8', newline='\n') as f:
         f.write(briefing_txt)
     os.makedirs(os.path.dirname(destino), exist_ok=True)
     return {'subagent_type': agente, 'description': descricao,
@@ -308,6 +311,7 @@ def onda(caminho):
                 ch.append(_chamada(agente, f'conselho lote {k} ({mod})', txt, destino, pb, f'r2-lote{k}'))
     else:
         papeis = {'Debates': ['promotor', 'defesa'], 'Réplica': ['replica'], 'Checagem do FATAL': ['checagem'],
+                  'Sentença': ['juiz'] if (autos.get('rito') or 1) >= 4 else [],
                   'Plano de ação': ['plano'], 'Ataque ao plano': ['plano_ataque'], 'Revisão do plano': ['plano_revisao']}.get(fase, [])
         if fase == 'Réplica' and (autos.get('rito') or 1) >= 2 and any(
                 t.get('gravidade') == 'fatal' and not t.get('checagem') for t in (autos.get('acusacao') or {}).get('teses', [])):
@@ -352,6 +356,20 @@ def onda_juntar(caminho):
     fase, passos = proximo(arq)
     linhas.append(f'PRÓXIMA FASE: {fase}')
     return linhas
+
+
+def pendencias_resolvidas(caminho):
+    """O perito juntou as provas das pendências: apaga o plano para ele rodar de novo e conta a rodada.
+    Depois de debate.MAX_RODADAS_PERITO rodadas, o redator não abre pendências novas."""
+    arq = arquivo_dos_autos(caminho)
+    autos = A.carregar(arq)
+    autos.pop('plano', None)
+    autos['perito_rodadas'] = autos.get('perito_rodadas', 0) + 1
+    _gravar(arq, autos)
+    f = os.path.join(pasta_dos_autos(caminho), 'debate', 'plano.json')
+    if os.path.exists(f):
+        os.remove(f)
+    return autos['perito_rodadas']
 
 
 def _gravar(arq, autos):

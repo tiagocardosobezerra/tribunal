@@ -1,0 +1,154 @@
+{
+ "casos": [
+  {
+   "id": "c01",
+   "ano": 2013,
+   "descricao": "Uma startup americana de aplicativo que coleta roupas sujas na casa do cliente com um motorista, lava em lavanderias parceiras e devolve em cerca de um dia. Público: moradores urbanos de renda média e alta, com pouco tempo. Cobra por peça ou por pedido, com margem sobre o parceiro. Força: necessidade recorrente. Riscos: custo de coleta e entrega por pedido e dificuldade de atrair clientes."
+  },
+  {
+   "id": "c02",
+   "ano": 2011,
+   "descricao": "Uma loja online brasileira de moda e calçados, com catálogo de várias marcas, entrega própria, pagamento parcelado em cartão e boleto e troca gratuita. Público: classe média urbana conectada. Ganha com a margem sobre produtos de terceiros e de marca própria. Forças: comércio eletrônico em expansão no Brasil e renda crescente. Riscos: logística cara em país extenso, gasto elevado com marketing e devoluções."
+  },
+  {
+   "id": "c03",
+   "ano": 2013,
+   "descricao": "Uma plataforma brasileira de aluguel de imóveis residenciais pela internet. O proprietário anuncia, um fotógrafo visita o imóvel, as visitas são agendadas online e o contrato é digital, sem fiador, com garantia assumida pela própria empresa. Ganha uma porcentagem do primeiro aluguel e uma taxa mensal de administração. Força: burocracia incômoda do aluguel tradicional. Riscos: inadimplência assumida pela empresa e operação local intensiva."
+  },
+  {
+   "id": "c04",
+   "ano": 2017,
+   "descricao": "Nos Estados Unidos, um smartphone de alto padrão lançado por uma empresa nova, criada por um engenheiro veterano do setor. Tem tela quase sem bordas, corpo de titânio e acessórios magnéticos acopláveis. Custa cerca de 700 dólares, vendido desbloqueado, sem subsídio de operadoras. Força: design e equipe experiente. Riscos: mercado dominado por duas grandes fabricantes e rede de suporte e distribuição ainda pequena."
+  },
+  {
+   "id": "c05",
+   "ano": 2013,
+   "descricao": "Nos Estados Unidos, um cartão eletrônico do tamanho de um cartão de crédito que armazena vários cartões de banco e de fidelidade. O usuário os cadastra por aplicativo e escolhe qual usar por um botão; conecta-se ao celular por Bluetooth. Custa cerca de 100 dólares, em pré-venda. Para consumidores com carteira cheia. Força: conveniência. Riscos: aceitação pelos emissores dos cartões e alternativas de pagamento pelo celular."
+  },
+  {
+   "id": "c06",
+   "ano": 2015,
+   "descricao": "Uma startup brasileira que permite a pequenas lojas e fabricantes vender em vários grandes marketplaces com um único contrato, integrando cadastro de produtos, pedidos e logística. Cobra mensalidade e comissão sobre as vendas. Público: pequenos lojistas sem estrutura de vendas online. Força: crescimento dos marketplaces no Brasil. Riscos: dependência dos marketplaces parceiros e facilidade de outros copiarem o modelo."
+  },
+  {
+   "id": "c07",
+   "ano": 2019,
+   "descricao": "Nos Estados Unidos, uma marca de água mineral vendida em lata de alumínio, com estética de música pesada e humor e discurso contra o plástico descartável. Vende em supermercados, lojas de conveniência e online, a cerca de 1,5 dólar a lata, acima das garrafas comuns. Público: jovens e frequentadores de shows. Força: marca diferenciada. Riscos: produto sem diferença na água e categoria dominada por grandes grupos."
+  },
+  {
+   "id": "c08",
+   "ano": 2013,
+   "descricao": "Uma startup de design gráfico que funciona no navegador, com arrastar e soltar, modelos prontos e banco de imagens. Gratuita, com itens pagos a cerca de um dólar cada. Público: pequenos negócios, professores e quem gerencia redes sociais, sem formação em design. Origem na Austrália e foco no mercado de língua inglesa. Força: simplicidade. Riscos: softwares profissionais consolidados e monetização incerta dos usuários gratuitos."
+  },
+  {
+   "id": "c09",
+   "ano": 2012,
+   "descricao": "Uma empresa brasileira de maquininhas de cartão, com terminal próprio, atendimento local e cobrança de aluguel mensal mais taxa sobre cada transação. Público: pequenos e médios comerciantes, em um mercado concentrado em dois grandes operadores ligados a bancos. Forças: mercado grande e lojistas insatisfeitos com atendimento. Riscos: financiar os recebíveis exige muito capital e há possibilidade de reação dos concorrentes."
+  },
+  {
+   "id": "c10",
+   "ano": 2012,
+   "descricao": "Nos Estados Unidos, um marketplace de limpeza residencial agendada pela internet, com profissionais autônomos. A primeira visita sai com desconto e o preço gira em torno de 20 dólares por hora, com a empresa retendo parte do valor. Público: famílias urbanas ocupadas. Forças: serviço recorrente e mercado fragmentado. Riscos: enquadramento trabalhista dos profissionais e clientes que passam a contratar diretamente, fora da plataforma."
+  },
+  {
+   "id": "c11",
+   "ano": 2012,
+   "descricao": "Uma plataforma brasileira de crédito online com garantia de um bem, como veículo ou imóvel, com juros menores que os do crédito pessoal sem garantia. O pedido e a análise são feitos pelo site. Ganha com a diferença entre o juro cobrado e o custo de captação junto a investidores. Forças: juros altos do crédito comum no Brasil e garantia que reduz o risco. Riscos: custo de captação e inadimplência."
+  },
+  {
+   "id": "c12",
+   "ano": 2016,
+   "descricao": "Nos Estados Unidos, um aparelho de chá conectado, de preço alto, em torno de 1.000 dólares, que só funciona com cápsulas de folhas da própria empresa, vendidas por assinatura. Um aplicativo registra preferências e controla temperatura e tempo de infusão. Público: apreciadores de chá com alta renda. Força: receita recorrente dos refis. Riscos: preço elevado do aparelho e público de nicho."
+  },
+  {
+   "id": "c13",
+   "ano": 2018,
+   "descricao": "Uma startup latino-americana de patinetes elétricos compartilhados, sem estações fixas, destravados por aplicativo. Cobra tarifa de desbloqueio mais valor por minuto. Público: moradores de grandes cidades em viagens curtas. Equipes noturnas recarregam e redistribuem os veículos. Forças: viagens curtas sem alternativa prática e forte interesse de investidores. Riscos: vandalismo e furtos e regulação municipal ainda indefinida."
+  },
+  {
+   "id": "c14",
+   "ano": 2016,
+   "descricao": "Nos Estados Unidos, fones de ouvido sem fio que processam o som do ambiente: filtram ruídos, ajustam vozes e música e são controlados por aplicativo. Custam cerca de 300 dólares. Público: viajantes, profissionais e entusiastas de áudio. Ganha com a venda do aparelho. Força: tecnologia de áudio própria. Riscos: bateria limitada e entrada de grandes fabricantes de eletrônicos com fones sem fio."
+  },
+  {
+   "id": "c15",
+   "ano": 2011,
+   "descricao": "Nos Estados Unidos, um aplicativo gratuito de fotos e vídeos compartilhados automaticamente entre pessoas fisicamente próximas, sem necessidade de seguir amigos, usando localização e sensores do celular. Receita prevista com publicidade. Financiado por investidores de risco e conduzido por equipe experiente. Força: ideia nova de rede social por proximidade. Riscos: depende de muitos usuários no mesmo lugar e modelo de receita ainda indefinido."
+  },
+  {
+   "id": "c16",
+   "ano": 2015,
+   "descricao": "Nos Estados Unidos, uma empresa de entrega de pizza que assa o produto em fornos instalados nos veículos durante o trajeto, com robôs na cozinha. Pedido por aplicativo, preço semelhante ao das redes tradicionais. Ganha com a venda de pizza, com custo menor de mão de obra. Público: consumidores de entrega urbana. Força: pizza quente e automação. Riscos: investimento em frota e margens estreitas de alimentação."
+  },
+  {
+   "id": "c17",
+   "ano": 2012,
+   "descricao": "Uma plataforma brasileira de benefício corporativo que dá aos funcionários acesso a uma rede de academias com um único plano, pago pela empresa e em parte pelo funcionário. As academias recebem por visita. Ganha com a diferença entre o valor cobrado das empresas e o repassado. Forças: capacidade ociosa das academias e interesse de RH em benefícios. Riscos: depender da adesão das academias e vender para empresas."
+  },
+  {
+   "id": "c18",
+   "ano": 2009,
+   "descricao": "Um serviço online de correção ortográfica e gramatical de textos em inglês, que analisa o texto enviado e aponta erros e sugestões com base em regras linguísticas. Vendido por assinatura, em torno de 30 dólares por mês. Público: estudantes, falantes não nativos e profissionais. Forças: grande público que escreve em inglês como segunda língua. Riscos: corretores gratuitos dos editores de texto e qualidade das sugestões."
+  },
+  {
+   "id": "c19",
+   "ano": 2013,
+   "descricao": "Nos Estados Unidos, um aplicativo para enviar objetos: o cliente fotografa o item, um entregador o busca, embala e despacha pela transportadora de menor preço. Cobra taxa de cerca de 5 dólares mais o custo do frete. Público: moradores urbanos e pequenos vendedores online. Força: conveniência. Riscos: custo fixo de coleta e embalagem em cada pedido e margem estreita com tarifa baixa."
+  },
+  {
+   "id": "c20",
+   "ano": 2011,
+   "descricao": "Um software brasileiro, vendido pela internet, de marketing digital para pequenas e médias empresas: reúne criação de páginas, envio de e-mails e acompanhamento de contatos interessados. Cobra mensalidade por faixa de contatos. Forças: empresas começando a investir em marketing online e receita recorrente. Riscos: ferramentas estrangeiras mais maduras e necessidade de explicar ao mercado o que a ferramenta faz."
+  },
+  {
+   "id": "c21",
+   "ano": 2014,
+   "descricao": "Nos Estados Unidos, um aplicativo gratuito de mensagens anônimas: mostra publicações de contatos do celular sem revelar o autor. Público: jovens adultos. Sem receita definida, financiado por investidores de risco e fundado por ex-funcionários de grandes empresas de tecnologia. Forças: engajamento alto e interesse de investidores. Riscos: moderação de abusos e ofensas e falta de modelo de receita."
+  },
+  {
+   "id": "c22",
+   "ano": 2014,
+   "descricao": "Nos Estados Unidos, um robô de mesa para a família, que reconhece rostos, conversa, lê mensagens, tira fotos e conta histórias. Custa cerca de 500 dólares, financiado inicialmente por pré-vendas coletivas, e prevê aplicativos de terceiros. Público: famílias com crianças. Ganha com a venda do aparelho. Força: interface de voz com personalidade. Riscos: utilidade em relação ao celular e preço alto de um hardware novo."
+  },
+  {
+   "id": "c23",
+   "ano": 2011,
+   "descricao": "Nos Estados Unidos, um serviço online que conecta aplicativos entre si por regras do tipo quando algo acontece em um, faça outra coisa no outro, sem programação. Plano gratuito limitado e planos pagos mensais conforme o volume de tarefas. Público: pequenas empresas e profissionais. Forças: multiplicação de aplicativos online com interfaces abertas. Riscos: dependência de empresas parceiras e concorrência de ferramentas de integração."
+  },
+  {
+   "id": "c24",
+   "ano": 2011,
+   "descricao": "Uma loja virtual brasileira especializada em produtos para bebês: enxoval, carrinhos, fraldas e móveis, com entrega nacional e pagamento parcelado. Público: pais de classe média urbana. Ganha com a margem sobre as vendas. Forças: compra frequente e categoria com público claro. Riscos: logística de itens volumosos e concorrência de grandes lojas online de várias categorias, com preços agressivos."
+  },
+  {
+   "id": "c25",
+   "ano": 2009,
+   "descricao": "Nos Estados Unidos, uma rede social e aplicativo para ciclistas e corredores que grava percursos por GPS, compara tempos em trechos com outros usuários e organiza o histórico de treinos. Gratuito, com plano pago premium planejado. Público: atletas amadores. Forças: espírito competitivo e GPS nos celulares. Riscos: sites e fabricantes de aparelhos esportivos já estabelecidos e conversão incerta para a versão paga."
+  },
+  {
+   "id": "c26",
+   "ano": 2012,
+   "descricao": "Uma startup europeia de formulários e pesquisas online que mostra uma pergunta por vez, com visual conversacional. Plano gratuito e planos pagos mensais conforme o número de respostas. Público: profissionais de marketing, pesquisadores e empresas. Forças: design diferenciado e boa taxa de resposta. Riscos: formulários gratuitos de grandes plataformas e baixa barreira de entrada para concorrentes."
+  },
+  {
+   "id": "c27",
+   "ano": 2015,
+   "descricao": "Nos Estados Unidos, um drone com câmera que segue o usuário automaticamente por meio de uma pulseira rastreadora, é lançado ao ar para decolar e resiste à água. Preço de pré-venda entre 500 e 1.000 dólares. Público: esportistas, viajantes e entusiastas. Ganha com a venda do aparelho. Força: facilidade de uso. Riscos: fabricantes de drones consolidados e regulação de voos."
+  },
+  {
+   "id": "c28",
+   "ano": 2013,
+   "descricao": "Nos Estados Unidos, uma ferramenta online de agendamento: o usuário conecta sua agenda e compartilha um link com horários livres, e o convidado escolhe um, evitando trocas de e-mails. Plano gratuito e planos pagos mensais por usuário. Público: profissionais de vendas, consultores e autônomos. Forças: problema simples e comum, divulgação pelo próprio uso. Riscos: baixa barreira técnica e agendas de grandes empresas que podem oferecer algo parecido."
+  },
+  {
+   "id": "c29",
+   "ano": 2011,
+   "descricao": "Uma plataforma brasileira para criadores independentes venderem produtos digitais, como cursos e livros eletrônicos. Cuida de hospedagem, pagamento, entrega e comissão para afiliados que divulgam, e cobra um percentual de cada venda. Público: especialistas, autores e afiliados. Forças: mercado crescente de ensino online e pagamento facilitado. Riscos: reputação de produtos de qualidade desigual e pedidos de reembolso."
+  },
+  {
+   "id": "c30",
+   "ano": 2014,
+   "descricao": "Nos Estados Unidos, um marketplace online de carros usados entre particulares: o vendedor se cadastra, a empresa inspeciona o veículo na casa dele, certifica, oferece garantia e entrega ao comprador, ficando com uma taxa. Público: donos e compradores de carros usados na Califórnia. Forças: transação de alto valor e confiança na inspeção. Riscos: capital imobilizado em veículos e concorrência de classificados e revendedoras."
+  }
+ ]
+}

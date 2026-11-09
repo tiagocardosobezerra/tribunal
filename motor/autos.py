@@ -51,6 +51,15 @@ def opcoes(autos):
     return autos.get('caso', {}).get('opcoes') or OPCOES_PADRAO
 
 
+def longo(caminho):
+    """Caminho que o Windows aceita mesmo acima de 260 caracteres (pastas de trabalho fundas)."""
+    p = os.path.abspath(caminho)
+    prefixo = '\\\\?\\'
+    if os.name == 'nt' and len(p) >= 240 and not p.startswith(prefixo):
+        return prefixo + p
+    return p
+
+
 def validar(autos):
     """Lista de erros (vazia = autos válidos)."""
     e = []

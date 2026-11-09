@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Versão 1.4.0" src="https://img.shields.io/badge/vers%C3%A3o-1.4.0-e8c15a?style=flat-square" />
+  <img alt="Versão 1.5.0" src="https://img.shields.io/badge/vers%C3%A3o-1.5.0-e8c15a?style=flat-square" />
   <img alt="Skill do Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sem dependências" src="https://img.shields.io/badge/depend%C3%AAncias-nenhuma-2ea44f?style=flat-square" />
-  <img alt="48 testes" src="https://img.shields.io/badge/testes-48%20passando-2ea44f?style=flat-square" />
+  <img alt="50 testes" src="https://img.shields.io/badge/testes-50%20passando-2ea44f?style=flat-square" />
   <img alt="Licença MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-blue?style=flat-square" />
 </p>
 
@@ -61,7 +61,7 @@ O Tribunal separa o que cada papel faz melhor e obriga cada um a se justificar:
 | **Defesa** | defende e responde a cada ataque | rebater só insistindo deixa o ataque de pé |
 | **Júri** | reage como gente de verdade | 25 votam em segredo **antes** do debate; 7 decidem; **3 modelos diferentes** |
 | **Redator do plano** | transforma a sentença em passos | o plano é atacado e revisado antes de chegar a você |
-| **Juiz** | conduz e sentencia | não tem lado; um FATAL pendente trava o veredito pleno |
+| **Juiz** | sentencia | um subagente independente, que só lê os autos e não fez a perícia; um FATAL pendente trava o veredito pleno |
 | **Você** | instância final | acata, ou recorre a um júri novo |
 
 ## Como funciona
@@ -131,19 +131,24 @@ Números de julgamentos reais, não de demonstração.
 | Promotor, defesa ou réplica | ~80 mil | **~13 mil** |
 | Julgamento completo | ~650 mil (versão 1.0) | **~150 a 260 mil** |
 
-**Validade.** O júri julgou 12 produtos de desfecho conhecido, descritos como eram antes do lançamento e sem o
-nome (um app de cartão sem anuidade, um espremedor conectado de 400 dólares, óculos com tela...). Cada jurado
-disse se reconhecia o produto real, para separar acerto de memória.
+**Validade: o que o júri mede, e o que não mede.** Medimos de duas formas, e a segunda desmentiu a primeira.
 
-| | Resultado |
-|---|---|
-| Acerto nos casos decididos | **8 de 9** (3 empataram em 50% e não contam) |
-| Brier (0 é perfeito; chute = 0,25) | **0,141** |
-| Votos que reconheceram o produto real | 6 de 120 (5%) |
-| Por modelo | Sonnet: Brier 0,127 · Haiku: 0,19 |
+| | Piloto (12 casos famosos) | Teste cego (30 casos) |
+|---|---|---|
+| Quem escreveu as descrições | eu, sabendo o desfecho | um agente separado, com regras contra pistas |
+| Acerto | 8 de 9 | **18 de 30** (p = 0,18: não se distingue do acaso) |
+| Brier (0 é perfeito; chute = 0,25) | 0,141 | **0,227** |
+| Votos que reconheceram o produto | 5% | 8% |
 
-É um sinal, não uma prova: 12 casos são poucos, e um modelo pode conhecer um desfecho famoso sem dizer. O kit está
-em [`validacao/`](validacao/) para qualquer pessoa repetir e ampliar (`tribunal.py validacao`).
+O júri **não prevê se um produto vai dar certo no mercado** melhor que o acaso. O piloto estava inflado pela
+redação das descrições e pela fama dos casos. O que o júri faz é mostrar **como pessoas comuns reagem** a uma ideia,
+grupo por grupo, e isso não é a mesma coisa. O valor do Tribunal está no processo: provas com fonte, ataques
+checados, juiz independente e um plano com critério de abandono que testa a ideia no mundo real. Detalhes e kit
+para repetir: [`validacao/cegos/`](validacao/cegos/resultado-2026-11-09.md).
+
+**Custo real de ponta a ponta.** Num caso real completo (rito 4), os subagentes gastaram 279 mil tokens, cerca de
+US$ 1. A orquestração na conversa principal pesa mais e cresce com o tamanho da conversa: de US$ 0,60, numa sessão
+nova, a US$ 4, numa sessão longa ([medição](validacao/custo-caso-real-2026-11-09.md)).
 
 **Consistência.** O mesmo caso, julgado cinco vezes, deu **o mesmo veredito nas cinco**, inclusive com um júri
 inteiramente novo. Entre duas rodadas, 84% dos jurados repetiram o próprio voto.
@@ -163,7 +168,7 @@ um torneio não traz: como pessoas reais reagiriam e o quanto confiar no resulta
 versão 1.3: a checagem dupla corrigiu, por ~12 mil tokens, um ataque fatal exagerado que o torneio também tinha
 apontado.
 
-**Engenharia.** 48 testes automáticos, Python puro sem dependências, autos validados a cada fase.
+**Engenharia.** 50 testes automáticos, Python puro sem dependências, autos validados a cada fase.
 
 ## Instalação
 
@@ -254,8 +259,9 @@ Testes: `python -m unittest discover -s testes`.
 
 ## Limites honestos
 
-- A validação tem 12 casos, todos de produtos conhecidos: é pouco para afirmar acerto, e o vazamento só é medido
-  quando o jurado admite reconhecer. Desfechos registrados no Memory Card são o que vai calibrar a certeza.
+- **O veredito não é previsão de sucesso.** No teste cego, o júri acertou o desfecho de 18 em 30 produtos, perto
+  do acaso. Leia o placar como reação do público, e a sentença como um plano para testar, nunca como garantia.
+- O júri é leigo: para produtos B2B ou técnicos, a reação dele pesa pouco, e o perito e as testemunhas pesam mais.
 - Os jurados são **simulações** feitas por modelos de linguagem a partir de fichas calibradas. Ampliam a
   perspectiva; não substituem conversar com pessoas reais. O próximo passo da sentença existe para isso.
 - As cotas do IBGE batem uma a uma; os cruzamentos (renda por região, por exemplo) são plausíveis, não exatos.

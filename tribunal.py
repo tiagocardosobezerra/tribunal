@@ -19,6 +19,7 @@ Comandos:
     pasta       onde os casos ficam: --fixa (~/tribunal-autos) ou --sessao
     validacao   mede o júri contra casos de desfecho conhecido (acerto, Brier, vazamento)
     onda        a fase atual em um comando: briefings, chamadas de subagente e --juntar
+    perito-feito  o perito resolveu as pendências do plano: apaga o plano e conta a rodada (teto de 2)
     entrega     o que se mostra ao usuário no fim: decisão, plano, problemas (montado dos autos)
     linguagem   termos de tribunal ou linguagem natural (vale para ata, placar e sala; os autos não mudam)
     fase        fim de fase: carimbo de hora, sala ao vivo e uma linha de narração para a conversa
@@ -66,7 +67,7 @@ try:
 except (AttributeError, ValueError):
     pass
 
-VERSAO = '1.4.0'
+VERSAO = '1.5.0'
 
 
 def _lista(x):
@@ -329,7 +330,7 @@ def cmd_novo(a):
 
 def cmd_validacao(a):
     from motor import validacao as V
-    casos = V.carregar_casos(a.casos or os.path.join(RAIZ, 'validacao', 'casos.json'))
+    casos = V.carregar_casos(a.casos or os.path.join(RAIZ, 'validacao', 'casos.json'), a.gabarito)
     if a.so:
         casos = [c for c in casos if c['id'] in a.so.split(',')]
     if a.acao == 'preparar':
@@ -339,7 +340,7 @@ def cmd_validacao(a):
         print(f'{len(ch)} chamada(s); depois: python tribunal.py validacao resultado --pasta {a.pasta}', file=sys.stderr)
     else:
         r = V.resultado(a.pasta, casos)
-        md = V.resultado_md(r)
+        md = V.resultado_md(r, V.linha_de_base(a.base, casos) if a.base else None)
         with open(os.path.join(a.pasta, 'resultado.md'), 'w', encoding='utf-8', newline='\n') as f:
             f.write(md)
         print(md)
@@ -365,6 +366,13 @@ def cmd_onda(a):
         print(f'- subagent_type: {c["subagent_type"]} | description: {c["description"]}')
         print(f'  prompt: {c["prompt"]}')
     print(f'Quando todas responderem: python tribunal.py onda {a.autos} --juntar')
+
+
+def cmd_perito_feito(a):
+    from motor import debate as DB
+    n = O.pendencias_resolvidas(a.autos)
+    print(f'rodada {n} do perito registrada; plano apagado. Rode a onda de novo.'
+          + (' Daqui em diante, o redator não abre pendências novas.' if n >= DB.MAX_RODADAS_PERITO else ''))
 
 
 def cmd_entrega(a):
@@ -720,6 +728,8 @@ def main(argv=None):
     x.add_argument('--pasta', required=True)
     x.add_argument('--casos')
     x.add_argument('--so', help='ids separados por vírgula')
+    x.add_argument('--gabarito', help='desfechos em arquivo à parte (validação cega)')
+    x.add_argument('--base', help='palpites de um modelo sozinho, para comparar com o júri')
     x.add_argument('--lotes', type=int, default=2)
     x.add_argument('--json', action='store_true')
     x.set_defaults(f=cmd_validacao)
@@ -728,6 +738,10 @@ def main(argv=None):
     x.add_argument('--juntar', action='store_true')
     x.add_argument('--json', action='store_true')
     x.set_defaults(f=cmd_onda)
+    x = sub.add_parser('perito-feito', help='o perito resolveu as pendências do plano: apaga o plano e conta a rodada')
+    x.add_argument('autos')
+    x.set_defaults(f=cmd_perito_feito)
+
     x = sub.add_parser('entrega', help='o que se mostra ao usuário no fim, montado dos autos')
     x.add_argument('autos')
     x.add_argument('-o')

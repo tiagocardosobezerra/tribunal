@@ -22,9 +22,39 @@ EXTRA = ('VALIDAÇÃO: em cada objeto inclua também "reconhece": o nome do prod
          'usar o que aconteceu depois.')
 
 
-def carregar_casos(arq):
+def carregar_casos(arq, gabarito=None):
+    """Casos com descrição. Na validação cega, o desfecho vem de um arquivo à parte (gabarito), que o
+    escritor das descrições nunca viu junto com elas."""
     with open(arq, encoding='utf-8') as f:
-        return json.load(f)['casos']
+        casos = json.load(f)['casos']
+    if gabarito:
+        with open(gabarito, encoding='utf-8') as f:
+            g = {c['id']: c for c in json.load(f)['casos']}
+        casos = [dict(c, sucesso=g[c['id']]['sucesso'], nome=g[c['id']].get('nome', '')) for c in casos if c['id'] in g]
+    return casos
+
+
+def linha_de_base(arq_palpites, casos):
+    """Um modelo sozinho, numa chamada, lê as descrições e prevê o desfecho: o júri tem de ganhar disto.
+    O arquivo traz também o palpite do nome do produto, que mede o quanto as descrições o entregam."""
+    with open(arq_palpites, encoding='utf-8') as f:
+        p = {x['id']: x for x in json.load(f)['casos']}
+    bs, ac, n, ident = [], 0, 0, 0
+    for c in casos:
+        x = p.get(c['id'])
+        if not x:
+            continue
+        q = float(x.get('p_sucesso', 0.5))
+        bs.append((q - c['sucesso']) ** 2)
+        if q != 0.5:
+            n += 1
+            ac += (q > 0.5) == bool(c['sucesso'])
+        nome = str(c.get('nome', '')).lower().split(' (')[0].split(',')[0].strip()
+        palpite = str(x.get('palpite_produto', '')).lower()
+        if nome and nome.split()[0] in palpite:
+            ident += 1
+    return {'casos': len(bs), 'acerto': ac, 'decididos': n, 'brier': round(sum(bs) / len(bs), 3) if bs else None,
+            'identificados': ident}
 
 
 def preparar(pasta, casos, lotes=2, semente=7):
@@ -105,7 +135,7 @@ def resultado(pasta, casos):
             'por_modelo': mods}
 
 
-def resultado_md(r):
+def resultado_md(r, base=None):
     l = ['# Validação do júri', '',
          f'**Acerto:** {r["acerto"]} de {r["n"] - r["indecisos"]} casos decididos ({r["indecisos"]} empate(s) em 50%, que não contam) · **Brier:** {r["brier"]} (chute de 50% = 0,25; menor é melhor)', '',
          f'**Vazamento:** {r["vazamento"]} votos reconheceram o produto real. Sem os casos vazados: '
@@ -119,4 +149,8 @@ def resultado_md(r):
                  f'{"empate" if c["acertou"] is None else ("sim" if c["acertou"] else "não")} | {c["vazamento"]} {", ".join(c["reconheceu_como"])} |')
     l += ['', '_Acerto do modelo conta só casos em que ele não empatou._', '', '| Modelo | Casos | Acerto | Brier |', '|---|---|---|---|']
     l += [f'| {m} | {d["casos"]} | {d["acerto"]} | {d["brier"]} |' for m, d in sorted(r['por_modelo'].items())]
+    if base:
+        l += ['', '## Linha de base: um modelo sozinho, numa chamada', '',
+              f'Acerto: {base["acerto"]} de {base["decididos"]} decididos · Brier: {base["brier"]} · '
+              f'produtos identificados pelo nome: {base["identificados"]} de {base["casos"]}']
     return '\n'.join(l) + '\n'

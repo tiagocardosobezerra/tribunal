@@ -3,6 +3,29 @@
 Todas as mudanças relevantes do Tribunal. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.5.0] — 2026-11-09
+
+A versão que mede de verdade, mesmo quando o número não ajuda.
+
+### Novo
+- **Juiz independente (rito 4, casos novos).** A sentença sai de um subagente que só lê os autos e não fez a
+  perícia (`debate --papel juiz`, fase "Sentença" da `onda`). As falhas que ele acha (J1...) entram como ataques de
+  pé. O `validar` recusa, no rito 4, sentença escrita por quem conduziu o processo.
+- **Validação cega** (`validacao/cegos/`): 30 produtos, descrições escritas por um agente separado, gabarito em
+  arquivo à parte (`--gabarito`) e uma linha de base de um modelo sozinho (`--base`). **Resultado: o júri acertou 18
+  de 30, Brier 0,227, perto do acaso.** O piloto de 1.4.0 (8 de 9) estava inflado. O README agora diz que o veredito
+  não é previsão de sucesso.
+- **Custo de ponta a ponta medido** num caso real: 279 mil tokens nos subagentes (cerca de US$ 1) e a orquestração,
+  que pesa mais e cresce com a conversa (`validacao/custo-caso-real-2026-11-09.md`).
+- **`perito-feito`** registra uma rodada do perito e apaga o plano; no máximo 2 rodadas, depois o que faltar vira
+  hipótese.
+
+### Corrigido (achado no caso real)
+- As falhas do juiz eram tratadas como ataques sem réplica e travavam o rito.
+- O `juntar-debate` apagava as falhas do juiz ao reler o promotor.
+- Caminhos com mais de 260 caracteres quebravam no Windows.
+- As pendências do perito podiam abrir rodadas sem fim.
+
 ## [1.4.0] — 2026-11-09
 
 A versão que responde às três críticas mais duras: júri de um modelo só, validade nunca medida e orquestração
@@ -79,5 +102,6 @@ A versão que transforma a sentença em plano. Medida em um julgamento real cont
 Primeira versão: perito, promotor, defesa, júri de 100 brasileiros fictícios calibrados pelo IBGE, voto
 secreto dos 25, conselho de 7, sentença com confiança, sala em pixel art com o malhete e o Memory Card.
 
+[1.5.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.5.0
 [1.4.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.4.0
 [1.3.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.3.0

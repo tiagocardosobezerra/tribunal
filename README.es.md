@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Versión 1.4.0" src="https://img.shields.io/badge/versi%C3%B3n-1.4.0-e8c15a?style=flat-square" />
+  <img alt="Versión 1.5.0" src="https://img.shields.io/badge/versi%C3%B3n-1.5.0-e8c15a?style=flat-square" />
   <img alt="Skill de Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sin dependencias" src="https://img.shields.io/badge/dependencias-ninguna-2ea44f?style=flat-square" />
-  <img alt="48 pruebas" src="https://img.shields.io/badge/pruebas-48%20pasando-2ea44f?style=flat-square" />
+  <img alt="50 pruebas" src="https://img.shields.io/badge/pruebas-50%20pasando-2ea44f?style=flat-square" />
   <img alt="Licencia MIT" src="https://img.shields.io/badge/licencia-MIT-blue?style=flat-square" />
 </p>
 
@@ -61,7 +61,7 @@ Tribunal le da a cada papel lo que mejor hace y obliga a cada uno a justificarse
 | **Defensa** | defiende y responde a cada ataque | rebatir solo insistiendo deja el ataque en pie |
 | **Jurado** | reacciona como gente de verdad | 25 votan en secreto **antes** del debate; 7 deciden; **3 modelos distintos** |
 | **Redactor del plan** | convierte la sentencia en pasos | el plan se ataca y se revisa antes de llegar a ti |
-| **Juez** | conduce y sentencia | no toma partido; un FATAL pendiente bloquea el veredicto pleno |
+| **Juez** | sentencia | un subagente independiente, que solo lee el expediente y no hizo el peritaje; un FATAL pendiente bloquea el veredicto pleno |
 | **Tú** | última instancia | aceptas o apelas ante un jurado nuevo |
 
 ## Cómo funciona
@@ -134,19 +134,24 @@ Números de juicios reales, no de demostración.
 | Fiscal, defensa o réplica | ~80 mil | **~13 mil** |
 | Juicio completo | ~650 mil (versión 1.0) | **~150 a 260 mil** |
 
-**Validez.** El jurado juzgó 12 productos de desenlace conocido, descritos como eran antes del lanzamiento y sin el
-nombre (una app de tarjeta sin anualidad, un exprimidor conectado de 400 dólares, gafas con pantalla...). Cada
-jurado dijo también si reconocía el producto real, para separar juicio de memoria.
+**Validez: lo que mide el jurado, y lo que no mide.** Lo medimos de dos formas, y la segunda desmintió a la primera.
 
-| | Resultado |
-|---|---|
-| Aciertos en los casos decididos | **8 de 9** (3 empataron en 50% y no cuentan) |
-| Brier (0 es perfecto; tirar una moneda = 0,25) | **0,141** |
-| Votos que reconocieron el producto real | 6 de 120 (5%) |
-| Por modelo | Sonnet: Brier 0,127 · Haiku: 0,19 |
+| | Piloto (12 casos famosos) | Prueba ciega (30 casos) |
+|---|---|---|
+| Quién escribió las descripciones | yo, conociendo el desenlace | un agente aparte, con reglas contra las pistas |
+| Aciertos | 8 de 9 | **18 de 30** (p = 0,18: no se distingue del azar) |
+| Brier (0 es perfecto; tirar una moneda = 0,25) | 0,141 | **0,227** |
+| Votos que reconocieron el producto | 5% | 8% |
 
-Es una señal, no una prueba: 12 casos son pocos, y un modelo puede conocer un desenlace famoso sin decirlo. El kit
-está en [`validacao/`](validacao/) para que cualquiera lo repita y lo amplíe (`tribunal.py validacao`).
+El jurado **no predice si un producto va a funcionar en el mercado** mejor que el azar. El piloto estaba inflado por
+la redacción de las descripciones y por la fama de los casos. Lo que hace el jurado es mostrar **cómo reaccionan las
+personas comunes** ante una idea, grupo por grupo, y eso no es lo mismo. El valor de Tribunal está en el proceso:
+pruebas con fuente, ataques revisados, un juez independiente y un plan con criterio para abandonar que pone a prueba
+la idea en el mundo real. Detalles y kit para repetirlo: [`validacao/cegos/`](validacao/cegos/resultado-2026-11-09.md).
+
+**Costo real de punta a punta.** En un caso real completo (rito 4), los subagentes gastaron 279 mil tokens, unos
+US$ 1. La orquestación en la conversación principal pesa más y crece con el largo de la conversación: de US$ 0,60 en
+una sesión nueva a US$ 4 en una sesión larga ([medición](validacao/custo-caso-real-2026-11-09.md)).
 
 **Consistencia.** El mismo caso, juzgado cinco veces, dio **el mismo veredicto en las cinco**, incluso con un jurado
 totalmente nuevo. Entre dos rondas, el 84% de los jurados repitió su voto.
@@ -166,7 +171,7 @@ que un torneo no da: cómo reaccionarían personas reales y cuánto confiar en e
 versión 1.3: la doble revisión corrigió, por ~12 mil tokens, un ataque fatal exagerado que el torneo también había
 señalado.
 
-**Ingeniería.** 48 pruebas automáticas, Python puro sin dependencias, expediente validado en cada fase.
+**Ingeniería.** 50 pruebas automáticas, Python puro sin dependencias, expediente validado en cada fase.
 
 ## Instalación
 
@@ -260,8 +265,10 @@ Pruebas: `python -m unittest discover -s testes`.
 
 ## Límites honestos
 
-- La validación tiene 12 casos, todos de productos conocidos: son pocos para afirmar acierto, y la filtración solo se
-  mide cuando el jurado admite reconocer el producto. Los desenlaces registrados en el Memory Card calibrarán la confianza.
+- **El veredicto no es una predicción de éxito.** En la prueba ciega, el jurado acertó el desenlace de 18 de 30
+  productos, cerca del azar. Lee el marcador como reacción del público, y la sentencia como un plan para probar,
+  nunca como una garantía.
+- El jurado es lego: para productos B2B o técnicos, su reacción pesa poco, y el perito y los testigos pesan más.
 - Los jurados son **simulaciones** que hacen modelos de lenguaje a partir de fichas calibradas. Amplían la
   perspectiva; no reemplazan hablar con personas reales. Para eso existe el próximo paso de la sentencia.
 - Las cuotas del IBGE coinciden una por una; los cruces (ingreso por región, por ejemplo) son plausibles, no exactos.

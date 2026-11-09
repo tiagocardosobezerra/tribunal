@@ -142,26 +142,18 @@ O que ele não conseguiu verificar entra como `lacuna`. O juiz aceita ou recusa 
 Rode `briefing <autos> --rodada 2 --lote 1 --de 1` para um subagente `sonnet`, depois `juntar`. Quem
 mudar de voto diz por quê.
 
-### 6. Sentença
+### 6. Sentença: o juiz independente
 
-1. Rode `placar <autos>`.
-2. O veredito é a maioria do conselho. Se o juiz discordar, registra em `voto_vencido`.
-3. Dê o status de cada ataque: `corrigido` (só com `verificado`: como se conferiu que já foi feito),
-   `correcao_proposta` (prometida, não feita), `rebatido` ou `de_pe`.
-   Depois, o **redator do plano** (`debate --papel plano`) transforma condições e próximo passo em passos,
-   metas com número e prazo, testes com resultado esperado e critério de abandono. O plano cobre cada condição
-   e aponta conflitos; o `validar` recusa a sentença sem plano ou com conflito.
-   No rito 3, o plano tem pelo menos 6 testes, metas por grupo, abandono com 2 gatilhos e a certeza explicada; um
-   promotor do plano o ataca (`--papel plano_ataque`) e o redator revisa (`--papel plano_revisao`). O que dá para
-   verificar agora vira `pendencias_do_perito`, nunca passo do dono: o perito resolve, junta a prova e o plano roda de novo.
-4. A sentença tem:
-   - confiança partindo da **confiança sugerida** que o `placar` calcula (justifique qualquer ajuste);
-   - fundamentação com o placar por segmento;
-   - condições;
-   - ponto de virada;
-   - provas decisivas;
-   - próximo passo barato;
-   - critério de abandono.
+**Rito 4** (casos novos): você não escreve a sentença. A `onda` chama o **juiz independente** (`debate --papel
+juiz`), um subagente que só lê os autos e não fez a perícia. Ele dá o veredito (a maioria do conselho; se discordar,
+`voto_vencido`), o status de cada ataque, as falhas que a acusação não viu (J1...), a confiança a partir da
+sugerida, condições, ponto de virada, próximo passo e critério de abandono. O `validar` recusa, no rito 4, uma
+sentença que não veio dele. Nunca edite a sentença; se ela estiver errada, rode o juiz de novo com os autos corrigidos.
+
+Depois, o **redator do plano** (`--papel plano`) transforma a sentença em passos, metas por grupo, pelo menos 6
+testes, critério de abandono e certeza explicada. Um promotor do plano o ataca (`--papel plano_ataque`) e o redator
+revisa (`--papel plano_revisao`). O que dá para verificar agora vira `pendencias_do_perito`: o perito resolve, junta
+como prova e roda `perito-feito <autos>`. No máximo 2 rodadas; depois, o que faltar vira hipótese.
 
 ### 7. Instância final
 

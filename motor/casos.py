@@ -115,7 +115,7 @@ def novo_caso(titulo, tipo='outro', cwd=None, data=None):
     arq = os.path.join(pasta, 'autos.json')
     if os.path.exists(arq):
         raise CasoRecusado(f'já existe um caso aqui: {arq}')
-    autos = {'rito': 3, 'caso': {'titulo': titulo, 'tipo': tipo, 'pergunta': '', 'explicacao': '', 'data': data},
+    autos = {'rito': 4, 'caso': {'titulo': titulo, 'tipo': tipo, 'pergunta': '', 'explicacao': '', 'data': data},
              'juri': {'foro': 'brasil'}, 'provas': [], 'votos': [],
              'metricas': {'inicio': agora(), 'fases': {}, 'abrir_ok': None, 'comandos_pedidos': 0}}
     _gravar_json(arq, autos)

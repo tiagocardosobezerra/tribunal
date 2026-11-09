@@ -722,3 +722,71 @@ class Versao14(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class Versao15(unittest.TestCase):
+    """Juiz independente: a sentença sai de um subagente que só lê os autos."""
+
+    def test_juiz_independente(self):
+        from motor import debate as DB
+        pasta = tempfile.mkdtemp(prefix='tribunal-juiz-')
+        try:
+            with open(EXEMPLO, encoding='utf-8') as f:
+                a = json.load(f)
+            s = a.pop('sentenca')
+            a.pop('plano', None)
+            a['rito'] = 4
+            arq = os.path.join(pasta, 'autos.json')
+            with open(arq, 'w', encoding='utf-8') as f:
+                json.dump(a, f, ensure_ascii=False)
+            fase, ch, _ = O.onda(arq)
+            self.assertEqual(fase, 'Sentença')
+            self.assertEqual([c['description'] for c in ch], ['juiz'])
+            txt, destino = DB.briefing(arq, 'juiz')
+            self.assertIn('JUIZ INDEPENDENTE', txt)
+            self.assertIn('CONFIANÇA SUGERIDA', txt)
+            self.assertTrue(destino.endswith('juiz.json'))
+            d = dict(s, ataques_do_juiz=[{'id': 'J1', 'gravidade': 'leve', 'texto': 'falha nova'}])
+            with open(destino, 'w', encoding='utf-8') as f:
+                json.dump(d, f, ensure_ascii=False)
+            DB.juntar_debate(arq)
+            b = A.carregar(arq)
+            self.assertEqual(b['sentenca']['por'], 'juiz independente')
+            self.assertIn('J1', [t.get('id') for t in b['acusacao']['teses']])
+            with open(os.path.join(pasta, 'debate', 'promotor.json'), 'w', encoding='utf-8') as f:
+                json.dump({'teses': [{'id': 'A1', 'gravidade': 'grave', 'texto': 'x'}]}, f)
+            DB.juntar_debate(arq)
+            b = A.carregar(arq)
+            self.assertEqual([t.get('id') for t in b['acusacao']['teses']], ['A1', 'J1'])
+            if os.name == 'nt':
+                self.assertTrue(A.longo('C:/' + 'a' * 250).startswith(r'\\?' + '\\'))
+            with self.assertRaises(DB.DebateRecusado):
+                DB.briefing(arq, 'juiz')
+            b['sentenca'].pop('por')
+            self.assertTrue(any('juiz independente' in e for e in A.validar(b)))
+        finally:
+            shutil.rmtree(pasta, ignore_errors=True)
+
+    def test_teto_do_perito(self):
+        from motor import debate as DB
+        pasta = tempfile.mkdtemp(prefix='tribunal-perito-')
+        try:
+            with open(EXEMPLO, encoding='utf-8') as f:
+                a = json.load(f)
+            a['rito'] = 3
+            arq = os.path.join(pasta, 'autos.json')
+            with open(arq, 'w', encoding='utf-8') as f:
+                json.dump(a, f, ensure_ascii=False)
+            self.assertEqual(O.pendencias_resolvidas(arq), 1)
+            self.assertEqual(O.pendencias_resolvidas(arq), 2)
+            self.assertNotIn('plano', A.carregar(arq))
+            os.makedirs(os.path.join(pasta, 'debate'), exist_ok=True)
+            with open(os.path.join(pasta, 'debate', 'plano.json'), 'w', encoding='utf-8') as f:
+                json.dump({'ordem': ['1. x'], 'pendencias_do_perito': ['abrir o site']}, f)
+            DB.juntar_debate(arq)
+            p = A.carregar(arq)['plano']
+            self.assertEqual(p['pendencias_do_perito'], [])
+            self.assertIn('Não verificado: abrir o site', p['hipoteses'])
+        finally:
+            shutil.rmtree(pasta, ignore_errors=True)
+

@@ -14,7 +14,10 @@ from . import casos as CS
 from . import linguagem as LG
 from . import propostas as PR
 
-PAPEIS = ('promotor', 'defesa', 'replica', 'autor', 'contraditorio', 'checagem', 'plano', 'plano_ataque', 'plano_revisao')
+PAPEIS = ('promotor', 'defesa', 'replica', 'autor', 'contraditorio', 'checagem', 'juiz', 'plano', 'plano_ataque',
+          'plano_revisao')
+JUIZ_INDEPENDENTE = 'juiz independente'
+MAX_RODADAS_PERITO = 2   # depois disso, o que faltar verificar vira hipótese e o plano segue
 
 
 class DebateRecusado(RuntimeError):
@@ -43,6 +46,7 @@ FORMATO = {
     'autor': '{"id":"%s","apelido":"2 ou 3 palavras que um leigo entende (ex.: Fazer à mão primeiro)","titulo":"até 8 palavras","resumo":"2 frases simples","texto":"no máximo 350 palavras"}',
     'checagem': '{"A1":{"veredito":"confirma|rebaixa|derruba","gravidade":"fatal|grave|leve","motivo":"...","como_verifiquei":"a conta refeita ou o trecho exato da prova"}}',
     'plano': '{"recomendacao":"3 a 5 frases para o dono","certeza":{"valor":0,"por_que":"as lacunas pelo nome","sobe_se":"...","desce_se":"..."},"passo_mais_barato":{"o_que":"...","custo":"R$ ou zero","tempo":"horas ou dias"},"cenarios":[{"se":"o que pode acontecer","entao":"o que muda na decisão","certeza":"sobe|desce"}],"ordem":["1. ...","2. ..."],"proximo_passo":"igual ao passo 1","metas":[{"o_que":"...","grupo":"todos ou o grupo","como_medir":"...","meta":"número","prazo":"dias ou data"}],"testes":[{"o_que":"...","entrada":"...","esperado":"..."}],"criterio_de_abandono":"2 ou mais gatilhos, com número e prazo","cobertura":{"1":"em que passo a condição 1 é cumprida"},"hipoteses":["o que não está nas provas e precisa ser confirmado"],"atencao":["tensões com o que já está no ar, que não impedem o plano"],"conflitos":[],"pendencias_do_perito":["o que dá para verificar agora (site público, conta, documento) e ainda não foi verificado"]}',
+    'juiz': '{"veredito":"uma das OPÇÕES, igual","confianca":0,"ajuste_da_confianca":"de onde veio o número: a sugerida e cada ajuste","fundamentacao":"...","condicoes":["..."],"ponto_de_virada":"...","provas_decisivas":["P1"],"voto_vencido":null,"proximo_passo":"...","criterio_de_abandono":"...","ataques":[{"ataque":"A1","status":"corrigido|correcao_proposta|rebatido|de_pe","nota":"por quê","verificado":"só se corrigido: como se conferiu"}],"ataques_do_juiz":[{"id":"J1","gravidade":"fatal|grave|leve","texto":"falha que a acusação não viu"}]}',
     'plano_ataque': '{"ataques":[{"id":"P1","gravidade":"fatal|grave|leve","onde":"campo e item do plano","texto":"o furo, com a conta refeita se for conta","correcao_sugerida":"..."}]}',
     'contraditorio': '{"X1":{"ataques":[{"id":"X1a","gravidade":"fatal|grave|leve","texto":"...","onde":"...","contraexemplo":"...","provas":[]}],"respostas":[{"ataque":"X1a","tipo":"concede|rebate","texto":"...","correcao":"..."}]}, "X2":{...}}',
 }
@@ -86,6 +90,52 @@ INSTRUCAO_PLANO = (
     'resolve antes de o plano seguir. Só fica no plano o que depende do dono (testar o app por dentro, falar com '
     'clientes, medir vendas). '
     'Específico e direto: no máximo 900 palavras no total.')
+
+
+INSTRUCAO_JUIZ = (
+    'SEU PAPEL: JUIZ INDEPENDENTE. Você não fez a perícia nem conduziu o processo: decide só com o que está acima. '
+    '1) O veredito é a MAIORIA DO CONSELHO (rodada 2), escrito igual a uma das opções. Se você discordar, o veredito '
+    'continua o do conselho e a sua posição vai em "voto_vencido". 2) Status de CADA ataque da acusação: "corrigido" '
+    'só se a correção JÁ foi feita e conferida nas provas (diga como em "verificado"); "correcao_proposta" se a defesa '
+    'concedeu e propôs uma correção ainda não feita; "rebatido" só com prova ou contraexemplo verificável; "de_pe" se '
+    'a resposta só insistiu, prometeu sem dizer como ou não existe. Quando houver CHECAGEM DUPLA, ela vale mais que o '
+    'texto original. 3) FATAL de pé, ou FATAL só com correção proposta, impede a PRIMEIRA opção. 4) Procure falhas '
+    'que a acusação não viu e registre em "ataques_do_juiz"; ninguém as responde, então ficam de pé e cada GRAVE '
+    'tira 5 da confiança. 5) Confiança: parta da CONFIANÇA SUGERIDA e justifique '
+    'cada ajuste em "ajuste_da_confianca"; mais de 15 pontos acima da firmeza do conselho só com prova forte. '
+    'Âncoras: 90+ raro (provas fortes, nada de pé, quase unanimidade); 70 a 89 veredito claro com uma lacuna; 50 a 69 '
+    'uma condição ou lacuna pode inverter tudo; abaixo de 50, ninguém provou o bastante. 6) "condicoes": o que tem de '
+    'ser verdade para o veredito valer, inclusive cada correção proposta. "ponto_de_virada": o fato que inverteria o '
+    'veredito. "proximo_passo": a ação mais barata que mais reduz a dúvida. "criterio_de_abandono": com número e '
+    'prazo. 7) "fundamentacao": por que este veredito, citando provas (P1...), o placar e onde o júri se dividiu. '
+    'Não favoreça nenhum lado nem quem conduziu o processo; não invente fato, número ou prova.')
+
+
+def _contexto_juiz(autos):
+    resp = {r.get('ataque'): r for r in (autos.get('defesa') or {}).get('respostas', [])}
+    l = ['ATAQUES DA ACUSAÇÃO E RESPOSTAS DA DEFESA:']
+    for t in (autos.get('acusacao') or {}).get('teses', []):
+        r = resp.get(t.get('id')) or {}
+        ch = t.get('checagem') or {}
+        l.append(f'- {t.get("id")} [{(t.get("gravidade") or "").upper()}] {t["texto"]}'
+                 + (f' | contraexemplo: {t["contraexemplo"]}' if t.get('contraexemplo') else '')
+                 + f' | provas: {", ".join(t.get("provas") or []) or "nenhuma (alegação)"}'
+                 + (f' | DEFESA {str(r.get("tipo", "")).upper()}: {r.get("texto", "")}' if r else ' | DEFESA: sem resposta')
+                 + (f' | correção: {r["correcao"]}' if r.get('correcao') else '')
+                 + (f' | CHECAGEM DUPLA: {ch.get("veredito")} (era {str(ch.get("gravidade_original", "")).upper()}): '
+                    f'{ch.get("motivo", "")}' if ch else ''))
+    d = autos.get('defesa') or {}
+    l += ['', 'TESES DA DEFESA:'] + [f'- {x.get("texto", "") if isinstance(x, dict) else x}' for x in d.get('teses') or []]
+    l += [f'CONDIÇÕES DA DEFESA: {"; ".join(map(str, d.get("condicoes") or []))}',
+          f'TESTE BARATO DA DEFESA: {d.get("teste_barato", "")}']
+    l += ['', 'PLACAR:', A.placar_md(A.placar(autos))]
+    r2 = [v for v in autos.get('votos', []) if v.get('rodada') == 2]
+    l += ['', 'O QUE OS 7 DO CONSELHO DISSERAM:'] + [f'- {v["voto"]}: {v.get("motivo", "")}' for v in r2]
+    valor, partes = A.confianca_sugerida(dict(autos, sentenca={}))
+    l += ['', f'CONFIANÇA SUGERIDA PELA RUBRICA (antes do status dos ataques): {valor}']
+    l += [f'- {n}: {"+" if x >= 0 else ""}{x}' for n, x in partes]
+    l.append('Desconte 5 por ataque GRAVE que você deixar de pé.')
+    return l
 
 
 def briefing(caminho, papel, ident=None):
@@ -140,6 +190,14 @@ def briefing(caminho, papel, ident=None):
               '"confirma" (continua FATAL), "rebaixa" (é real, mas grave ou leve) ou "derruba" (não procede). '
               'Se a checagem depende de algo que não está nas provas (abrir um site, testar o app), diga isso e rebaixe '
               'para grave até o perito reconferir. Em "como_verifiquei", mostre a conta ou cite o trecho.']
+    elif papel == 'juiz':
+        conselho = (autos.get('juri') or {}).get('conselho') or []
+        r2 = {v['jurado'] for v in autos.get('votos', []) if v.get('rodada') == 2}
+        if not conselho or len(r2) < len(conselho):
+            raise DebateRecusado('o conselho ainda não votou a rodada 2: rode a deliberação e o juntar antes')
+        if autos.get('sentenca'):
+            raise DebateRecusado('a sentença já está nos autos')
+        l += _contexto_juiz(autos) + ['', INSTRUCAO_JUIZ]
     elif papel in ('plano', 'plano_ataque', 'plano_revisao'):
         s = autos.get('sentenca') or {}
         if not s:
@@ -151,6 +209,9 @@ def briefing(caminho, papel, ident=None):
         l += _contexto_plano(autos, s)
         if papel == 'plano':
             l += ['', 'SEU PAPEL: REDATOR DO PLANO. ' + INSTRUCAO_PLANO]
+            if autos.get('perito_rodadas', 0) >= MAX_RODADAS_PERITO:
+                l.append('O perito já fez as rodadas de verificação permitidas: NÃO abra pendências novas; o que ainda '
+                         'faltar verificar vai em "hipoteses".')
         elif papel == 'plano_ataque':
             l += ['', 'PLANO ATUAL (JSON):', json.dumps(autos['plano'], ensure_ascii=False), '',
                   'SEU PAPEL: PROMOTOR DO PLANO. Você não julga a decisão: procura os furos que impedem o dono de executar '
@@ -210,14 +271,15 @@ def juntar_debate(caminho):
 
     def ler(nome):
         try:
-            with open(os.path.join(pasta, nome), encoding='utf-8-sig') as f:
+            with open(A.longo(os.path.join(pasta, nome)), encoding='utf-8-sig') as f:
                 return json.load(f)
         except (OSError, ValueError):
             return None
 
     d = ler('promotor.json')
     if d:
-        autos['acusacao'] = {'teses': d.get('teses', []), 'replica': d.get('replica')}
+        do_juiz = [t for t in (autos.get('acusacao') or {}).get('teses', []) if t.get('do_juiz')]
+        autos['acusacao'] = {'teses': d.get('teses', []) + do_juiz, 'replica': d.get('replica')}
         entrou.append('promotor')
     d = ler('defesa.json')
     if d:
@@ -251,8 +313,27 @@ def juntar_debate(caminho):
                              'como_verifiquei': x.get('como_verifiquei')}
             t['gravidade'] = nova
         entrou.append('checagem')
+    d = ler('juiz.json')
+    if d and not autos.get('sentenca'):
+        d['por'] = JUIZ_INDEPENDENTE
+        autos['sentenca'] = d
+        entrou.append('sentença do juiz')
+    s = autos.get('sentenca') or {}
+    if s.get('por') == JUIZ_INDEPENDENTE:
+        # as falhas que o juiz achou viram ataques de pé; reaplicado a cada junta, porque o promotor é relido
+        s.setdefault('ataques', [])
+        teses = autos.setdefault('acusacao', {}).setdefault('teses', [])
+        for x in s.get('ataques_do_juiz') or []:
+            if isinstance(x, dict) and x.get('id') and x['id'] not in {y.get('id') for y in teses}:
+                teses.append({'id': x['id'], 'gravidade': x.get('gravidade') or 'leve', 'texto': x.get('texto', ''),
+                              'do_juiz': True})
+            if isinstance(x, dict) and x.get('id') and not any(y.get('ataque') == x['id'] for y in s['ataques']):
+                s['ataques'].append({'ataque': x['id'], 'status': 'de_pe', 'nota': 'falha apontada pelo juiz'})
     d = ler('plano.json')
     if d and (autos.get('plano') or {}).get('versao', 1) < 2:
+        if d.get('pendencias_do_perito') and autos.get('perito_rodadas', 0) >= MAX_RODADAS_PERITO:
+            d['hipoteses'] = list(d.get('hipoteses') or []) + ['Não verificado: ' + str(x) for x in d['pendencias_do_perito']]
+            d['pendencias_do_perito'] = []
         autos['plano'] = d
         s = autos.get('sentenca')
         if s and d.get('proximo_passo'):

@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Version 1.4.0" src="https://img.shields.io/badge/version-1.4.0-e8c15a?style=flat-square" />
+  <img alt="Version 1.5.0" src="https://img.shields.io/badge/version-1.5.0-e8c15a?style=flat-square" />
   <img alt="Claude Code skill" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-none-2ea44f?style=flat-square" />
-  <img alt="48 tests" src="https://img.shields.io/badge/tests-48%20passing-2ea44f?style=flat-square" />
+  <img alt="50 tests" src="https://img.shields.io/badge/tests-50%20passing-2ea44f?style=flat-square" />
   <img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" />
 </p>
 
@@ -62,7 +62,7 @@ Tribunal gives each role the job it does best and makes every role justify itsel
 | **Defense** | defends and answers each attack | a rebuttal that only insists leaves the attack standing |
 | **Jury** | reacts like real people | 25 vote in secret **before** the debate; 7 decide; **3 different models** |
 | **Plan writer** | turns the verdict into steps | the plan is attacked and revised before it reaches you |
-| **Judge** | runs the trial and rules | takes no side; an open FATAL blocks a full verdict |
+| **Judge** | rules | an independent subagent that only reads the case file and did not do the expert investigation; an open FATAL blocks a full verdict |
 | **You** | final authority | accept, or appeal to a new jury |
 
 ## How it works
@@ -133,19 +133,24 @@ Numbers from real trials, not demos.
 | Prosecutor, defense or rebuttal | ~80k | **~13k** |
 | Full trial | ~650k (version 1.0) | **~150k to 260k** |
 
-**Validity.** The jury tried 12 products with a known outcome, described as they were before launch and without
-the name (a credit card app with no annual fee, a 400-dollar connected juicer, glasses with a screen...). Each juror
-also said whether they recognized the real product, to separate judgment from memory.
+**Validity: what the jury measures, and what it does not.** We measured it two ways, and the second contradicted the first.
 
-| | Result |
-|---|---|
-| Correct on decided cases | **8 of 9** (3 tied at 50% and do not count) |
-| Brier score (0 is perfect; a coin flip = 0.25) | **0.141** |
-| Votes that recognized the real product | 6 of 120 (5%) |
-| By model | Sonnet: Brier 0.127 · Haiku: 0.19 |
+| | Pilot (12 famous cases) | Blind test (30 cases) |
+|---|---|---|
+| Who wrote the descriptions | me, knowing the outcome | a separate agent, with rules against giving clues |
+| Correct | 8 of 9 | **18 of 30** (p = 0.18: indistinguishable from chance) |
+| Brier score (0 is perfect; a coin flip = 0.25) | 0.141 | **0.227** |
+| Votes that recognized the product | 5% | 8% |
 
-This is a signal, not proof: 12 cases are few, and a model can know a famous outcome without saying so. The kit is in
-[`validacao/`](validacao/) so anyone can repeat and extend it (`tribunal.py validacao`).
+The jury **does not predict whether a product will succeed in the market** any better than chance. The pilot was
+inflated by how the descriptions were written and by how famous the cases were. What the jury does is show **how
+ordinary people react** to an idea, group by group, and that is not the same thing. Tribunal's value is in the
+process: sourced evidence, checked attacks, an independent judge and a plan with a point at which to quit that tests
+the idea in the real world. Details and a kit to repeat it: [`validacao/cegos/`](validacao/cegos/resultado-2026-11-09.md).
+
+**Real end-to-end cost.** In a full real case (ritual 4), the subagents spent 279 thousand tokens, about US$ 1. The
+orchestration in the main conversation weighs more and grows with the length of the conversation: from US$ 0.60 in a
+fresh session to US$ 4 in a long one ([measurement](validacao/custo-caso-real-2026-11-09.md)).
 
 **Consistency.** The same case, tried five times, got **the same verdict all five times**, including once with an
 entirely new jury. Between two rounds, 84% of jurors repeated their own vote.
@@ -165,7 +170,7 @@ brings what a tournament does not: how real people would react and how far to tr
 led to version 1.3. For ~12k tokens, the double check corrected an overstated fatal attack that the tournament had
 also raised.
 
-**Engineering.** 48 automated tests, pure Python with no dependencies, and the case file validated at every phase.
+**Engineering.** 50 automated tests, pure Python with no dependencies, and the case file validated at every phase.
 
 ## Installation
 
@@ -258,8 +263,11 @@ Tests: `python -m unittest discover -s testes`.
 
 ## Honest limits
 
-- The validation has 12 cases, all well-known products: too few to claim accuracy, and leakage is only measured
-  when a juror admits recognizing the product. Outcomes recorded in the Memory Card are what will calibrate confidence.
+- **The verdict is not a prediction of success.** In the blind test, the jury got the outcome right for 18 of 30
+  products, close to chance. Read the scoreboard as public reaction, and the verdict as a plan to test, never as a
+  guarantee.
+- The jury is lay: for B2B or technical products, its reaction weighs little, and the expert and the witnesses weigh
+  more.
 - The jurors are **simulations** produced by language models from calibrated profiles. They widen your
   perspective. They do not replace talking to real people, which is what the verdict's next step is for.
 - The IBGE quotas match one by one. The crossings (income by region, for example) are plausible, not exact.
