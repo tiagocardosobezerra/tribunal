@@ -1,0 +1,627 @@
+[
+ {
+  "id": "BR-002",
+  "nome": "Benício Furlan",
+  "apelido": "Bené",
+  "cidade": "Bauru",
+  "ocupacao": "bebê de 1 ano, fica com a avó enquanto os pais trabalham",
+  "estado_civil": "criança",
+  "filhos": 0,
+  "mora_com": "o pai, a mãe e a irmã de 6 anos; a avó materna mora na casa dos fundos",
+  "dispositivo": "não usa; só aparece na chamada de vídeo do celular da mãe quando ela liga pra tia que mora em Portugal",
+  "responsavel": "a mãe, Daiane, 29, auxiliar de farmácia",
+  "historia": "Nasceu numa família que paga aluguel numa casa geminada perto do centro de Bauru, com o pai trabalhando como conferente numa transportadora. Passa o dia no quintal da avó, entre a cachorra, os baldes e as panelas que ela deixa ele bater. Ri para qualquer pessoa que chega e estranha pouco, porque cresceu num quintal cheio de gente entrando e saindo.",
+  "valores": [
+   "colo da mãe e da avó",
+   "comida na hora certa",
+   "a cachorra Pipoca"
+  ],
+  "medos": [
+   "barulho do liquidificador",
+   "acordar e não ver ninguém conhecido"
+  ],
+  "vies": "só presta atenção no que acende, faz barulho ou se mexe; o resto não existe",
+  "repara_em": "cor forte, som e se aparece um rosto sorrindo na tela",
+  "voz": "Ainda não fala; balbucia “mamã”, “vó” e “au”. Pela mãe: “Ele gosta de tudo que pisca e toca musiquinha, mas se demora pra abrir ele já foi atrás da cachorra.”"
+ },
+ {
+  "id": "BR-006",
+  "nome": "Kauã Rodrigues Lima",
+  "apelido": "Kauãzinho",
+  "cidade": "Francisco Morato",
+  "ocupacao": "criança de 4 anos, na pré-escola municipal",
+  "estado_civil": "criança",
+  "filhos": 0,
+  "mora_com": "a mãe, a avó e o irmão de 9 anos",
+  "dispositivo": "assiste desenho no Android da mãe, com a tela rachada no canto e plano pré-pago que costuma acabar antes do fim do mês",
+  "responsavel": "a mãe, Jéssica, 24, faz faxina por diária",
+  "historia": "Mora numa casa de dois cômodos num morro de Francisco Morato, e a mãe pega o trem cedo para fazer faxina em São Paulo. A avó cuida dele à tarde, e a escolinha é onde ele come a refeição mais completa do dia. É carinhoso e divide o biscoito com todo mundo, mas larga qualquer coisa no meio e só quer rever o mesmo desenho.",
+  "valores": [
+   "o irmão mais velho",
+   "o lanche da escola",
+   "o desenho preferido de sempre"
+  ],
+  "medos": [
+   "cachorro bravo da rua de baixo",
+   "a mãe demorar pra voltar"
+  ],
+  "vies": "só quer o que já conhece; coisa nova ele larga em poucos segundos",
+  "repara_em": "se tem o personagem que ele já conhece e se tem música pra cantar junto",
+  "voz": "Fala frases curtas e repete o que o irmão diz. Pela mãe: “Se não for o desenho dele ele nem olha, e quando a internet acaba ele chora achando que quebrou o celular.”"
+ },
+ {
+  "id": "BR-010",
+  "nome": "Heitor Batista Moura",
+  "apelido": "Heitorzinho",
+  "cidade": "Rio Verde",
+  "ocupacao": "estudante do 2º ano do fundamental em escola municipal",
+  "estado_civil": "criança",
+  "filhos": 0,
+  "mora_com": "o pai, a mãe e a irmã de 3 anos",
+  "dispositivo": "vê vídeos de Minecraft e de bichos no celular do pai, com tempo marcado no relógio da cozinha",
+  "responsavel": "o pai, Wellington, 34, mecânico de máquinas agrícolas",
+  "historia": "Filho de um mecânico que conserta colheitadeira na época de safra e de uma mãe que trabalha na secretaria de uma escola particular. Faz perguntas o dia inteiro, quer saber como funciona motor, chuva e foguete, e conversa com qualquer adulto na fila do mercado. Ao mesmo tempo se assusta fácil: chora quando perde no jogo e precisa da luz do corredor acesa para dormir.",
+  "valores": [
+   "descobrir como as coisas funcionam",
+   "brincar com os primos no fim de semana",
+   "ganhar elogio da professora"
+  ],
+  "medos": [
+   "escuro",
+   "fazer alguma coisa errada e estragar tudo"
+  ],
+  "vies": "se encanta com qualquer novidade, mas qualquer erro na tela vira uma catástrofe para ele",
+  "repara_em": "se tem bicho, cor e som, e se aparece mensagem de erro que dá medo",
+  "voz": "Fala rápido, emendando uma pergunta na outra. “Pai, pai, e se eu apertar aqui e apagar tudo? Vai apagar pra sempre? Mas como que ele sabe que eu sou eu?”"
+ },
+ {
+  "id": "BR-014",
+  "nome": "Lorenzo Kowalski",
+  "apelido": "Kowal",
+  "cidade": "Curitiba",
+  "ocupacao": "estudante do 5º ano em escola municipal",
+  "estado_civil": "criança",
+  "filhos": 0,
+  "mora_com": "a mãe, o padrasto e a meia-irmã de 2 anos",
+  "dispositivo": "celular Samsung antigo que era da mãe, só funciona com o wi-fi de casa; joga Roblox e assiste YouTube",
+  "responsavel": "",
+  "historia": "Mora no Boqueirão com a mãe, que é recepcionista de clínica, e o padrasto, que é eletricista. Depois que a irmã nasceu sente que sobrou menos atenção para ele e passa a maior parte do tempo no quarto, no jogo. Esquece lição e perde o casaco na escola, e com adulto costuma responder seco.",
+  "valores": [
+   "ter tempo no jogo sem ninguém mandar parar",
+   "o amigo do prédio",
+   "não passar vergonha na frente da turma"
+  ],
+  "medos": [
+   "ficar sem celular de castigo",
+   "ser zoado na escola"
+  ],
+  "vies": "acha chato e descarta tudo que parece coisa de escola ou de adulto",
+  "repara_em": "se tem propaganda no meio, se carrega rápido e se dá pra jogar com os amigos",
+  "voz": "Monossilábico, com o “daí” curitibano. “Sei lá. É meio chato, daí. Tem muito anúncio, larguei.”"
+ },
+ {
+  "id": "BR-018",
+  "nome": "Isadora Lacerda",
+  "apelido": "Isa",
+  "cidade": "Rio de Janeiro",
+  "ocupacao": "estudante do 8º ano em colégio particular na Tijuca",
+  "estado_civil": "criança",
+  "filhos": 0,
+  "mora_com": "o pai, a mãe e o irmão de 17 anos",
+  "dispositivo": "iPhone 11 que era do pai e um notebook da família; desenha num tablet barato com caneta",
+  "responsavel": "",
+  "historia": "Filha de uma fisioterapeuta e de um técnico de TI, cresceu num apartamento na Tijuca onde cada um vive no seu canto com a sua tela. É muito tímida na escola, mas entrega todos os trabalhos antes do prazo, e passa a noite desenhando e lendo fanfic. Na internet tem uma página pequena de desenhos, onde se sente mais à vontade do que na sala de aula.",
+  "valores": [
+   "coisas bonitas e bem feitas",
+   "privacidade",
+   "as duas amigas de sempre"
+  ],
+  "medos": [
+   "ter que apresentar trabalho na frente da turma",
+   "alguém achar e expor seus desenhos"
+  ],
+  "vies": "confia mais em review de desconhecido na internet do que em opinião de adulto",
+  "repara_em": "a estética: fonte, cores, se a interface é limpa e se obriga a mostrar o rosto ou postar foto",
+  "voz": "Fala baixo, com o “tipo” carioca e muitos “sei lá”. “Ah, é bonitinho… mas tipo, a fonte tá meio feia, né? E por que precisa de foto minha?”"
+ },
+ {
+  "id": "BR-022",
+  "nome": "Ana Clara Dantas",
+  "apelido": "Clarinha",
+  "cidade": "Caicó",
+  "ocupacao": "estudante do 2º ano do ensino médio em escola estadual",
+  "estado_civil": "solteira",
+  "filhos": 0,
+  "mora_com": "a mãe, o padrasto e dois irmãos mais novos",
+  "dispositivo": "Android Motorola com a memória sempre cheia, usa os dados do plano controle da mãe",
+  "responsavel": "",
+  "historia": "A mãe faz bordado para vender e o padrasto trabalha numa fábrica de queijo e manteiga da região. Vai à igreja com a família mais por obrigação do que por gosto e vive brigando em casa por causa do celular. Tem medo de não passar no ENEM e ficar presa em Caicó, mas deixa os estudos para a última hora e fica nervosa quando o prazo chega.",
+  "valores": [
+   "as amigas da escola",
+   "sair de Caicó um dia",
+   "ter o próprio dinheiro"
+  ],
+  "medos": [
+   "não passar no ENEM",
+   "ser julgada pelo pessoal da igreja"
+  ],
+  "vies": "julga pelo que as amigas acham; se ninguém da turma usa, é coisa de gente velha",
+  "repara_em": "se pede cadastro grande, se ocupa muita memória do celular e se as amigas já usam",
+  "voz": "Potiguar, impaciente, cheia de “oxe” e “visse”. “Oxe, e precisa de cadastro pra isso, é? Apaguei já, visse, meu celular não tem espaço não.”"
+ },
+ {
+  "id": "BR-026",
+  "nome": "Bianca Rocha Nunes",
+  "apelido": "Bia",
+  "cidade": "São Paulo",
+  "ocupacao": "vendedora de loja de tênis num shopping da Zona Leste, com carteira assinada",
+  "estado_civil": "solteira",
+  "filhos": 0,
+  "mora_com": "o pai, a mãe e o irmão mais novo, em Itaquera",
+  "dispositivo": "iPhone 12 comprado em 12 vezes, usa banco digital, Pix e TikTok o dia inteiro",
+  "responsavel": "",
+  "historia": "Terminou o ensino médio no ano passado e entrou na loja como primeiro emprego, ganhando por comissão nas datas fortes. O pai é motorista de ônibus e a mãe é auxiliar de cozinha num hospital, e ela ajuda nas contas de casa. Quer cursar design pelo Prouni e passa as folgas vendo tutoriais de edição e de Canva.",
+  "valores": [
+   "independência financeira",
+   "fazer faculdade",
+   "ajudar os pais"
+  ],
+  "medos": [
+   "ficar a vida inteira no balcão",
+   "se endividar no cartão"
+  ],
+  "vies": "compara tudo com o que viu no TikTok; se não tem vídeo mostrando, desconfia",
+  "repara_em": "se o app é rápido, se tem modo escuro e se o Pix cai na hora",
+  "voz": "Paulistana, direta, com “mano” e “tipo”. “Mano, se tiver que esperar três dias úteis pra cair, já era. Ninguém da minha idade vai usar.”"
+ },
+ {
+  "id": "BR-030",
+  "nome": "Raissa Carvalho Tavares",
+  "apelido": "Rai",
+  "cidade": "Belém",
+  "ocupacao": "desempregada; foi jovem aprendiz num atacarejo e hoje procura vaga de atendimento enquanto faz curso online gratuito",
+  "estado_civil": "solteira",
+  "filhos": 0,
+  "mora_com": "o pai, a mãe e a irmã mais velha, na Pedreira",
+  "dispositivo": "Samsung Galaxy A54 com wi-fi de fibra em casa; vive no Instagram e no LinkedIn que a irmã montou para ela",
+  "responsavel": "",
+  "historia": "O pai é eletricista de uma empresa de energia e a mãe é professora da rede municipal, então a casa não aperta mesmo com ela sem emprego. Saiu do atacarejo quando o contrato de aprendiz acabou e não sente muita pressa: manda currículo quando lembra e começa cursos que nem sempre termina. Na igreja é animada, canta no ministério de louvor e quase nada tira ela do sério.",
+  "valores": [
+   "a família",
+   "a igreja e os amigos do louvor",
+   "viver com leveza"
+  ],
+  "medos": [
+   "passar dos 25 sem ter uma profissão",
+   "decepcionar o pai"
+  ],
+  "vies": "procrastina sem culpa: se tem muitos passos, deixa para depois e esquece",
+  "repara_em": "quantas telas até terminar e se dá para fazer tudo pelo celular deitada no sofá",
+  "voz": "Paraense tranquila, com “égua” e “mana”. “Égua, mana, tem que preencher isso tudo? Depois eu vejo, de boa.”"
+ },
+ {
+  "id": "BR-034",
+  "nome": "Gleiciane Souza Barbosa",
+  "apelido": "Gleice",
+  "cidade": "Luziânia",
+  "ocupacao": "vende salgado frito e geladinho por encomenda no WhatsApp e de porta em porta, sem CNPJ",
+  "estado_civil": "união estável",
+  "filhos": 2,
+  "mora_com": "o companheiro, que faz bico de servente de obra, e os dois filhos, de 5 e 2 anos",
+  "dispositivo": "Samsung A03 com a tela trincada, pré-pago de 20 reais por mês, só usa WhatsApp e às vezes vídeo",
+  "responsavel": "",
+  "historia": "Engravidou aos 17, parou de estudar no começo do ensino médio e foi morar com o companheiro num lote cedido pela sogra num bairro afastado de Luziânia. Os salgados que frita de madrugada e o Bolsa Família pagam o gás, o leite e a passagem. É doce com os clientes e com os filhos, mas vive preocupada com o dinheiro que falta no fim do mês.",
+  "valores": [
+   "os filhos comerem bem",
+   "a fé e a igreja do bairro",
+   "ter um ponto fixo para vender um dia"
+  ],
+  "medos": [
+   "perder o Bolsa Família por algum erro de cadastro",
+   "um dos filhos adoecer e não ter como levar ao médico"
+  ],
+  "vies": "aversão a perda: qualquer taxa pequena pesa e já faz desistir",
+  "repara_em": "se cobra taxa, se gasta muito crédito do celular e se o cliente consegue usar fácil",
+  "voz": "Goiana, gentil, com “uai” e “trem”. “Ô gente, esse trem cobra quanto? Porque se for tirar dos meus geladinho não compensa não, uai.”"
+ },
+ {
+  "id": "BR-038",
+  "nome": "Igor Fonseca Lage",
+  "apelido": "Igão",
+  "cidade": "Belo Horizonte",
+  "ocupacao": "operador de máquina CNC numa metalúrgica no Barreiro, com carteira assinada",
+  "estado_civil": "solteiro, namorando",
+  "filhos": 0,
+  "mora_com": "a mãe e a irmã mais nova",
+  "dispositivo": "Xiaomi Redmi Note 13 e um notebook gamer parcelado em 18 vezes",
+  "responsavel": "",
+  "historia": "Fez curso técnico do SENAI depois do ensino médio e entrou na metalúrgica aos 20, onde trabalha em turno alternado. Passa o tempo livre no futebol de quinta, no bar com os colegas e jogando online, e se irrita rápido quando alguma coisa trava ou alguém enrola. Gosta de testar coisa nova, mas larga sem dó se não funcionar de primeira.",
+  "valores": [
+   "ser respeitado no trabalho",
+   "os amigos do futebol",
+   "ajudar a mãe com as contas"
+  ],
+  "medos": [
+   "ser demitido numa crise da indústria",
+   "ficar parado na vida enquanto os amigos crescem"
+  ],
+  "vies": "pouca paciência: um defeito na primeira vez e ele já condena o produto inteiro",
+  "repara_em": "desempenho, se trava, se tem propaganda e se cobra assinatura",
+  "voz": "Mineiro de BH, rápido e sem filtro, com “sô” e “cê”. “Ô sô, travou duas vezes e cê quer que eu pague assinatura? Nem a pau.”"
+ },
+ {
+  "id": "BR-042",
+  "nome": "Davi Frota Albuquerque",
+  "apelido": "",
+  "cidade": "Sobral",
+  "ocupacao": "desenvolvedor de software sênior, CLT em regime remoto para uma fintech de São Paulo",
+  "estado_civil": "casado",
+  "filhos": 1,
+  "mora_com": "a esposa, professora de escola particular, e o filho de 2 anos",
+  "dispositivo": "MacBook Pro da empresa, iPhone 15 e internet de fibra com roteador reserva para não cair em reunião",
+  "responsavel": "",
+  "historia": "Formou-se em Engenharia da Computação no campus da UFC em Sobral e escolheu ficar perto dos pais quando o trabalho remoto virou regra. Ganha muito acima da média da cidade, mas leva uma vida simples: missa no domingo, almoço na casa da mãe e pouca coisa de ostentação. No trabalho é o colega cordial que resolve as coisas, mas não gosta de mudar de ferramenta e deixa a documentação para depois.",
+  "valores": [
+   "estabilidade",
+   "estar perto da família",
+   "coisa que funciona sem invenção"
+  ],
+  "medos": [
+   "perder o emprego remoto e ter que se mudar",
+   "uma demissão em massa no setor de tecnologia"
+  ],
+  "vies": "apego ao status quo: prefere o que já funciona e desconfia de modinha",
+  "repara_em": "se resolve um problema real, quem já usa em produção e se tem suporte",
+  "voz": "Cearense calmo, educado, com “rapaz” e “macho”. “Rapaz, tá bonito, mas pra que trocar o que já funciona? Me mostra quem tá usando de verdade.”"
+ },
+ {
+  "id": "BR-046",
+  "nome": "Raimundo Nonato Lustosa",
+  "apelido": "Nonato",
+  "cidade": "zona rural de Uruçuí",
+  "ocupacao": "operador de trator e plantadeira numa fazenda de soja, sem carteira assinada",
+  "estado_civil": "casado",
+  "filhos": 2,
+  "mora_com": "a esposa e os dois filhos, de 8 e 4 anos, numa casa da fazenda",
+  "dispositivo": "Android Motorola com capa reforçada; internet por antena de rádio na sede da fazenda, sem sinal no campo",
+  "responsavel": "",
+  "historia": "Cresceu numa roça de feijão e mandioca e viu a soja chegar ao cerrado do sul do Piauí quando era menino. Aprendeu a operar máquina com um gaúcho que chegou na região e hoje ganha bem na safra, mas sem carteira e sem garantia na entressafra. É calado, faz o serviço direito e só acredita em novidade depois de ver funcionando na fazenda do vizinho.",
+  "valores": [
+   "sustento da família",
+   "palavra cumprida",
+   "a festa do padroeiro na comunidade"
+  ],
+  "medos": [
+   "um acidente com a máquina",
+   "ficar sem serviço na entressafra"
+  ],
+  "vies": "prova social local: só confia no que viu funcionando com alguém conhecido",
+  "repara_em": "se funciona sem internet, se dá para usar com a mão suja e se tem letra grande",
+  "voz": "Piauiense de poucas palavras, com “rapaz” e “home”. “Rapaz, lá no talhão não pega sinal, não. Se precisar de internet pra abrir, esquece, home.”"
+ },
+ {
+  "id": "BR-050",
+  "nome": "Jaqueline Milhomem",
+  "apelido": "Jaque",
+  "cidade": "Araguaína",
+  "ocupacao": "MEI de serviços de escritório: emite nota, faz o DAS e o imposto de renda de pequenos comerciantes do bairro",
+  "estado_civil": "casada",
+  "filhos": 2,
+  "mora_com": "o marido, que é motorista de caminhão-baú, e as duas filhas, de 12 e 7 anos",
+  "dispositivo": "notebook Positivo, Samsung Galaxy A34 e certificado digital no computador",
+  "responsavel": "",
+  "historia": "Trabalhou dez anos como auxiliar num escritório de contabilidade, até o dono fechar as portas e ela abrir o MEI para atender os clientes que sobraram. Os comerciantes confiam nela porque é caprichosa e explica tudo com paciência. Mas vive com o coração na mão em época de prazo, com medo de errar uma guia e alguém levar multa por culpa dela.",
+  "valores": [
+   "honestidade com os clientes",
+   "a igreja",
+   "dar estudo às filhas"
+  ],
+  "medos": [
+   "errar um prazo da Receita",
+   "cair num golpe pela internet"
+  ],
+  "vies": "pessimismo: imagina o pior caso antes de qualquer coisa",
+  "repara_em": "se gera comprovante, se é seguro e se é aceito pela Receita e pelos bancos",
+  "voz": "Fala com cuidado, num tom preocupado. “Mas e se cair a internet no meio, perde tudo? Eu preciso do comprovante, minha filha, senão eu não durmo.”"
+ },
+ {
+  "id": "BR-054",
+  "nome": "Renata Guimarães Teles",
+  "apelido": "Rê",
+  "cidade": "Santana de Parnaíba",
+  "ocupacao": "gerente de produto num banco digital, CLT em regime híbrido",
+  "estado_civil": "casada",
+  "filhos": 2,
+  "mora_com": "o marido, engenheiro, e os dois filhos, de 6 e 3 anos, num condomínio em Alphaville; uma babá vem durante o dia",
+  "dispositivo": "MacBook, iPhone 16, Apple Watch e caixa de som com assistente de voz na casa toda",
+  "responsavel": "",
+  "historia": "Fez Administração numa faculdade particular de São Paulo, começou como analista num grande banco e migrou para tecnologia quando as fintechs explodiram. Vive com a agenda lotada, chega atrasada às reuniões e resolve muita coisa no último minuto. Já viu muitos lançamentos fracassarem, e por isso olha qualquer ideia nova com um ceticismo meio cansado.",
+  "valores": [
+   "tempo com os filhos",
+   "eficiência",
+   "crescer na carreira sem perder a saúde"
+  ],
+  "medos": [
+   "ser substituída por alguém mais jovem e mais barato",
+   "perder a infância dos filhos por causa do trabalho"
+  ],
+  "vies": "viés de profissão: avalia tudo como funil e métrica e acha que já viu aquela ideia antes",
+  "repara_em": "o onboarding, se dá para entender a proposta em cinco segundos e qual é o modelo de receita",
+  "voz": "Paulistana corporativa, com termos em inglês misturados. “Gente, legal, mas qual é a dor? Eu já vi umas três startups morrerem com esse mesmo pitch.”"
+ },
+ {
+  "id": "BR-058",
+  "nome": "Lucicleide Bezerra",
+  "apelido": "Cleide",
+  "cidade": "zona rural de Surubim",
+  "ocupacao": "agricultora familiar: planta feijão e milho, cria galinha e vende ovos e verdura na feira de sábado",
+  "estado_civil": "casada",
+  "filhos": 3,
+  "mora_com": "o marido, que trabalha de diarista na roça dos outros, e os três filhos, de 19, 14 e 10 anos",
+  "dispositivo": "Android simples que a filha mais velha deu, só usa WhatsApp e manda áudio porque lê com dificuldade",
+  "responsavel": "",
+  "historia": "Saiu da escola na terceira série para ajudar a mãe na roça e nunca mais voltou a estudar. Faz questão de que os filhos estudem: a mais velha está num curso técnico em Caruaru e é quem resolve as coisas de celular e de banco. É a primeira a levar um prato de comida para um vizinho doente, mas a seca, as contas e o cadastro do governo tiram o sono dela.",
+  "valores": [
+   "os filhos estudarem",
+   "ajudar quem precisa",
+   "a fé em Deus"
+  ],
+  "medos": [
+   "um ano de seca braba",
+   "perder o Bolsa Família por um erro no cadastro"
+  ],
+  "vies": "decide pelo que a filha mais velha ou o pastor aconselham",
+  "repara_em": "se tem áudio em vez de muita letra e se pede CPF ou senha",
+  "voz": "Pernambucana do agreste, humilde, fala manso. “Misericórdia, minha filha, eu não sei mexer nisso não. Tem como mandar por áudio? Que eu não leio direito.”"
+ },
+ {
+  "id": "BR-062",
+  "nome": "Claudinei Ribeiro",
+  "apelido": "Nei",
+  "cidade": "Curitiba",
+  "ocupacao": "repositor de mercadorias num atacarejo, no turno da noite, com carteira assinada",
+  "estado_civil": "casado",
+  "filhos": 3,
+  "mora_com": "a esposa, que é cuidadora de idosos, e os três filhos, na Cidade Industrial",
+  "dispositivo": "Samsung Galaxy antigo com a bateria fraca, só WhatsApp, vídeo de futebol e pregação",
+  "responsavel": "",
+  "historia": "Veio do interior do norte do Paraná aos 18 anos atrás de serviço e largou a escola na sexta série. Trabalha no mesmo atacarejo há doze anos, sempre na mesma função, e não pensa em mudar. É tranquilo, raramente perde a calma, mas esquece boleto e senha e deixa a esposa e os filhos resolverem essas coisas.",
+  "valores": [
+   "a família reunida no domingo",
+   "a igreja",
+   "emprego garantido"
+  ],
+  "medos": [
+   "o atacarejo fechar ou trocar gente por máquina",
+   "não dar conta das contas de casa"
+  ],
+  "vies": "se acostuma com um jeito e não troca: “sempre fiz assim”",
+  "repara_em": "se é parecido com o que já usa e se o filho consegue instalar para ele",
+  "voz": "Fala devagar, sem pressa. “Pra mim tanto faz, viu. Se o piá instalar pra mim e funcionar, beleza.”"
+ },
+ {
+  "id": "BR-066",
+  "nome": "Ednaldo Conceição",
+  "apelido": "Dinho",
+  "cidade": "São Paulo",
+  "ocupacao": "desempregado; ex-cobrador de ônibus, procura vaga de porteiro ou de atendimento por telefone",
+  "estado_civil": "casado",
+  "filhos": 2,
+  "mora_com": "a esposa, que é auxiliar de limpeza, e os dois filhos, de 16 e 12 anos, no Jardim Ângela",
+  "dispositivo": "Android com a letra no máximo e o leitor de tela que o filho configurou; ouve podcast e notícia em áudio",
+  "responsavel": "",
+  "historia": "Foi cobrador de ônibus por quinze anos até a função ser cortada na sua linha; no mesmo período o glaucoma avançou e tirou boa parte da sua visão. Desde então faz bicos e manda currículo, mas sente que a baixa visão fecha portas antes da entrevista. Curioso, aprendeu sozinho a usar comando de voz e ouve podcast de tudo, de história a economia, e não tem paciência para conversa mole.",
+  "valores": [
+   "voltar a trabalhar",
+   "respeito",
+   "aprender coisa nova"
+  ],
+  "medos": [
+   "perder a visão de vez",
+   "virar peso para a família"
+  ],
+  "vies": "desconfia de empresa que fala bonito; quer saber primeiro quem ganha com aquilo",
+  "repara_em": "contraste, tamanho da letra e se funciona com o leitor de tela e por voz",
+  "voz": "Paulistano da periferia, franco, sem rodeio. “Ó, eu gosto de coisa nova, mas se a letra é cinza clarinho no fundo branco, pra mim não existe, irmão.”"
+ },
+ {
+  "id": "BR-070",
+  "nome": "Josenildo Araújo",
+  "apelido": "Nildo",
+  "cidade": "Guarulhos",
+  "ocupacao": "chapeiro numa lanchonete de bairro, sem registro",
+  "estado_civil": "casado",
+  "filhos": 3,
+  "mora_com": "a esposa e os dois filhos mais novos; a filha mais velha já casou",
+  "dispositivo": "Motorola Moto E com plano controle; vê vídeo de receita e recebe os pedidos de delivery no tablet da lanchonete",
+  "responsavel": "",
+  "historia": "Saiu da Paraíba aos 19 anos, trabalhou em obra e em pastelaria até chegar à chapa, onde está há quase vinte anos. Quieto, prefere a cozinha ao balcão e cria sozinho variações de lanche que viraram as mais pedidas da casa. Desconfia de quem chega dando palpite sem nunca ter trabalhado com a barriga no fogão.",
+  "valores": [
+   "trabalho bem feito",
+   "a família",
+   "não dever nada a ninguém"
+  ],
+  "medos": [
+   "a lanchonete fechar e ele ficar sem nada, já que não tem registro",
+   "o problema de coluna piorar"
+  ],
+  "vies": "desconfia de quem nunca fez o trabalho na prática",
+  "repara_em": "se é prático na correria, se dá para usar com a mão engordurada e se exige muitos cliques",
+  "voz": "Fala pouco e baixo, com sotaque paraibano que não perdeu. “Hum. Bonito é. Mas na hora do movimento ninguém tem tempo de ficar clicando, não.”"
+ },
+ {
+  "id": "BR-074",
+  "nome": "Regina Coutinho Abreu",
+  "apelido": "",
+  "cidade": "Niterói",
+  "ocupacao": "técnica de enfermagem concursada num hospital municipal",
+  "estado_civil": "casada",
+  "filhos": 2,
+  "mora_com": "o marido, que é corretor de seguros, e a filha mais nova, de 20 anos",
+  "dispositivo": "Samsung Galaxy S23, usa gov.br, aplicativo do banco e grupo de WhatsApp do plantão",
+  "responsavel": "",
+  "historia": "Passou no concurso da prefeitura aos 28 anos e há mais de duas décadas trabalha em plantões de 12 por 36, a maior parte na clínica médica. Aprendeu na enfermagem que pular etapa de protocolo pode custar uma vida, e leva esse cuidado para tudo. Já viu colega perder dinheiro em golpe de WhatsApp e virou a pessoa que avisa a família inteira.",
+  "valores": [
+   "seguir o procedimento certo",
+   "cuidar das pessoas",
+   "estabilidade"
+  ],
+  "medos": [
+   "golpe financeiro",
+   "errar uma medicação no plantão"
+  ],
+  "vies": "segue regra e protocolo; desconfia de qualquer atalho",
+  "repara_em": "se pede confirmação antes de cada passo, se protege os dados e se tem a quem recorrer quando dá erro",
+  "voz": "Carioca calma e gentil, com “querida” e “sabe?”. “Olha, querida, eu só uso se tiver aquela confirmação antes, sabe? Já vi muita gente boa cair em golpe.”"
+ },
+ {
+  "id": "BR-078",
+  "nome": "Ademir Novaes",
+  "apelido": "Seu Ademir",
+  "cidade": "Vitória da Conquista",
+  "ocupacao": "caseiro de uma chácara nos arredores da cidade, com carteira assinada",
+  "estado_civil": "casado",
+  "filhos": 3,
+  "mora_com": "a esposa e o neto de 11 anos, na casa da chácara",
+  "dispositivo": "Android simples, usa WhatsApp, vê vídeo de forró e notícia que chega no grupo da família",
+  "responsavel": "",
+  "historia": "Trabalhou desde menino na roça de café da família no planalto de Conquista, até a terra ser vendida e ele virar caseiro. Cuida da chácara de um médico há catorze anos: horta, piscina, cachorros e consertos. É de boa paz, fala com todo mundo e gosta de aprender, desde que o neto tenha paciência de explicar.",
+  "valores": [
+   "confiança do patrão",
+   "a família perto",
+   "a missa e a festa de São João"
+  ],
+  "medos": [
+   "perder o emprego e a casa junto",
+   "a saúde da esposa, que tem pressão alta"
+  ],
+  "vies": "acredita no que chega pelo grupo da família no WhatsApp",
+  "repara_em": "se é fácil e se o neto consegue explicar em poucos minutos",
+  "voz": "Baiano do sudoeste, sorridente, com “rapaz” e “viu?”. “Rapaz, se for coisa boa eu uso, viu? Mas o menino tem que me ensinar duas vezes.”"
+ },
+ {
+  "id": "BR-082",
+  "nome": "Valdirene Sacramento",
+  "apelido": "Dona Val",
+  "cidade": "zona rural de Cruz das Almas",
+  "ocupacao": "diarista em casas da cidade, vai de mototáxi três vezes por semana",
+  "estado_civil": "casada",
+  "filhos": 4,
+  "mora_com": "o marido, aposentado como trabalhador rural, e a neta de 13 anos",
+  "dispositivo": "Android simples, usa WhatsApp por áudio com o wi-fi da vizinha, que ela ajuda a pagar",
+  "responsavel": "",
+  "historia": "Trabalhou na roça de fumo e de laranja até a coluna reclamar, e então passou a fazer faxina na cidade. Criou quatro filhos que hoje moram em Salvador e em São Paulo, e cuida da neta que ficou com ela. Já perdeu dinheiro com uma ligação de golpe, e desde então desconfia de tudo que aparece no celular.",
+  "valores": [
+   "a neta",
+   "a casa própria, mesmo simples",
+   "a reza e a festa de São João"
+  ],
+  "medos": [
+   "cair em golpe de novo",
+   "não aguentar mais trabalhar e faltar dinheiro"
+  ],
+  "vies": "acha que quase tudo que chega pelo celular é golpe",
+  "repara_em": "se pede senha, número do cartão ou foto do documento",
+  "voz": "Fala do Recôncavo, cansada e desconfiada. “Ô meu Deus, eu não mexo nisso não, minha filha. Vai que é golpe e eu perco o pouquinho que tenho.”"
+ },
+ {
+  "id": "BR-086",
+  "nome": "Maria do Socorro Lago",
+  "apelido": "Dona Socorro",
+  "cidade": "São Luís",
+  "ocupacao": "aposentada, ex-merendeira de escola e vendedora de juçara na porta de casa",
+  "estado_civil": "viúva",
+  "filhos": 3,
+  "mora_com": "a filha, o genro e dois netos, no bairro da Liberdade",
+  "dispositivo": "não tem celular; quando precisa, pede para o neto ligar ou mostrar alguma coisa",
+  "responsavel": "",
+  "historia": "Ficou viúva cedo e criou os filhos com a merenda escolar e a juçara que vendia no portão. Mora com a filha, cuja família recebe o Bolsa Família, e passa o dia na calçada conversando com a vizinhança. Tem opinião sobre tudo, fala sem medir as palavras e fica ansiosa com qualquer coisa que dependa de máquina.",
+  "valores": [
+   "a família por perto",
+   "conversar com gente de verdade",
+   "a festa do Divino e o bumba meu boi"
+  ],
+  "medos": [
+   "ficar doente e sozinha",
+   "não entender as coisas que mudaram e ser enganada"
+  ],
+  "vies": "julga pelo que a vizinha disse e desconfia do que não dá para pegar na mão",
+  "repara_em": "se precisa de celular e se tem gente de carne e osso para atender",
+  "voz": "Maranhense, falante e áspera, com “égua” e “tu”. “Égua, e eu lá tenho isso? Tu me arruma um lugar que tenha gente pra atender que eu vou.”"
+ },
+ {
+  "id": "BR-090",
+  "nome": "Severino Firmino",
+  "apelido": "Seu Biu",
+  "cidade": "Palmeira dos Índios",
+  "ocupacao": "aposentado, ex-cortador de cana em usina",
+  "estado_civil": "separado",
+  "filhos": 4,
+  "mora_com": "sozinho",
+  "dispositivo": "não tem celular; tem um rádio de pilha e, quando precisa, usa o telefone da vizinha",
+  "responsavel": "",
+  "historia": "Cortou cana por trinta safras nas usinas da Zona da Mata alagoana, até um acidente com o facão e o desgaste nos joelhos deixarem ele andando de bengala. Os quatro filhos foram para São Paulo e ligam de vez em quando pelo telefone da vizinha. Vive sozinho numa casa pequena perto da feira, resmunga com quem chega e não quer favor de ninguém.",
+  "valores": [
+   "não depender de ninguém",
+   "o rádio com o futebol e o forró",
+   "o respeito dos mais novos"
+  ],
+  "medos": [
+   "cair em casa e ninguém ver",
+   "ter que ir morar com os filhos em São Paulo"
+  ],
+  "vies": "não confia em nada que vem do governo ou da cidade grande",
+  "repara_em": "se precisa sair de casa, subir degrau ou ficar em pé numa fila",
+  "voz": "Curto e grosso, sotaque do agreste alagoano. “Num quero, não. Isso aí é coisa pra quem tem tempo e perna boa.”"
+ },
+ {
+  "id": "BR-094",
+  "nome": "Heloísa Kunzler",
+  "apelido": "Helô",
+  "cidade": "Porto Alegre",
+  "ocupacao": "aposentada, ex-engenheira civil do departamento municipal de água e esgoto",
+  "estado_civil": "casada",
+  "filhos": 2,
+  "mora_com": "o marido, médico aposentado, num apartamento no Moinhos de Vento",
+  "dispositivo": "iPad com legenda automática sempre ligada, iPhone pareado ao aparelho auditivo e notebook",
+  "responsavel": "",
+  "historia": "Foi uma das poucas mulheres da sua turma de Engenharia na UFRGS e passou a carreira inteira coordenando obra e homem teimoso. Começou a perder a audição aos 60 e hoje depende do aparelho e da legenda, o que a deixou ainda mais impaciente com o que não é feito por escrito. Frequenta um centro espírita, joga bridge às quintas e manda e-mail de reclamação bem escrito.",
+  "valores": [
+   "clareza",
+   "autonomia",
+   "trabalho bem feito"
+  ],
+  "medos": [
+   "ficar isolada por não ouvir",
+   "perder a independência"
+  ],
+  "vies": "acha que já viu de tudo e tem pouca paciência com quem não sabe explicar",
+  "repara_em": "se tem legenda, se o atendimento é por escrito e se o texto é claro e sem jargão",
+  "voz": "Gaúcha, enérgica e direta, com “bah” e “guria”. “Bah, mais um aplicativo que só atende por telefone? Eu não escuto, guria, me manda por escrito.”"
+ },
+ {
+  "id": "BR-098",
+  "nome": "Josefa Conceição Bispo",
+  "apelido": "Dona Zefinha",
+  "cidade": "Cachoeira",
+  "ocupacao": "aposentada, ex-charuteira de fábrica de fumo do Recôncavo",
+  "estado_civil": "viúva",
+  "filhos": 6,
+  "mora_com": "a neta, o marido dela e o bisneto de 3 anos",
+  "dispositivo": "não tem celular; ouve rádio, vê novela e a neta mostra as fotos da família no telefone dela",
+  "responsavel": "",
+  "historia": "Enrolou charuto na fábrica dos 14 aos 50 anos, ao lado de outras mulheres que viraram suas comadres para a vida inteira. Criou seis filhos, enterrou dois e o marido, e hoje mora com a neta numa casa de ladeira perto do rio Paraguaçu. Não liga para horário nem para papelada, que deixa com a neta, e não perde a missa nem a festa de agosto da cidade.",
+  "valores": [
+   "as comadres e a vizinhança",
+   "a fé em Nossa Senhora",
+   "a família unida"
+  ],
+  "medos": [
+   "ser levada para longe de Cachoeira",
+   "dar trabalho para a neta"
+  ],
+  "vies": "só confia em quem conhece pelo nome; promessa de papel não vale",
+  "repara_em": "se a neta acha bom, se custa dinheiro e se tem uma pessoa conhecida por trás",
+  "voz": "Fala mansa do Recôncavo, sem pressa. “Minha fia, eu já vi muita novidade chegar e ir embora. Se for pra ajudar, a neta me explica.”"
+ }
+]

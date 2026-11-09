@@ -1,0 +1,419 @@
+{
+  "caso": {
+    "titulo": "Caderneta digital de fiado",
+    "tipo": "ideia",
+    "area": "Pequeno comércio",
+    "pergunta": "Devo construir um app de caderneta de fiado para mercadinhos de bairro?",
+    "opcoes": [
+      "Procedente",
+      "Procedente com condições",
+      "Improcedente"
+    ],
+    "publico": "donos de mercadinho, bar e venda de bairro e os clientes que compram fiado",
+    "descricao": "EXEMPLO FICTÍCIO, para mostrar o formato. O dono do comércio anota no celular o que cada cliente leva fiado; o cliente recebe pelo WhatsApp o saldo e o lembrete, e paga por Pix.",
+    "data": "2026-11-09",
+    "recurso_de": null
+  },
+  "juri": {
+    "foro": "brasil",
+    "sessao": "brasil-0001",
+    "convocados": [
+      "BR-034",
+      "BR-026",
+      "BR-100",
+      "BR-085",
+      "BR-079",
+      "BR-082",
+      "BR-022",
+      "BR-094",
+      "BR-083",
+      "BR-023",
+      "BR-062",
+      "BR-074",
+      "BR-025",
+      "BR-050",
+      "BR-045",
+      "BR-077",
+      "BR-080",
+      "BR-048",
+      "BR-052",
+      "BR-039",
+      "BR-015",
+      "BR-049",
+      "BR-011",
+      "BR-033",
+      "BR-017"
+    ],
+    "impedimentos": [
+      "idade<8"
+    ],
+    "recusas": {
+      "acusacao": [
+        {
+          "jurado": "BR-026",
+          "motivo": "viés de aprovar tudo que é digital"
+        },
+        {
+          "jurado": "BR-052",
+          "motivo": "dono de empresa com sistema próprio, longe do público"
+        }
+      ],
+      "defesa": [
+        {
+          "jurado": "BR-080",
+          "motivo": "auditor fiscal, tende a ver só o risco regulatório"
+        },
+        {
+          "jurado": "BR-094",
+          "motivo": "engenheira exigente, julga como projeto técnico"
+        }
+      ]
+    },
+    "conselho": [
+      "BR-083",
+      "BR-079",
+      "BR-048",
+      "BR-100",
+      "BR-045",
+      "BR-062",
+      "BR-034"
+    ]
+  },
+  "provas": [
+    {
+      "id": "P1",
+      "tipo": "depoimento",
+      "descricao": "O usuário conta que 6 donos de mercadinho do bairro usam caderno de papel para o fiado.",
+      "fonte": "depoimento do usuário (exemplo fictício)",
+      "aceita": true
+    },
+    {
+      "id": "P2",
+      "tipo": "lacuna",
+      "descricao": "Não há número verificado de quanto o pequeno comércio perde com fiado não pago.",
+      "fonte": "pesquisa sem resultado confiável",
+      "aceita": true
+    },
+    {
+      "id": "P3",
+      "tipo": "leitura",
+      "descricao": "Saldo de fiado de uma pessoa identificada é dado pessoal: a LGPD se aplica.",
+      "fonte": "Lei 13.709/2018, art. 5º, I",
+      "aceita": true
+    },
+    {
+      "id": "P4",
+      "tipo": "dado",
+      "descricao": "Cobrança falsa é golpe comum no WhatsApp.",
+      "fonte": "alegação da acusação, sem fonte",
+      "aceita": false,
+      "motivo_recusa": "sem fonte: fica como alegação"
+    }
+  ],
+  "acusacao": {
+    "teses": [
+      {
+        "texto": "Fiado é relação de confiança; tirar do olho no olho pode constranger o cliente e afastá-lo.",
+        "provas": [
+          "P1"
+        ]
+      },
+      {
+        "texto": "Cobrança pelo WhatsApp se confunde com golpe: o cliente desconfiado não paga (alegação).",
+        "provas": []
+      },
+      {
+        "texto": "Dado de dívida é dado pessoal: um vazamento expõe o cliente e o dono responde pela LGPD.",
+        "provas": [
+          "P3"
+        ]
+      },
+      {
+        "texto": "Não há prova de que a perda com fiado seja grande o bastante para alguém pagar por isso.",
+        "provas": [
+          "P2"
+        ]
+      }
+    ]
+  },
+  "defesa": {
+    "teses": [
+      {
+        "texto": "O caderno some, molha e gera briga; um saldo visível para os dois lados reduz conflito.",
+        "provas": [
+          "P1"
+        ]
+      },
+      {
+        "texto": "Funcionar sem internet e sincronizar depois atende quem só tem sinal à noite.",
+        "provas": []
+      },
+      {
+        "texto": "Teste barato: 5 mercadinhos, 30 dias, de graça, medindo quantos clientes pagam em dia.",
+        "provas": [
+          "P1",
+          "P2"
+        ]
+      }
+    ]
+  },
+  "testemunhas": [
+    {
+      "nome": "Advogada de proteção de dados (fictícia)",
+      "especialidade": "LGPD",
+      "depoimento": "O registro do fiado tem base na execução de contrato; exige segurança mínima e não expor o saldo a terceiros (LGPD, arts. 7º, V, e 46)."
+    }
+  ],
+  "votos": [
+    {
+      "jurado": "BR-034",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 4,
+      "motivo": "Se for de graça e não gastar meu crédito, eu uso pra anotar quem me deve geladinho, uai."
+    },
+    {
+      "jurado": "BR-026",
+      "rodada": 1,
+      "voto": "Procedente",
+      "confianca": 4,
+      "motivo": "Faz total sentido, ninguém mais anda com caderninho. Eu baixava."
+    },
+    {
+      "jurado": "BR-100",
+      "rodada": 1,
+      "voto": "Improcedente",
+      "confianca": 2,
+      "motivo": "Fiado é na confiança, meu fio. Caderno a gente vê; esse negócio aí ninguém vê."
+    },
+    {
+      "jurado": "BR-085",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 3,
+      "motivo": "Tem que ver a segurança desses dados de quem deve. Isso é coisa sensível."
+    },
+    {
+      "jurado": "BR-079",
+      "rodada": 1,
+      "voto": "Procedente",
+      "confianca": 4,
+      "motivo": "Ô trem bão! O dono do bar aqui ia adorar, eu passo pro grupo."
+    },
+    {
+      "jurado": "BR-082",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 3,
+      "motivo": "Se o mercadinho mandar a conta no zap eu acho bom, mas sem cobrar juro."
+    },
+    {
+      "jurado": "BR-022",
+      "rodada": 1,
+      "voto": "Procedente",
+      "confianca": 3,
+      "motivo": "Minha mãe vive brigando com o moço da venda por causa da conta, ia ajudar."
+    },
+    {
+      "jurado": "BR-094",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 4,
+      "motivo": "A ideia é boa, mas precisa de backup e de recibo para o cliente. Sem isso, vira briga."
+    },
+    {
+      "jurado": "BR-083",
+      "rodada": 1,
+      "voto": "Improcedente",
+      "confianca": 4,
+      "motivo": "Isso aí não é golpe não? Mandam mensagem dizendo que a gente deve e a gente paga."
+    },
+    {
+      "jurado": "BR-023",
+      "rodada": 1,
+      "voto": "Improcedente",
+      "confianca": 2,
+      "motivo": "Lá no interior o seu Raimundo nem tem celular bom. Não sei se pega."
+    },
+    {
+      "jurado": "BR-062",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 2,
+      "motivo": "Se o piá instalar pro dono do mercado e for simples, beleza."
+    },
+    {
+      "jurado": "BR-074",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 4,
+      "motivo": "Útil, mas e se o dono cobrar errado? Tem que ter como o cliente conferir."
+    },
+    {
+      "jurado": "BR-025",
+      "rodada": 1,
+      "voto": "Procedente",
+      "confianca": 5,
+      "motivo": "Mano, isso é óbvio. Pix já tá em todo lugar, o fiado é o que falta."
+    },
+    {
+      "jurado": "BR-050",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 5,
+      "motivo": "Atendo vários comerciantes: o fiado é o maior rombo deles. Mas precisa cobrar sem constranger."
+    },
+    {
+      "jurado": "BR-045",
+      "rodada": 1,
+      "voto": "Improcedente",
+      "confianca": 3,
+      "motivo": "Aqui a internet é só de noite. Se precisar estar conectado, não serve."
+    },
+    {
+      "jurado": "BR-077",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 3,
+      "motivo": "Eu compro fiado todo mês. Se eu puder ver quanto devo sem ter que perguntar, já é bom."
+    },
+    {
+      "jurado": "BR-080",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 4,
+      "motivo": "Registro de crédito informal tem implicação de LGPD e de cobrança. Viável com cuidado."
+    },
+    {
+      "jurado": "BR-048",
+      "rodada": 1,
+      "voto": "Improcedente",
+      "confianca": 4,
+      "motivo": "E se apagar tudo? Aí ninguém sabe quem deve o quê. Caderno não some."
+    },
+    {
+      "jurado": "BR-052",
+      "rodada": 1,
+      "voto": "Procedente",
+      "confianca": 4,
+      "motivo": "Na clínica a gente controla tudo em sistema. Para o pequeno comércio faz sentido."
+    },
+    {
+      "jurado": "BR-039",
+      "rodada": 1,
+      "voto": "Procedente",
+      "confianca": 3,
+      "motivo": "Eu usaria para ver o que comprei. Hoje nem lembro."
+    },
+    {
+      "jurado": "BR-015",
+      "rodada": 1,
+      "voto": "Procedente",
+      "confianca": 2,
+      "motivo": "Parece jogo de mercado, achei legal."
+    },
+    {
+      "jurado": "BR-049",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 4,
+      "motivo": "Eu dou prazo pra cliente de frete e já tomei calote. Se tiver lembrete automático, pago por isso."
+    },
+    {
+      "jurado": "BR-011",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 3,
+      "motivo": "Depende de quanto custa pro dono da venda."
+    },
+    {
+      "jurado": "BR-033",
+      "rodada": 1,
+      "voto": "Procedente",
+      "confianca": 4,
+      "motivo": "Bem prático. Só tem que funcionar sem internet."
+    },
+    {
+      "jurado": "BR-017",
+      "rodada": 1,
+      "voto": "Procedente com condições",
+      "confianca": 3,
+      "motivo": "Minha tia tem bazar e vive perdendo o caderno. Mas ela não sabe mexer em app."
+    },
+    {
+      "jurado": "BR-083",
+      "rodada": 2,
+      "voto": "Improcedente",
+      "confianca": 4,
+      "motivo": "Continuo com medo de golpe. Se vier mensagem de cobrança, como eu sei que é do mercadinho mesmo?"
+    },
+    {
+      "jurado": "BR-079",
+      "rodada": 2,
+      "voto": "Procedente",
+      "confianca": 5,
+      "motivo": "Tô dentro, sô. Se o dono gostar, todo mundo usa."
+    },
+    {
+      "jurado": "BR-048",
+      "rodada": 2,
+      "voto": "Procedente com condições",
+      "confianca": 3,
+      "motivo": "Se funcionar sem internet e tiver cópia guardada, aí eu mudo. Era isso que me preocupava."
+    },
+    {
+      "jurado": "BR-100",
+      "rodada": 2,
+      "voto": "Improcedente",
+      "confianca": 2,
+      "motivo": "Pra mim, fiado é olho no olho. Mas se o neto disser que é bom, eu acredito."
+    },
+    {
+      "jurado": "BR-045",
+      "rodada": 2,
+      "voto": "Procedente com condições",
+      "confianca": 3,
+      "motivo": "A moça disse que dá pra anotar sem internet e mandar depois. Aí serve, né?"
+    },
+    {
+      "jurado": "BR-062",
+      "rodada": 2,
+      "voto": "Procedente com condições",
+      "confianca": 2,
+      "motivo": "Se o piá instalar e for igual ao caderno, beleza."
+    },
+    {
+      "jurado": "BR-034",
+      "rodada": 2,
+      "voto": "Procedente com condições",
+      "confianca": 4,
+      "motivo": "Sem taxa pra mim e sem gastar crédito, eu uso. Se cobrar, desisto."
+    }
+  ],
+  "sentenca": {
+    "veredito": "Procedente com condições",
+    "confianca": 62,
+    "fundamentacao": "O conselho decidiu por 5 a 2 que a ideia procede com condições, e a maioria dos 25 também. A resistência veio de quem teme golpe e de quem depende de internet ruim; as duas objeções viraram condições. A falta de dado sobre o tamanho da perda (P2) segura a confiança.",
+    "condicoes": [
+      "funcionar sem internet e sincronizar depois",
+      "o cliente reconhecer a cobrança como legítima (nome e foto do comércio, sem link estranho)",
+      "sem taxa para o cliente",
+      "cópia de segurança automática"
+    ],
+    "ponto_de_virada": "Se no teste menos de 3 dos 5 donos continuarem usando depois de 30 dias, o veredito vira para Improcedente.",
+    "provas_decisivas": [
+      "P1",
+      "P2",
+      "P3"
+    ],
+    "voto_vencido": "A minoria (golpe e confiança) é forte entre os idosos: mantenha o caderno como opção do cliente.",
+    "proximo_passo": "Protótipo simples (até planilha + WhatsApp) com 5 mercadinhos do bairro por 30 dias.",
+    "criterio_de_abandono": "Se em 60 dias nenhum dono aceitar pagar R$ 20 por mês, pare."
+  },
+  "decisao_usuario": {
+    "acatou": true,
+    "recurso": null,
+    "decisao": "Vou fazer o teste com 5 mercadinhos.",
+    "data": "2026-11-09"
+  }
+}

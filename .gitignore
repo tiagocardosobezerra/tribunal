@@ -1,0 +1,5 @@
+local/
+tribunal-autos/
+__pycache__/
+*.pyc
+.arena/

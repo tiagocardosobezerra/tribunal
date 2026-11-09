@@ -1,0 +1,63 @@
+# Changelog
+
+Todas as mudanças relevantes do Tribunal. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
+e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
+
+## [1.3.0] — 2026-11-09
+
+A versão que transforma a sentença em plano. Medida em um julgamento real contra um torneio de 16 agentes
+(veja "Resultados" no README).
+
+### Novo
+- **Rito 3** (casos novos nascem nele):
+  - **Redator do plano.** A sentença vira passos numerados, metas por grupo, pelo menos 6 testes com o resultado
+    esperado calculado, critério de abandono com 2 ou mais gatilhos e a certeza explicada pelas lacunas.
+  - **Plano atacado e revisado.** Um promotor do plano procura furos (contas, metas que não fecham, passos
+    impossíveis) e o redator responde a cada um antes de o plano chegar ao usuário.
+  - **Pendências do perito.** O que dá para verificar agora (um site público, uma conta, um documento) nunca vira
+    tarefa do usuário: o perito resolve antes de o plano seguir.
+- **Checagem dupla do FATAL.** Todo ataque fatal é reconferido por um verificador independente, que confirma,
+  rebaixa ou derruba. Rótulo, arredondamento ou texto não é fatal.
+- **Status honesto.** "Corrigido" só quando a correção já foi feita e conferida; o que foi só prometido é
+  "correção proposta". FATAL pendente trava o veredito pleno.
+- **Coerência da sentença.** O `validar` recusa a sentença cujo plano não cobre cada condição ou aponta
+  contradição.
+- **`tribunal.py entrega`.** A resposta final montada direto dos autos; `--enxuta` deixa só decisão, plano,
+  riscos e condições.
+- **Duas linguagens.** "Tribunal" (os termos do rito) e "Natural" (palavras do dia a dia), com um dicionário
+  único para conversa, ata, placar e sala. Os autos guardam sempre os termos oficiais.
+- **Sala:** seletor de linguagem; linha do tempo com todas as fases desde o início; plateia simétrica com
+  corredor central e porta no fundo; o reforço entra, vota de pé junto ao gradil e sai; a aba Júri separa
+  convocados e reforço.
+
+### Mudou
+- O reforço do júri só é chamado com a sala firme em menos de **80%** (antes, 90%). Nos casos medidos, entre 80%
+  e 90% o reforço só confirmou o líder.
+- No recurso, quem julgou o caso de origem fica fora do júri novo; o reforço nunca repete quem já está na sala.
+- `juri convocar --autos` e `juri conselho --autos` gravam a sessão, os convocados, as recusas e o conselho
+  direto nos autos; `--json` devolve JSON.
+- O custo do advogado enxuto agora é medido (~13 mil tokens por chamada).
+
+### Corrigido
+- `reforco` e `parar` não quebram mais quando recebem a pasta do caso.
+- `novo` não cria uma pasta dentro da outra quando roda de dentro de `tribunal-autos`.
+- Os autos aceitam `id` onde o esperado era `jurado` (recusas) ou `ataque` (sentença).
+- Ficha do jurado com maiúscula e ponto; apelidos como "Dona Cleo" e "Seu Ed" não viram só "Dona" e "Seu".
+
+## [1.1.0] — 2026-11-09
+
+### Novo
+- **Agentes enxutos** (`tribunal-jurado`, `tribunal-advogado`, `tribunal-autor`): só Ler e Gravar, ~84% menos
+  tokens por chamada que um agente completo.
+- **Parada antecipada** da rodada 1 e **reforço** do júri quando o placar fica apertado.
+- **Firmeza por reamostragem** (2.000 sorteios) e **confiança sugerida** pela rubrica.
+- **Concurso de propostas** para perguntas abertas, com cartas de estratégia sem repetição.
+- **Modo rápido**, sem subagentes, para decisões pequenas e reversíveis.
+- `tribunal.py comparar` para medir dois julgamentos do mesmo caso.
+
+## [1.0.0] — 2026-11-09
+
+Primeira versão: perito, promotor, defesa, júri de 100 brasileiros fictícios calibrados pelo IBGE, voto
+secreto dos 25, conselho de 7, sentença com confiança, sala em pixel art com o malhete e o Memory Card.
+
+[1.3.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.3.0
