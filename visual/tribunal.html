@@ -208,11 +208,6 @@ aside{border-left:1px solid var(--line);background:var(--panel);display:flex;fle
           <div class="placarTela" id="placarTela"></div>
           <div class="cartaoFase" id="cartaoFase" role="status"></div>
           <div class="veu" id="veuInicio"></div>
-          <div class="veu" id="veuMalhete"><div class="janela" style="text-align:center;max-width:380px">
-            <div class="sup" id="supMalhete">A SENTENÇA VAI SER LIDA</div>
-            <p style="margin-top:8px">O navegador bloqueou o som. Bata o malhete para ouvir.</p>
-            <div class="cta" style="justify-content:center"><button class="grande" id="bMalhete">🔨 Bater o malhete</button></div>
-          </div></div>
           <div class="veu" id="veuFinal"><div class="janela veredito" id="janelaFinal"></div></div>
         </div>
       </div>
@@ -924,9 +919,11 @@ ROT.deliberacao = async () => {
   render(); await esperar(1200); ocioso = true;
 };
 async function garantirSom() {
-  if (veloz() || !som || (AC && AC.state === 'running')) return;
-  const v = document.getElementById('veuMalhete'); v.classList.add('ve');
-  await new Promise(r => { document.getElementById('bMalhete').onclick = () => { ligarAudio(); v.classList.remove('ve'); setTimeout(() => { batida(true); r(); }, 60); }; });
+  // Nunca para a sessão: tenta ligar o som e segue. Se o navegador não deixar, a sentença sai muda e o malhete
+  // aparece na tela do mesmo jeito; o som volta no primeiro clique ou tecla.
+  if (veloz() || !som) return;
+  ligarAudio();
+  if (AC && AC.state !== 'running') { try { await Promise.race([AC.resume(), esperar(400)]); } catch (e) {} }
 }
 ROT.sentenca = async () => {
   await garantirSom();
@@ -1039,6 +1036,7 @@ document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => { vel = +b.
 const bSom = document.getElementById('bSom');
 bSom.onclick = () => { som = !som; bSom.textContent = som ? '🔊' : '🔇'; if (som) { ligarAudio(); batida(false); } };
 document.addEventListener('pointerdown', ligarAudio);
+document.addEventListener('keydown', ligarAudio);
 let faseAtual = 0;
 function pularFase() { pulando = true; esperas.splice(0).forEach(e => e.r()); P.forEach(c => { if (c.rota.length) { const q = c.rota[c.rota.length - 1]; c.x = q[0]; c.y = q[1]; c.rota = []; if (c.chegou) { const f = c.chegou; c.chegou = null; f(); } } }); }
 function irPara(i) { i = Math.min(i, PRONTAS - 1); try { sessionStorage.setItem(CHAVE + ':ir', String(Math.max(0, i))); } catch (e) {} location.reload(); }

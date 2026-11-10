@@ -69,7 +69,7 @@ try:
 except (AttributeError, ValueError):
     pass
 
-VERSAO = '1.7.0'
+VERSAO = '1.7.1'
 
 
 def _lista(x):

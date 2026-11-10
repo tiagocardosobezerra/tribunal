@@ -33,12 +33,11 @@ GRAVIDADE = {'fatal': ('FATAL', '#7d2433', '#fff'), 'grave': ('GRAVE', '#e9b23a'
 STATUS = {'corrigido': ('corrigido', '#5c9a64'), 'correcao_proposta': ('correção proposta', '#c9a23f'),
           'rebatido': ('rebatido', '#4f7fb8'), 'de_pe': ('de pé', '#7d2433')}
 
-# Malhete em pixel art, 16 x 16: o mesmo da sala.
-MALHETE = ['................', '...ggg..........', '..gGGGg.........', '.gGGGGGg........', '.gGGGGGGg.......',
-           '..gGGGGGGg......', '...gGGGGGw......', '....gGGGwww.....', '.....gwwwwww....', '.......wwwwww...',
-           '........wwwwww..', '.........wwwww..', '..........www...', '..bbbbbbbb......', '.bBBBBBBBBb.....',
-           '.bbbbbbbbbb.....']
-PIXEL_COR = {'g': '#8a6a1c', 'G': '#e8c15a', 'w': '#6b4430', 'b': '#3f281c', 'B': '#5d3d2b'}
+# A balança em pixel art, 16 x 14: a mesma do banner do Tribunal.
+BALANCA = ['.......##.......', '......####......', '.......##.......', '################', '.#.....##.....#.',
+           '.#.....##.....#.', '#.#....##....#.#', '#.#....##....#.#', '###....##....###', '.......##.......',
+           '.......##.......', '.......##.......', '....########....', '...##########...']
+OURO = '#e8c15a'
 
 
 def e(t):
@@ -47,10 +46,21 @@ def e(t):
 
 
 def _pixel_svg(tamanho=96):
-    rects = ''.join(f'<rect x="{x}" y="{y}" width="1" height="1" fill="{PIXEL_COR[c]}"/>'
-                    for y, linha in enumerate(MALHETE) for x, c in enumerate(linha) if c in PIXEL_COR)
-    return (f'<svg width="{tamanho}" height="{tamanho}" viewBox="0 0 16 16" shape-rendering="crispEdges" '
-            f'aria-hidden="true">{rects}</svg>')
+    """A balança do Tribunal, um retângulo por trecho contínuo de pixels de cada linha."""
+    rects = []
+    for y, linha in enumerate(BALANCA):
+        x = 0
+        while x < len(linha):
+            if linha[x] == '#':
+                ini = x
+                while x < len(linha) and linha[x] == '#':
+                    x += 1
+                rects.append(f'<rect x="{ini}" y="{y}" width="{x - ini}" height="1"/>')
+            else:
+                x += 1
+    alt = round(tamanho * 14 / 16)
+    return (f'<svg width="{tamanho}" height="{alt}" viewBox="0 0 16 14" shape-rendering="crispEdges" fill="{OURO}" '
+            f'aria-hidden="true">{"".join(rects)}</svg>')
 
 
 def _anel(valor, tamanho=132):
@@ -127,7 +137,7 @@ def html(autos, sha='', natural=False, versao=''):
 <section class="capa">
   <div class="moldura">
     <div class="topo"><span>AUTOS DO TRIBUNAL</span><span>{e(j.get("sessao", ""))}</span></div>
-    <div class="malhete">{_pixel_svg(104)}</div>
+    <div class="malhete">{_pixel_svg(112)}</div>
     <h1>{e(caso.get("titulo"))}</h1>
     <p class="pergunta">{e(caso.get("pergunta"))}</p>
     <div class="veredito-capa">
@@ -337,7 +347,7 @@ h1, h2, h3, h4, .rotulo, .topo, th, .selo, .status, .p-tipo, .num, .v-voto { fon
   display: flex; flex-direction: column; background:
   repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 2px, transparent 2px 4px); }
 .topo { display: flex; justify-content: space-between; letter-spacing: .3em; font-size: 8pt; color: #e8c15a; }
-.malhete { margin: 16mm 0 8mm; }
+.malhete { margin: 16mm 0 9mm; }
 .capa h1 { font-size: 30pt; line-height: 1.12; margin: 0 0 4mm; color: #fff; font-weight: 700; }
 .pergunta { font-size: 13pt; color: #d9ccb3; font-style: italic; margin: 0 0 14mm; }
 .veredito-capa { display: flex; gap: 9mm; align-items: center; padding: 7mm; border: 1px solid rgba(232,193,90,.45);

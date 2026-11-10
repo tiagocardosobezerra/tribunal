@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img alt="Versión 1.7.0" src="https://img.shields.io/badge/versi%C3%B3n-1.7.0-e8c15a?style=flat-square" />
+  <img alt="Versión 1.7.1" src="https://img.shields.io/badge/versi%C3%B3n-1.7.1-e8c15a?style=flat-square" />
   <img alt="Skill de Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sin dependencias" src="https://img.shields.io/badge/dependencias-ninguna-2ea44f?style=flat-square" />

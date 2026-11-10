@@ -3,11 +3,18 @@
 Todas as mudanças relevantes do Tribunal. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.7.1] — 2026-11-10
+
+### Mudou
+- A capa do dossiê em PDF usa a balança em pixel art do Tribunal, a mesma do banner, no lugar do malhete.
+- A sentença na sala é automática: se o navegador bloquear o som, ela sai muda, sem parar num aviso. O som volta no
+  primeiro clique ou tecla.
+
 ## [1.7.0] — 2026-11-10
 
 ### Novo
 - **Dossiê em PDF** (`tribunal.py exportar <autos>`), para levar o julgamento a uma discussão. Traz:
-  - capa com o veredito, a confiança e o malhete em pixel art;
+  - capa com o veredito, a confiança e a balança em pixel art;
   - resumo de uma página;
   - o caso e as provas com fonte;
   - o contraditório, com gravidade, checagem e status;
@@ -134,6 +141,7 @@ A versão que transforma a sentença em plano. Medida em um julgamento real cont
 Primeira versão: perito, promotor, defesa, júri de 100 brasileiros fictícios calibrados pelo IBGE, voto
 secreto dos 25, conselho de 7, sentença com confiança, sala em pixel art com o malhete e o Memory Card.
 
+[1.7.1]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.1
 [1.7.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.0
 [1.6.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.6.0
 [1.5.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.5.0
