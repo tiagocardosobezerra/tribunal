@@ -3,6 +3,19 @@
 Todas as mudanças relevantes do Tribunal. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.6.0] — 2026-11-09
+
+### Novo
+- **Jurado de outra família de modelos** (`motor/externo.py`, `tribunal.py externo`). Com
+  `TRIBUNAL_EXTERNO_MODELO` definido, o lote 2 do júri roda em qualquer API compatível com a da OpenAI: OpenRouter
+  (GPT, Gemini, Llama...), Ollama local ou Groq. A `onda` devolve esse lote como comando, ao lado dos subagentes.
+  É opcional e desligado por padrão, porque o briefing sai da máquina; a chave nunca vai para os autos.
+- **Modelo de issue "Conte o desfecho"**: quem usou o Tribunal conta como a decisão terminou, e esses casos calibram
+  a confiança.
+
+### Corrigido
+- O Memory Card contava 0 jurados nos casos convocados com `juri convocar --autos`.
+
 ## [1.5.0] — 2026-11-09
 
 A versão que mede de verdade, mesmo quando o número não ajuda.
@@ -102,6 +115,7 @@ A versão que transforma a sentença em plano. Medida em um julgamento real cont
 Primeira versão: perito, promotor, defesa, júri de 100 brasileiros fictícios calibrados pelo IBGE, voto
 secreto dos 25, conselho de 7, sentença com confiança, sala em pixel art com o malhete e o Memory Card.
 
+[1.6.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.6.0
 [1.5.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.5.0
 [1.4.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.4.0
 [1.3.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.3.0

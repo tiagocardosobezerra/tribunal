@@ -790,3 +790,59 @@ class Versao15(unittest.TestCase):
         finally:
             shutil.rmtree(pasta, ignore_errors=True)
 
+
+
+class Versao16(unittest.TestCase):
+    """Lote do júri num modelo de outra família, por API compatível com a da OpenAI."""
+
+    def test_lote_externo_com_servidor_falso(self):
+        import http.server
+        import threading
+        from motor import externo as EX
+        recebido = {}
+
+        class H(http.server.BaseHTTPRequestHandler):
+            def do_POST(self):
+                recebido['corpo'] = json.loads(self.rfile.read(int(self.headers['Content-Length'])))
+                recebido['auth'] = self.headers.get('Authorization')
+                votos = [{'jurado': 'BR-001', 'rodada': 1, 'voto': 'Procedente', 'motivo': 'ok'}]
+                txt = 'Aqui está:\n```json\n' + json.dumps(votos) + '\n```'
+                out = json.dumps({'choices': [{'message': {'content': txt}}]}).encode()
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(out)
+
+            def log_message(self, *a):
+                pass
+
+        srv = http.server.HTTPServer(('127.0.0.1', 0), H)
+        threading.Thread(target=srv.serve_forever, daemon=True).start()
+        pasta = tempfile.mkdtemp(prefix='tribunal-externo-')
+        velho = {k: os.environ.get(k) for k in ('TRIBUNAL_EXTERNO_MODELO', 'TRIBUNAL_EXTERNO_URL', 'TRIBUNAL_EXTERNO_CHAVE')}
+        try:
+            os.environ['TRIBUNAL_EXTERNO_MODELO'] = 'teste/modelo'
+            os.environ['TRIBUNAL_EXTERNO_URL'] = f'http://127.0.0.1:{srv.server_port}/v1'
+            os.environ['TRIBUNAL_EXTERNO_CHAVE'] = 'chave-de-teste'
+            self.assertEqual(O.modelo_do_lote(2), ('externo', None))
+            b = os.path.join(pasta, 'b.txt')
+            with open(b, 'w', encoding='utf-8') as f:
+                f.write('briefing do caso')
+            d = os.path.join(pasta, 'votos', 'r1-lote2.json')
+            self.assertEqual(EX.votar(b, d), 1)
+            with open(d, encoding='utf-8') as f:
+                v = json.load(f)
+            self.assertEqual(v[0]['modelo'], 'externo:teste/modelo')
+            self.assertEqual(recebido['corpo']['model'], 'teste/modelo')
+            self.assertEqual(recebido['auth'], 'Bearer chave-de-teste')
+            ch = O._chamada(None, 'lote 2 (externo)', 'x', d, os.path.join(pasta, 'briefings'), 'r1-lote2')
+            self.assertIn('externo', ch['comando'])
+        finally:
+            srv.shutdown()
+            for k, x in velho.items():
+                if x is None:
+                    os.environ.pop(k, None)
+                else:
+                    os.environ[k] = x
+            shutil.rmtree(pasta, ignore_errors=True)
+        self.assertEqual(O.modelo_do_lote(2)[0], 'haiku')

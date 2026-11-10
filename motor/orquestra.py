@@ -30,8 +30,16 @@ class OrquestraRecusada(RuntimeError):
 MODELOS_JURI = (('sonnet', 'tribunal-jurado'), ('haiku', 'tribunal-jurado-haiku'), ('opus', 'tribunal-jurado-opus'))
 
 
+# Com um modelo de fora da família Claude configurado (motor/externo.py), ele entra no lote 2: os 3 primeiros lotes,
+# que sempre rodam, cobrem 3 famílias de treino diferentes.
+MODELOS_JURI_EXTERNO = (('sonnet', 'tribunal-jurado'), ('externo', None), ('opus', 'tribunal-jurado-opus'),
+                        ('haiku', 'tribunal-jurado-haiku'))
+
+
 def modelo_do_lote(lote):
-    return MODELOS_JURI[(int(lote) - 1) % len(MODELOS_JURI)]
+    from . import externo as EX
+    tabela = MODELOS_JURI_EXTERNO if EX.configurado() else MODELOS_JURI
+    return tabela[(int(lote) - 1) % len(tabela)]
 
 
 def pasta_dos_autos(caminho):
@@ -270,6 +278,10 @@ def _chamada(agente, descricao, briefing_txt, destino, pasta_b, nome):
     with open(A.longo(arq_b), 'w', encoding='utf-8', newline='\n') as f:
         f.write(briefing_txt)
     os.makedirs(os.path.dirname(destino), exist_ok=True)
+    if agente is None:   # lote de modelo externo: roda por comando, não por subagente
+        cli = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'tribunal.py')
+        return {'subagent_type': None, 'description': descricao,
+                'comando': f'python "{cli}" externo "{os.path.abspath(arq_b)}" "{os.path.abspath(destino)}"'}
     return {'subagent_type': agente, 'description': descricao,
             'prompt': f'Leia o briefing em {os.path.abspath(arq_b)} e siga-o à risca. '
                       f'Grave o JSON exatamente em {os.path.abspath(destino)}.'}

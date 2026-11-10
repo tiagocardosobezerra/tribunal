@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Versão 1.5.0" src="https://img.shields.io/badge/vers%C3%A3o-1.5.0-e8c15a?style=flat-square" />
+  <img alt="Versão 1.6.0" src="https://img.shields.io/badge/vers%C3%A3o-1.6.0-e8c15a?style=flat-square" />
   <img alt="Skill do Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sem dependências" src="https://img.shields.io/badge/depend%C3%AAncias-nenhuma-2ea44f?style=flat-square" />
-  <img alt="50 testes" src="https://img.shields.io/badge/testes-50%20passando-2ea44f?style=flat-square" />
+  <img alt="51 testes" src="https://img.shields.io/badge/testes-51%20passando-2ea44f?style=flat-square" />
   <img alt="Licença MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-blue?style=flat-square" />
 </p>
 
@@ -168,7 +168,7 @@ um torneio não traz: como pessoas reais reagiriam e o quanto confiar no resulta
 versão 1.3: a checagem dupla corrigiu, por ~12 mil tokens, um ataque fatal exagerado que o torneio também tinha
 apontado.
 
-**Engenharia.** 50 testes automáticos, Python puro sem dependências, autos validados a cada fase.
+**Engenharia.** 51 testes automáticos, Python puro sem dependências, autos validados a cada fase.
 
 ## Instalação
 
@@ -192,6 +192,15 @@ cp ~/.claude/skills/tribunal/agentes/*.md ~/.claude/agents/
 
 ```powershell
 Copy-Item $HOME\.claude\skills\tribunal\agentes\*.md $HOME\.claude\agents\
+```
+
+**Opcional: um jurado de outra família de modelos.** Cópias do Claude pensam parecido. Com um modelo de fora, o
+lote 2 do júri roda nele, por qualquer API compatível com a da OpenAI. O briefing do caso vai para esse provedor.
+
+```bash
+export TRIBUNAL_EXTERNO_MODELO=openai/gpt-5-mini      # no OpenRouter, com OPENROUTER_API_KEY definida
+# ou, de graça e sem sair da máquina:
+export TRIBUNAL_EXTERNO_MODELO=qwen3:8b TRIBUNAL_EXTERNO_URL=http://localhost:11434/v1   # Ollama
 ```
 
 **3. Peça um julgamento** (numa sessão nova do Claude Code)
@@ -234,6 +243,7 @@ python tribunal.py novo "Título" --tipo ideia      # abre um caso
 python tribunal.py proximo <autos>                 # a próxima fase e o comando exato
 python tribunal.py plano --modo completo           # quantos subagentes e tokens
 python tribunal.py onda <autos> [--juntar]         # a fase atual: briefings e chamadas prontas; --juntar junta tudo
+python tribunal.py externo <briefing> <destino>    # um lote num modelo de outra família (opcional)
 python tribunal.py validacao preparar --pasta P     # júri contra casos de desfecho conhecido; depois: resultado
 python tribunal.py juri convocar --autos <autos>   # os 25 do rodízio, gravados nos autos
 python tribunal.py juri conselho <sessão> --acusacao IDS --defesa IDS --autos <autos>

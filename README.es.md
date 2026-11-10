@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Versión 1.5.0" src="https://img.shields.io/badge/versi%C3%B3n-1.5.0-e8c15a?style=flat-square" />
+  <img alt="Versión 1.6.0" src="https://img.shields.io/badge/versi%C3%B3n-1.6.0-e8c15a?style=flat-square" />
   <img alt="Skill de Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sin dependencias" src="https://img.shields.io/badge/dependencias-ninguna-2ea44f?style=flat-square" />
-  <img alt="50 pruebas" src="https://img.shields.io/badge/pruebas-50%20pasando-2ea44f?style=flat-square" />
+  <img alt="51 pruebas" src="https://img.shields.io/badge/pruebas-51%20pasando-2ea44f?style=flat-square" />
   <img alt="Licencia MIT" src="https://img.shields.io/badge/licencia-MIT-blue?style=flat-square" />
 </p>
 
@@ -171,7 +171,7 @@ que un torneo no da: cómo reaccionarían personas reales y cuánto confiar en e
 versión 1.3: la doble revisión corrigió, por ~12 mil tokens, un ataque fatal exagerado que el torneo también había
 señalado.
 
-**Ingeniería.** 50 pruebas automáticas, Python puro sin dependencias, expediente validado en cada fase.
+**Ingeniería.** 51 pruebas automáticas, Python puro sin dependencias, expediente validado en cada fase.
 
 ## Instalación
 
@@ -195,6 +195,16 @@ cp ~/.claude/skills/tribunal/agentes/*.md ~/.claude/agents/
 
 ```powershell
 Copy-Item $HOME\.claude\skills\tribunal\agentes\*.md $HOME\.claude\agents\
+```
+
+**Opcional: un jurado de otra familia de modelos.** Las copias de Claude piensan parecido. Con un modelo de fuera,
+el lote 2 del jurado corre en él, por cualquier API compatible con la de OpenAI. El briefing del caso va a ese
+proveedor.
+
+```bash
+export TRIBUNAL_EXTERNO_MODELO=openai/gpt-5-mini      # en OpenRouter, con OPENROUTER_API_KEY definida
+# o, gratis y sin salir de tu máquina:
+export TRIBUNAL_EXTERNO_MODELO=qwen3:8b TRIBUNAL_EXTERNO_URL=http://localhost:11434/v1   # Ollama
 ```
 
 **3. Pide un juicio** (en una sesión nueva de Claude Code)
@@ -240,6 +250,7 @@ python tribunal.py novo "Título" --tipo ideia      # abre um caso
 python tribunal.py proximo <autos>                 # a próxima fase e o comando exato
 python tribunal.py plano --modo completo           # quantos subagentes e tokens
 python tribunal.py onda <autos> [--juntar]         # a fase atual: briefings e chamadas prontas; --juntar junta tudo
+python tribunal.py externo <briefing> <destino>    # um lote num modelo de outra família (opcional)
 python tribunal.py validacao preparar --pasta P     # júri contra casos de desfecho conhecido; depois: resultado
 python tribunal.py juri convocar --autos <autos>   # os 25 do rodízio, gravados nos autos
 python tribunal.py juri conselho <sessão> --acusacao IDS --defesa IDS --autos <autos>

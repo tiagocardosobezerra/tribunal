@@ -123,7 +123,9 @@ O que ele não conseguiu verificar entra como `lacuna`. O juiz aceita ou recusa 
 
 ### 3. Rodada 1: voto secreto dos 25
 
-1. `onda <autos>` gera os lotes 1 a 3 (um modelo por lote) e lista as chamadas; lance em paralelo.
+1. `onda <autos>` gera os lotes 1 a 3 (um modelo por lote) e lista as chamadas; lance em paralelo. Se o usuário
+   configurou um modelo de outra família (`TRIBUNAL_EXTERNO_MODELO`), o lote 2 sai como **comando**: rode-o no
+   terminal junto com os subagentes. Ele envia o briefing ao provedor; nunca o ligue por conta própria.
 2. `onda <autos> --juntar`. Se o `placar` sinalizar voto fora do personagem que não seja citação, refaça o lote.
    - **PARE:** a liderança já é estável em 95% ou mais das reamostragens, com 15 votos ou mais. Os
      lotes 4 e 5 ficam dispensados, e isso é registrado nos autos.

@@ -19,6 +19,7 @@ Comandos:
     pasta       onde os casos ficam: --fixa (~/tribunal-autos) ou --sessao
     validacao   mede o júri contra casos de desfecho conhecido (acerto, Brier, vazamento)
     onda        a fase atual em um comando: briefings, chamadas de subagente e --juntar
+    externo     um lote de jurados num modelo de fora da família Claude (opcional; envia o briefing ao provedor)
     perito-feito  o perito resolveu as pendências do plano: apaga o plano e conta a rodada (teto de 2)
     entrega     o que se mostra ao usuário no fim: decisão, plano, problemas (montado dos autos)
     linguagem   termos de tribunal ou linguagem natural (vale para ata, placar e sala; os autos não mudam)
@@ -67,7 +68,7 @@ try:
 except (AttributeError, ValueError):
     pass
 
-VERSAO = '1.5.0'
+VERSAO = '1.6.0'
 
 
 def _lista(x):
@@ -336,7 +337,8 @@ def cmd_validacao(a):
     if a.acao == 'preparar':
         ch = V.preparar(a.pasta, casos, lotes=a.lotes)
         print(json.dumps(ch, ensure_ascii=False, indent=2) if a.json else
-              '\n'.join(f'- {c["subagent_type"]} | {c["description"]}\n  {c["prompt"]}' for c in ch))
+              '\n'.join(f'- comando: {c["comando"]}' if c.get('comando') else
+                        f'- {c["subagent_type"]} | {c["description"]}\n  {c["prompt"]}' for c in ch))
         print(f'{len(ch)} chamada(s); depois: python tribunal.py validacao resultado --pasta {a.pasta}', file=sys.stderr)
     else:
         r = V.resultado(a.pasta, casos)
@@ -363,9 +365,22 @@ def cmd_onda(a):
         return 0
     print(f'{len(chamadas)} chamada(s), lance todas juntas numa mensagem (Agent, em paralelo):')
     for c in chamadas:
+        if c.get('comando'):
+            print(f'- comando (modelo externo, rode junto com os subagentes): {c["comando"]}')
+            continue
         print(f'- subagent_type: {c["subagent_type"]} | description: {c["description"]}')
         print(f'  prompt: {c["prompt"]}')
     print(f'Quando todas responderem: python tribunal.py onda {a.autos} --juntar')
+
+
+def cmd_externo(a):
+    from motor import externo as EX
+    try:
+        n = EX.votar(a.briefing, a.destino)
+    except EX.ExternoFalhou as e:
+        print(f'ERRO: {e}')
+        return 1
+    print(f'OK externo: {n} votos ({EX.configurado()["modelo"]})')
 
 
 def cmd_perito_feito(a):
@@ -738,6 +753,11 @@ def main(argv=None):
     x.add_argument('--juntar', action='store_true')
     x.add_argument('--json', action='store_true')
     x.set_defaults(f=cmd_onda)
+    x = sub.add_parser('externo', help='um lote de jurados num modelo de outra família (TRIBUNAL_EXTERNO_MODELO)')
+    x.add_argument('briefing')
+    x.add_argument('destino')
+    x.set_defaults(f=cmd_externo)
+
     x = sub.add_parser('perito-feito', help='o perito resolveu as pendências do plano: apaga o plano e conta a rodada')
     x.add_argument('autos')
     x.set_defaults(f=cmd_perito_feito)
