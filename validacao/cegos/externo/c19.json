@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-048",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Nossa, gente, e se der pau no meio? E se apagar tudo? Eu já fico nervosa só de pensar, sô.",
+    "reparou": "O app pode falhar no processo de envio",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-058",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Misericórdia, minha filha, eu não sei mexer nisso não. Tem como mandar por áudio? Que eu não leio direito.",
+    "reparou": "Precisa de cadastro com texto e não tem opção de áudio",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-064",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Ave Maria, e se der errado, quem é que me paga o prejuízo? Eu prefiro perguntar primeiro.",
+    "reparou": "Precisa de confirmação com a cooperativa antes de usar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-067",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Eu num sei mexer nisso não. Se minha muié disser que é bom, aí eu confio.",
+    "reparou": "Não tem internet no campo, não posso usar o app",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-022",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Oxe, e precisa de cadastro pra isso, é? Apaguei já, visse, meu celular não tem espaço não.",
+    "reparou": "Demasiado espaço no celular para armazenar o cadastro",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

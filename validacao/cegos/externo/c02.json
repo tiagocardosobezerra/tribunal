@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-037",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "E se der problema? Tipo, quem que eu chamo?",
+    "reparou": "Não sabe quem resolver problemas em caso de falha",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-051",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "A proposta é ótima, mas qual é a evidência disso? Me mostra o dado, não a promessa.",
+    "reparou": "Falta dados concretos para validar a segurança do sistema",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-078",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Rapaz, se for coisa boa eu uso, viu? Mas o menino tem que me ensinar duas vezes.",
+    "reparou": "Precisa ser muito simples para que o neto possa explicar rapidamente",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-026",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Mano, se tiver que esperar três dias úteis pra cair, já era.",
+    "reparou": "Demora três dias para atualizar, o que é muito lento",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-068",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 4,
+    "motivo": "Ai, achei super prático! Só a cor que tá meio triste, né?",
+    "reparou": "É prático, mas a cor está pesada",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-020",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 4,
+    "motivo": "Se precisar de internet, lá em casa não vai dar, né. Mas parece útil pra quem tem.",
+    "reparou": "funciona sem internet",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-025",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Achei interessante, tá ligado, mas quero entender quem tá por trás disso.",
+    "reparou": "funciona online",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-024",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Eu não sei mexer nisso não, viu. Se tiver muito texto eu desisto.",
+    "reparou": "muito texto",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-086",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Égua, e eu lá tenho isso? Tu me arruma um lugar que tenha gente pra atender que eu vou.",
+    "reparou": "precisa de alguém para atender",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-091",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 5,
+    "motivo": "Tem um erro aqui, ó. Se o começo já tem defeito, imagina o resto.",
+    "reparou": "erro no começo",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

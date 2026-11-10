@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-056",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Ah, para, isso aí é coisa de quem não pega no pesado. Quero ver funcionar no meu celular quebrado.",
+    "reparou": "se é coisa de rico ou se serve pra gente",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-021",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Mano, sério, se demorar pra carregar eu já fecho, não tenho paciência não.",
+    "reparou": "velocidade",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-079",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Ô trem bão, sô! Manda pra mim que eu passo pro grupo da família inteira.",
+    "reparou": "se é fácil, se dá pra mostrar pra amigos",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-042",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Rapaz, tá bonito, mas pra que trocar o que já funciona? Me mostra quem tá usando de verdade.",
+    "reparou": "se resolve problema real, quem já usa em produção",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-055",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Ah, gente, se tem cupom eu baixo, né? Depois eu vejo direito como funciona.",
+    "reparou": "cupom, frete grátis",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

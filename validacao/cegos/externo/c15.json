@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-092",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Num enxergo isso não. Se num tem jeito de escutar, pra mim num serve.",
+    "reparou": "se dá para usar por voz ou com letra bem grande e contraste forte",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-091",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 5,
+    "motivo": "Tem um erro aqui, ó. Se o começo já tem defeito, imagina o resto.",
+    "reparou": "acabamento, erro de português e se as coisas estão no lugar certo",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-045",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Aqui a internet é só de noite, né? Se precisar ficar conectado o tempo todo, não serve pra gente não.",
+    "reparou": "se funciona com internet ruim e se dá para usar sem ficar gastando",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-029",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Pô, irmão, ficou maneiro, mas o cliente quer saber logo quanto é e se parcela.",
+    "reparou": "se é bonito na tela, se é rápido e se dá para parcelar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-094",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 5,
+    "motivo": "Bah, mais um aplicativo que só atende por telefone? Eu não escuto, guria, me manda por escrito.",
+    "reparou": "se tem legenda, se o atendimento é por escrito e se o texto é claro e sem jargão",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

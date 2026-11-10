@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img alt="Versão 1.7.2" src="https://img.shields.io/badge/vers%C3%A3o-1.7.2-e8c15a?style=flat-square" />
+  <img alt="Versão 1.7.3" src="https://img.shields.io/badge/vers%C3%A3o-1.7.3-e8c15a?style=flat-square" />
   <img alt="Skill do Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sem dependências" src="https://img.shields.io/badge/depend%C3%AAncias-nenhuma-2ea44f?style=flat-square" />
@@ -153,6 +153,8 @@ grupo por grupo, e isso não é a mesma coisa. O valor do Tribunal está no proc
 checados, juiz independente e um plano com critério de abandono que testa a ideia no mundo real. Detalhes e kit
 para repetir: [`validacao/cegos/`](validacao/cegos/resultado-2026-11-09.md).
 
+**Um jurado de fora do Claude** (Qwen 3, rodando local) julgou os mesmos casos com as mesmas fichas. Ele votou diferente do Claude em 38% dos votos, então a diversidade é real. Mas acertou 16 de 29, também perto do acaso: trocar de modelo muda a opinião da sala, não o poder de prever ([resultado](validacao/cegos/resultado-externo-2026-11-10.md)).
+
 **Custo real de ponta a ponta.** Num caso real completo (rito 4), os subagentes gastaram 279 mil tokens, cerca de
 US$ 1. A orquestração na conversa principal pesa mais e cresce com o tamanho da conversa: de US$ 0,60, numa sessão
 nova, a US$ 4, numa sessão longa ([medição](validacao/custo-caso-real-2026-11-09.md)).
@@ -202,7 +204,7 @@ Copy-Item $HOME\.claude\skills\tribunal\agentes\*.md $HOME\.claude\agents\
 ```
 
 **Opcional: um jurado de outra família de modelos.** Cópias do Claude pensam parecido. Com um modelo de fora, o
-lote 2 do júri roda nele, por qualquer API compatível com a da OpenAI. O briefing do caso vai para esse provedor.
+lote 2 do júri roda nele, por qualquer API compatível com a da OpenAI. O briefing do caso vai para esse provedor. No teste cego, ele mudou 38% dos votos sem mudar o acerto: serve para ver se o veredito depende do modelo.
 
 ```bash
 export TRIBUNAL_EXTERNO_MODELO=openai/gpt-5-mini      # no OpenRouter, com OPENROUTER_API_KEY definida

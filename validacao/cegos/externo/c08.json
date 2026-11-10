@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-098",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Minha fia, eu já vi muita novidade chegar e ir embora. Se for pra ajudar, a neta me explica.",
+    "reparou": "novidades que chegam e vão embora",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-086",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Égua, e eu lá tenho isso? Tu me arruma um lugar que tenha gente pra atender que eu vou.",
+    "reparou": "não tem ninguém pra me ajudar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-074",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Olha, querida, eu só uso se tiver aquela confirmação antes, sabe? Já vi muita gente boa cair em golpe.",
+    "reparou": "precisa de confirmação antes de usar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-070",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Hum. Bonito é. Mas na hora do movimento ninguém tem tempo de ficar clicando, não.",
+    "reparou": "demora muito pra clicar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-065",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Minha filha, eu não sei mexer nessas coisa não. Tem que ser bem facinho, senão eu peço pro meu menino.",
+    "reparou": "não é fácil pra eu usar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

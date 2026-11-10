@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-025",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Achei interessante, tá ligado, mas quero entender quem tá por trás disso.",
+    "reparou": "se é sério, se não tem conteúdo apelativo e se cabe no plano de dados",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-074",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 5,
+    "motivo": "Olha, querida, eu só uso se tiver aquela confirmação antes, sabe? Já vi muita gente boa cair em golpe.",
+    "reparou": "se pede confirmação antes de cada passo",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-084",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Bah, tchê, a ideia parece boa. Mas eu fico pensando se a gente mais velha não vai cair em alguma armadilha.",
+    "reparou": "se faz bem às pessoas e se é seguro para quem é mais velho",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-022",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 5,
+    "motivo": "Oxe, e precisa de cadastro pra isso, é? Apaguei já, visse, meu celular não tem espaço não.",
+    "reparou": "se pede cadastro grande, se ocupa muita memória do celular e se as amigas já usam",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-092",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 5,
+    "motivo": "Num enxergo isso não. Se num tem jeito de escutar, pra mim num serve.",
+    "reparou": "se dá para usar por voz ou com letra bem grande e contraste forte",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

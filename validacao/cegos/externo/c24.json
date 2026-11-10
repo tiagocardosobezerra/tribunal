@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-066",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Se a letra é cinza clarinho no fundo branco, pra mim não existe, irmão.",
+    "reparou": "contraste e tamanho da letra",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-088",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 4,
+    "motivo": "Meu filho, se for bem feitinho e fácil, eu uso. Agora, coisa mal acabada eu não gosto não.",
+    "reparou": "se é bem acabado",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-095",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Ô, rapaz, deixa eu te contar: no meu tempo a gente resolvia isso com um telefonema, sabe?",
+    "reparou": "se tem gente de verdade para atender",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-071",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Achei bacana, mas fiquei com uma dúvida: quem confere essas informações?",
+    "reparou": "se a informação de saúde é correta",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-025",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Achei interessante, tá ligado, mas quero entender quem tá por trás disso.",
+    "reparou": "se não tem conteúdo apelativo",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

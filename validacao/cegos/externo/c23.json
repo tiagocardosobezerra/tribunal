@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-060",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Massa a ideia, visse. Agora, roda offline? Tem como eu mexer na configuração ou é tudo travado?",
+    "reparou": "se é possível mexer nas configurações offline",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-089",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Ah, eu não quero incomodar ninguém, mas pra mim essas coisa de internet é difícil, sabe?",
+    "reparou": "se é acessível para quem usa cadeira de rodas",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-065",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 2,
+    "motivo": "Minha filha, eu não sei mexer nessas coisa não. Tem que ser bem facinho, senão eu peço pro meu menino.",
+    "reparou": "se é fácil, se tem áudio em vez de texto",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-041",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Mana, se for de graça eu baixo agora, mas se pedir CPF eu já fico com o pé atrás, viu?",
+    "reparou": "se é de graça, se pede muito dado",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-087",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 5,
+    "motivo": "Ó-lhó-lhó, mas tás tolo? Isso aí é pra tirar o trabalho do porteiro, ô!",
+    "reparou": "se substitui gente por máquina",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

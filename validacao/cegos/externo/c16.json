@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-021",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Mano, sério, se demorar pra carregar eu já fecho, não tenho paciência não.",
+    "reparou": "velocidade",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-031",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Bonito é. Agora quero ver quando cair a internet e ninguém souber mexer.",
+    "reparou": "internet",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-089",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 3,
+    "motivo": "Ah, eu não quero incomodar ninguém, mas pra mim essas coisa de internet é difícil, sabe?",
+    "reparou": "acessibilidade para cadeira de rodas",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-093",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 5,
+    "motivo": "Vixe, minha fia, me mostre isso de perto que eu quero ver como é.",
+    "reparou": "se é coisa que serve para a vida dela",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-075",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 4,
+    "motivo": "Se for coisa boa, Deus abenço... Mas faz simples, que eu chego cansada do plantão.",
+    "reparou": "simplicidade",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

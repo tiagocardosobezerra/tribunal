@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-082",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Vai que é golpe e eu perco o pouquinho que tenho.",
+    "reparou": "pede senhas ou documentos",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-022",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Oxe, e precisa de cadastro pra isso, é? Apaguei já, visse, meu celular não tem espaço não.",
+    "reparou": "precisa de cadastro",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-094",
+    "rodada": 1,
+    "voto": "Improcedente com condições",
+    "confianca": 4,
+    "motivo": "Bah, mais um aplicativo que só atende por telefone? Eu não escuto, guria, me manda por escrito.",
+    "reparou": "só atende por telefone",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-083",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Ah, meu filho, isso aí não é perigoso não? Eu vi um vídeo dizendo que roubam os dados da gente.",
+    "reparou": "riscos de roubo de dados",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-023",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Eu acho bom, né. Mas se for pra pagar, num dá pra mim não.",
+    "reparou": "se for pra pagar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-083",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Ah, meu filho, isso aí não é perigoso não? Eu vi um vídeo dizendo que roubam os dados da gente.",
+    "reparou": "se é seguro, se tem risco de golpe e se alguém de confiança já usou",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-048",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Nossa, gente, e se der pau no meio? E se apagar tudo? Eu já fico nervosa só de pensar, sô.",
+    "reparou": "se é complicado demais e se pode dar problema depois",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-031",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Bonito é. Agora quero ver quando cair a internet e ninguém souber mexer.",
+    "reparou": "se é estável, se tem suporte e quanto vai dar de chamado para ele resolver",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-055",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 3,
+    "motivo": "Ah, gente, se tem cupom eu baixo, né? Depois eu vejo direito como funciona.",
+    "reparou": "se tem cupom, frete grátis e se lembra a senha por ela",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-021",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Mano, sério, se demorar pra carregar eu já fecho, não tenho paciência não.",
+    "reparou": "velocidade, visual e se as pessoas da propaganda se parecem com ela",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

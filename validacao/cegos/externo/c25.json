@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-071",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Achei bacana, mas fiquei com uma dúvida: quem confere essas informações?",
+    "reparou": "quem confere essas informações",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-035",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Meu, tá, é lindo, mas e se eu cair num golpe? Já perdi duzentão assim, sabe?",
+    "reparou": "riscos de golpe",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-087",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Ó-lhó-lhó, mas tás tolo? Isso aí é pra tirar o trabalho do porteiro, ô!",
+    "reparou": "tirar o trabalho do porteiro",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-050",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Mas e se cair a internet no meio, perde tudo? Eu preciso do comprovante, minha filha, senão eu não durmo.",
+    "reparou": "internet falhar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-049",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 2,
+    "motivo": "Irmão, parece bom, mas quanto que sai por mês? Porque se tiver taxa escondida eu tô fora, já fui enganado.",
+    "reparou": "taxas escondidas",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-063",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Rapaz, isso aí cobra taxa? Porque se cobrar eu nem quero saber.",
+    "reparou": "se cobra taxa no Pix",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-079",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 4,
+    "motivo": "Ô trem bão, sô! Manda pra mim que eu passo pro grupo da família inteira!",
+    "reparou": "se é fácil",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-028",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Pô, véi, três telas pra fazer uma coisa só? Isso aí dá pra resolver em uma.",
+    "reparou": "quantos cliques leva para fazer a tarefa",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-039",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Olha, achei meio amador, sabe? Por esse preço eu pego o outro que já conheço, né.",
+    "reparou": "acabamento",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-089",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Ah, eu não quero incomodar ninguém, mas pra mim essas coisa de internet é difícil, sabe?",
+    "reparou": "se é acessível para quem usa cadeira",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

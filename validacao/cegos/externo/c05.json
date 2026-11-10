@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-048",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Nossa, gente, e se der pau no meio? E se apagar tudo? Eu já fico nervosa só de pensar, sô.",
+    "reparou": "Risco de falha técnica",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-050",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Mas e se cair a internet no meio, perde tudo? Eu preciso do comprovante, minha filha, senão eu não durmo.",
+    "reparou": "Risco de perda de documentos",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-088",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Meu filho, se for bem feitinho e fácil, eu uso. Agora, coisa mal acabada eu não gosto não.",
+    "reparou": "Precisar ser fácil e bem feito",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-070",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Hum. Bonito é. Mas na hora do movimento ninguém tem tempo de ficar clicando, não.",
+    "reparou": "Necessidade de rapidez sem cliques",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-054",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Gente, legal, mas qual é a dor? Eu já vi três startups morrerem com esse mesmo pitch.",
+    "reparou": "Problemas com a proposta de valor",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

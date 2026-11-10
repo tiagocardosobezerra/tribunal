@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img alt="Version 1.7.2" src="https://img.shields.io/badge/version-1.7.2-e8c15a?style=flat-square" />
+  <img alt="Version 1.7.3" src="https://img.shields.io/badge/version-1.7.3-e8c15a?style=flat-square" />
   <img alt="Claude Code skill" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-none-2ea44f?style=flat-square" />
@@ -155,6 +155,8 @@ ordinary people react** to an idea, group by group, and that is not the same thi
 process: sourced evidence, checked attacks, an independent judge and a plan with a point at which to quit that tests
 the idea in the real world. Details and a kit to repeat it: [`validacao/cegos/`](validacao/cegos/resultado-2026-11-09.md).
 
+**A juror from outside Claude** (Qwen 3, running locally) judged the same cases with the same profiles. It voted differently from Claude on 38% of the votes, so the diversity is real. But it got 16 of 29 right, also close to chance: changing the model changes the room's opinion, not its power to predict ([result](validacao/cegos/resultado-externo-2026-11-10.md)).
+
 **Real end-to-end cost.** In a full real case (ritual 4), the subagents spent 279 thousand tokens, about US$ 1. The
 orchestration in the main conversation weighs more and grows with the length of the conversation: from US$ 0.60 in a
 fresh session to US$ 4 in a long one ([measurement](validacao/custo-caso-real-2026-11-09.md)).
@@ -204,7 +206,7 @@ Copy-Item $HOME\.claude\skills\tribunal\agentes\*.md $HOME\.claude\agents\
 ```
 
 **Optional: a juror from another model family.** Copies of Claude think alike. With an outside model, jury batch 2
-runs on it, through any OpenAI-compatible API. The case briefing is sent to that provider.
+runs on it, through any OpenAI-compatible API. The case briefing is sent to that provider. In the blind test it changed 38% of the votes without changing accuracy: use it to see whether the verdict depends on the model.
 
 ```bash
 export TRIBUNAL_EXTERNO_MODELO=openai/gpt-5-mini      # on OpenRouter, with OPENROUTER_API_KEY set

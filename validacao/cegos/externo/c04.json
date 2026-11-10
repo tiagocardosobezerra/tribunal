@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-098",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Minha fia, já vi muita novidade chegar e ir embora. Se for pra ajudar, a neta me explica.",
+    "reparou": "se a neta acha bom, se custa dinheiro e se tem uma pessoa conhecida por trás",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-068",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Ai, achei super prático! Só a cor tá meio triste, tipo, dava pra ser mais leve.",
+    "reparou": "se o visual é bonito e organizado e se resolve a vida corrida dela",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-095",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Ô, rapaz, no meu tempo a gente resolvia com um telefonema, sabe?",
+    "reparou": "se tem gente de verdade para atender e se ajuda a falar com a família",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-030",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 2,
+    "motivo": "Égua, mana, tem que preencher isso tudo? Depois eu vejo, de boa.",
+    "reparou": "quantas telas até terminar e se dá pra fazer tudo pelo celular deitada no sofá",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-087",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 5,
+    "motivo": "Ó-lhó-lhó, mas tás tolo? Isso aí é pra tirar o trabalho do porteiro, ô!",
+    "reparou": "se substitui gente por máquina e se é complicado para quem tem mais idade",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

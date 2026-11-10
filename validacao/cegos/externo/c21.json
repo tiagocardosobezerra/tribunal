@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-049",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Irmão, parece bom, mas quanto que sai por mês? Porque se tiver taxa escondida eu tô fora, já fui enganado.",
+    "reparou": "quanto custa por mês, se tem mensalidade escondida",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-097",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Meu filho, vá devagar que eu chego lá. Mas se for pra mexer em dinheiro, eu chamo meu neto.",
+    "reparou": "letra grande, se é fácil voltar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-038",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Ô sô, travou duas vezes e cê quer que eu pague assinatura? Nem a pau.",
+    "reparou": "se trava, se tem propaganda",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-085",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Ah, mas isso aí é muito moderno pra mim, meu filho. Eu gosto do jeito antigo, que eu sei onde tá cada coisa.",
+    "reparou": "se é igual ao que ela já conhece",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-040",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Rapaz, parece bom, mas quanto é que eles comem de cada venda? Porque a margem da rede já é pouca.",
+    "reparou": "se ajuda a vender e se tem taxa por venda",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

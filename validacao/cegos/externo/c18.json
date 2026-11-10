@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-035",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Meu, tá, é lindo, mas e se eu cair num golpe? Já perdi duzentão assim, sabe?",
+    "reparou": "se tem cara de golpe",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-084",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Bah, tchê, a ideia parece boa. Mas eu fico pensando se a gente mais velha não vai cair em alguma armadilha.",
+    "reparou": "se é seguro para quem é mais velho",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-097",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 2,
+    "motivo": "Meu filho, vá devagar que eu chego lá. Mas se for pra mexer em dinheiro, eu chamo meu neto.",
+    "reparou": "se é fácil voltar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-079",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 5,
+    "motivo": "Se funciona no celular simples",
+    "reparou": "se funciona no celular simples",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-094",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Bah, mais um aplicativo que só atende por telefone?",
+    "reparou": "só atende por telefone",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

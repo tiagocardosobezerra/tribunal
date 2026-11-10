@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-024",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Eu não sei mexer nisso não, viu. Se tiver muito texto eu desisto.",
+    "reparou": "se tem muita coisa escrita",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-042",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Rapaz, tá bonito, mas pra que trocar o que já funciona? Me mostra quem tá usando de verdade.",
+    "reparou": "se resolve um problema real, quem já usa em produção",
+    "reconhece": "Google Calendar",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-025",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Achei interessante, tá ligado, mas quero entender quem tá por trás disso.",
+    "reparou": "se é sério, se não tem conteúdo apelativo",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-032",
+    "rodada": 1,
+    "v": "Improcedente",
+    "confianca": 4,
+    "motivo": "Tá, mas isso me economiza quanto tempo por dia? Se for menos de dez minutos, não compensa aprender.",
+    "reparou": "se economiza tempo",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-082",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Vai que é golpe e eu perco o pouquinho que tenho.",
+    "reparou": "se pede senha ou número de cartão",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

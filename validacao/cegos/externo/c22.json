@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-045",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Aqui a internet é só de noite, né? Se precisar ficar conectado o tempo todo, não serve pra gente não.",
+    "reparou": "se funcionar com internet ruim e custo baixo",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-042",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Rapaz, tá bonito, mas pra que trocar o que já funciona? Me mostra quem tá usando de verdade.",
+    "reparou": "se resolver um problema real e tem suporte",
+    "reconhece": "Amazon Echo",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-038",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Ô sô, travou duas vezes e cê quer que eu pague assinatura? Nem a pau.",
+    "reparou": "se travar facilmente e ter custo oculto",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-076",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Interessante. Mas qual é a hipótese aqui? Como vocês sabem que isso funciona?",
+    "reparou": "se tem lógica coerente",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-049",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Irmão, parece bom, mas quanto que sai por mês? Porque se tiver taxa escondida eu tô fora, já fui enganado.",
+    "reparou": "se houver taxa oculta",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

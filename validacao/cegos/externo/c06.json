@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-087",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Ó-lhó-lhó, mas tás tolo? Isso aí é pra tirar o trabalho do porteiro, ô!",
+    "reparou": "se substitui gente por máquina",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-024",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Eu não sei mexer nisso não, viu. Se tiver muito texto eu desisto.",
+    "reparou": "se tem muita coisa escrita",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-081",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Pois é. Se funciona do jeito que tá, pra que mexer?",
+    "reparou": "se é simples",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-090",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Num quero, não. Isso aí é coisa pra quem tem tempo e perna boa.",
+    "reparou": "se precisa sair de casa",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-088",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Meu filho, se for bem feitinho e fácil, eu uso. Agora, coisa mal acabada eu não gosto não.",
+    "reparou": "se é bem acabado",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-041",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Mana, se for de graça eu baixo agora, mas se pedir CPF eu já fico com o pé atrás, viu?",
+    "reparou": "se pede muito dado e se dá para usar só com WhatsApp",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-090",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Num quero, não. Isso aí é coisa pra quem tem tempo e perna boa.",
+    "reparou": "se precisa sair de casa, subir degrau ou ficar em pé numa fila",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-049",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Irmão, parece bom, mas quanto que sai por mês? Porque se tiver taxa escondida eu tô fora, já fui enganado.",
+    "reparou": "quanto que sai por mês",
+    "reconhece": "Udemy",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-027",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Égua, mana, se cobrar taxa em cima de cada trança, não compensa pra mim não.",
+    "reparou": "se cobrar taxa em cima de cada trança",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-062",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 5,
+    "motivo": "Pra mim tanto faz, viu. Se o piá instalar pra mim e funcionar, beleza.",
+    "reparou": "se instalar e funcionar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

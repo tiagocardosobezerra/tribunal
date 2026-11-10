@@ -1,0 +1,47 @@
+[
+  {
+    "jurado": "BR-071",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Achei bacana, mas fiquei com uma dúvida: quem confere essas informações?",
+    "reparou": "informação de saúde",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-097",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Meu filho, vá devagar que eu chego lá. Mas se for pra mexer em dinheiro, eu chamo meu neto.",
+    "reparou": "custo do produto",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-060",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Massa a ideia, visse. Agora, roda offline? Tem como eu mexer na configuração ou é tudo travado?",
+    "reparou": "configuração offline",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-025",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Achei interessante, tá ligado, mas quero entender quem tá por trás.",
+    "reparou": "empresa por trás",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-056",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Ah, para, isso aí é coisa de quem não pega no pesado. Quero ver funcionar no meu celular quebrado.",
+    "reparou": "mercado rico",
+    "modelo": "externo:qwen3:4b"
+  }
+]

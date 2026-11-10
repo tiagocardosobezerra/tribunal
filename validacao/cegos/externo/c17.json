@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-058",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Não sei ler, preciso mandar por áudio pra entender.",
+    "reparou": "se tem áudio ou texto",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-090",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "É pra quem tem tempo e perna boa, não vou usar.",
+    "reparou": "se precisa sair ou escalar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-081",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 5,
+    "motivo": "Se funciona assim, não mudo nada.",
+    "reparou": "se é simples e não muda o que já sei",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-032",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 3,
+    "motivo": "Se economizar menos de 10 minutos, não vale a pena.",
+    "reparou": "se é simples e funciona no celular",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-086",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Preciso de alguém pra me ajudar a usar isso.",
+    "reparou": "se tem gente pra atender",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

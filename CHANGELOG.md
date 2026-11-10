@@ -3,6 +3,17 @@
 Todas as mudanças relevantes do Tribunal. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.7.3] — 2026-11-10
+
+### Novo
+- **Jurado externo medido no teste cego** (`validacao/cegos/resultado-externo-2026-11-10.md`). O Qwen 3 4b, rodando
+  local pelo Ollama, julgou os 30 casos com os mesmos jurados do Haiku:
+  - acertou 16 de 29, com Brier 0,264, perto do acaso;
+  - votou diferente do Claude em 38% dos votos, com a mesma ficha;
+  - o júri misto (Sonnet, Qwen e Opus) não acertou mais que o júri só de Claude.
+  A diversidade é real, mas não traz poder de prever.
+- `ferramentas/analise_externo.py` refaz a comparação.
+
 ## [1.7.2] — 2026-11-10
 
 ### Mudou
@@ -148,6 +159,7 @@ A versão que transforma a sentença em plano. Medida em um julgamento real cont
 Primeira versão: perito, promotor, defesa, júri de 100 brasileiros fictícios calibrados pelo IBGE, voto
 secreto dos 25, conselho de 7, sentença com confiança, sala em pixel art com o malhete e o Memory Card.
 
+[1.7.3]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.3
 [1.7.2]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.2
 [1.7.1]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.1
 [1.7.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.0

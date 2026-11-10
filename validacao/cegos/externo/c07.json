@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-079",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 5,
+    "motivo": "Manda pra mim que eu passo pro grupo da família inteira!",
+    "reparou": "se é fácil e se dá pra mostrar para os amigos",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-022",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Precisa de cadastro e ocupa muita memória do celular",
+    "reparou": "se pede cadastro grande",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-087",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 5,
+    "motivo": "Isso aí é pra tirar o trabalho do porteiro",
+    "reparou": "se substitui gente por máquina",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-071",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Quem confere essas informações?",
+    "reparou": "se a informação de saúde é correta",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-021",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 4,
+    "motivo": "Se demorar pra carregar, eu já fecho",
+    "reparou": "se demora pra carregar",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-049",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Irmão, parece bom, mas quanto que sai por mês? Porque se tiver taxa escondida eu tô fora, já fui enganado.",
+    "reparou": "quanto custa por mês, taxas escondidas",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-077",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Ô meu rei, explique direitinho que eu entendo",
+    "reparou": "se explicado bem",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-071",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 3,
+    "motivo": "Achei bacana, mas fiquei com uma dúvida: quem confere essas informações?",
+    "reparou": "relevância das informações",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-089",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Ah, eu não quero incomodar ninguém, mas pra mim essas coisa de internet é difícil, sabe?",
+    "reparou": "acessibilidade para pessoas com mobilidade reduzida",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-085",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Ah, mas isso aí é muito moderno pra mim, meu filho. Eu gosto do jeito antigo, que eu sei onde tá cada coisa.",
+    "reparou": "a tecnologia é muito moderna",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-072",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Pra que inventar moda? Eu sempre fiz do meu jeito e deu certo, não precisa de fones sem fio pra isso.",
+    "reparou": "não é parecido com o que eu uso e parece golpe",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-077",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Ô meu rei, explique direitinho que eu entendo. Só não me venha com pressa.",
+    "reparou": "se explica direitinho e tem alguém pra tirar dúvida",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-097",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 5,
+    "motivo": "É tipo o que eu uso no celular, só que melhor. Vou testar pra ver.",
+    "reparou": "pode ser usado com o celular e tem app pra ajustar",
+    "reconhece": "Sony",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-031",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 3,
+    "motivo": "Pra ouvir melhor sem barulho, é bom pra estudos.",
+    "reparou": "tem app pra ajustar e é barato",
+    "reconhece": "Bose",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-095",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Não entendi direito, parece um golpe pra me enganar.",
+    "reparou": "não tem nada pra ver com o que eu uso",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "jurado": "BR-100",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 4,
+    "motivo": "Se isso aí ajudar a gente a ver os menino de longe, é coisa boa, é.",
+    "reparou": "se alguém da família vai ficar mais perto ou se a vida fica mais fácil",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-058",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 2,
+    "motivo": "Misericórdia, minha filha, eu não sei mexer nisso não. Tem como mandar por áudio? Que eu não leio direito.",
+    "reparou": "se tem áudio em vez de muita letra e se pede CPF ou senha",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-041",
+    "rodada": 1,
+    "voto": "Procedente com condições",
+    "confianca": 4,
+    "motivo": "Mana, se for de graça eu baixo agora, mas se pedir CPF eu já fico com o pé atrás, viu?",
+    "reparou": "se é de graça, se pede muito dado e se dá para usar só com WhatsApp",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-067",
+    "rodada": 1,
+    "voto": "Procedente",
+    "confianca": 3,
+    "motivo": "Eu num sei mexer nisso não. Se minha muié disser que é bom, aí eu confio.",
+    "reparou": "se alguém de confiança explica de boca, sem ter que ler, e se serve para a vida da roça",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  },
+  {
+    "jurado": "BR-048",
+    "rodada": 1,
+    "voto": "Improcedente",
+    "confianca": 1,
+    "motivo": "Nossa, gente, e se der pau no meio? E se apagar tudo? Eu já fico nervosa só de pensar, sô.",
+    "reparou": "se é complicado demais e se pode dar problema depois",
+    "reconhece": "",
+    "modelo": "externo:qwen3:4b"
+  }
+]
