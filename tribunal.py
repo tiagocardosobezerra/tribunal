@@ -19,6 +19,7 @@ Comandos:
     pasta       onde os casos ficam: --fixa (~/tribunal-autos) ou --sessao
     validacao   mede o júri contra casos de desfecho conhecido (acerto, Brier, vazamento)
     onda        a fase atual em um comando: briefings, chamadas de subagente e --juntar
+    exportar    o dossiê do julgamento em PDF (capa, resumo, provas, contraditório, júri, sentença, plano)
     externo     um lote de jurados num modelo de fora da família Claude (opcional; envia o briefing ao provedor)
     perito-feito  o perito resolveu as pendências do plano: apaga o plano e conta a rodada (teto de 2)
     entrega     o que se mostra ao usuário no fim: decisão, plano, problemas (montado dos autos)
@@ -68,7 +69,7 @@ try:
 except (AttributeError, ValueError):
     pass
 
-VERSAO = '1.6.0'
+VERSAO = '1.7.0'
 
 
 def _lista(x):
@@ -371,6 +372,18 @@ def cmd_onda(a):
         print(f'- subagent_type: {c["subagent_type"]} | description: {c["description"]}')
         print(f'  prompt: {c["prompt"]}')
     print(f'Quando todas responderem: python tribunal.py onda {a.autos} --juntar')
+
+
+def cmd_exportar(a):
+    from motor import exportar as EXP
+    try:
+        arq, tipo = EXP.exportar(a.autos, a.o, natural=_modo(a) == 'natural', versao=VERSAO)
+    except RuntimeError as e:
+        print(f'ERRO: {e}')
+        return 1
+    sem_nav = tipo == 'html' and not (a.o or '').lower().endswith('.html')
+    print(f'{tipo.upper()} gerado: {arq}'
+          + ('  (sem Edge/Chrome/Chromium: abra no navegador e use Imprimir > Salvar como PDF)' if sem_nav else ''))
 
 
 def cmd_externo(a):
@@ -753,6 +766,12 @@ def main(argv=None):
     x.add_argument('--juntar', action='store_true')
     x.add_argument('--json', action='store_true')
     x.set_defaults(f=cmd_onda)
+    x = sub.add_parser('exportar', help='o dossiê do julgamento em PDF, para mostrar a outras pessoas')
+    x.add_argument('autos')
+    x.add_argument('-o', help='arquivo de saída (.pdf ou .html; padrão: autos.pdf na pasta do caso)')
+    x.add_argument('--linguagem', choices=['tribunal', 'natural', 'simples'])
+    x.set_defaults(f=cmd_exportar)
+
     x = sub.add_parser('externo', help='um lote de jurados num modelo de outra família (TRIBUNAL_EXTERNO_MODELO)')
     x.add_argument('briefing')
     x.add_argument('destino')

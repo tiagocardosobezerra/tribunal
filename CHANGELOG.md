@@ -3,6 +3,25 @@
 Todas as mudanças relevantes do Tribunal. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.7.0] — 2026-11-10
+
+### Novo
+- **Dossiê em PDF** (`tribunal.py exportar <autos>`), para levar o julgamento a uma discussão. Traz:
+  - capa com o veredito, a confiança e o malhete em pixel art;
+  - resumo de uma página;
+  - o caso e as provas com fonte;
+  - o contraditório, com gravidade, checagem e status;
+  - o júri, com barras por segmento e por modelo;
+  - as vozes do conselho, a sentença e o plano;
+  - uma página "Como ler este documento", que diz o que o júri mede e o que não mede;
+  - em anexo, os convocados.
+  A capa traz o **SHA-256 do autos.json**, para quem recebe conferir que o PDF veio daquele arquivo. O PDF é impresso
+  por Edge, Chrome ou Chromium em modo headless; sem navegador, sai o HTML pronto para imprimir.
+
+### Mudou
+- O lote externo tenta até 3 vezes quando o modelo erra o JSON, aceita o modo de pensar do Qwen 3 e espera até
+  15 minutos (`TRIBUNAL_EXTERNO_TEMPO`), para rodar em CPU.
+
 ## [1.6.0] — 2026-11-09
 
 ### Novo
@@ -115,6 +134,7 @@ A versão que transforma a sentença em plano. Medida em um julgamento real cont
 Primeira versão: perito, promotor, defesa, júri de 100 brasileiros fictícios calibrados pelo IBGE, voto
 secreto dos 25, conselho de 7, sentença com confiança, sala em pixel art com o malhete e o Memory Card.
 
+[1.7.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.0
 [1.6.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.6.0
 [1.5.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.5.0
 [1.4.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.4.0

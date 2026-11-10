@@ -846,3 +846,26 @@ class Versao16(unittest.TestCase):
                     os.environ[k] = x
             shutil.rmtree(pasta, ignore_errors=True)
         self.assertEqual(O.modelo_do_lote(2)[0], 'haiku')
+
+
+class Exportacao(unittest.TestCase):
+    """O dossiê do julgamento: HTML pronto para impressão, com o SHA-256 dos autos."""
+
+    def test_html_do_dossie(self):
+        from motor import exportar as EXP
+        pasta = tempfile.mkdtemp(prefix='tribunal-exp-')
+        try:
+            arq = os.path.join(pasta, 'autos.json')
+            shutil.copy(EXEMPLO, arq)
+            saida, tipo = EXP.exportar(arq, os.path.join(pasta, 'dossie.html'))
+            self.assertEqual(tipo, 'html')
+            with open(saida, encoding='utf-8') as f:
+                doc = f.read()
+            with open(arq, 'rb') as f:
+                sha = __import__('hashlib').sha256(f.read()).hexdigest()
+            self.assertIn(sha, doc)
+            for trecho in ('AUTOS DO TRIBUNAL', 'Em uma página', 'Provas', 'Como ler este documento', '@page'):
+                self.assertIn(trecho, doc)
+            self.assertEqual(EXP.e('até 2026-12-08'), 'até 08/12/2026')
+        finally:
+            shutil.rmtree(pasta, ignore_errors=True)

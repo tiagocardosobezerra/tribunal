@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Versión 1.6.0" src="https://img.shields.io/badge/versi%C3%B3n-1.6.0-e8c15a?style=flat-square" />
+  <img alt="Versión 1.7.0" src="https://img.shields.io/badge/versi%C3%B3n-1.7.0-e8c15a?style=flat-square" />
   <img alt="Skill de Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sin dependencias" src="https://img.shields.io/badge/dependencias-ninguna-2ea44f?style=flat-square" />
-  <img alt="51 pruebas" src="https://img.shields.io/badge/pruebas-51%20pasando-2ea44f?style=flat-square" />
+  <img alt="52 pruebas" src="https://img.shields.io/badge/pruebas-52%20pasando-2ea44f?style=flat-square" />
   <img alt="Licencia MIT" src="https://img.shields.io/badge/licencia-MIT-blue?style=flat-square" />
 </p>
 
@@ -115,6 +115,13 @@ jubilada que pregunta por las copias de seguridad, la Mãe Toinha, de 100 años,
 | **Marcador por perfil** | "todos los mayores de 60 votaron en contra por el registro": vale más que el marcador general |
 | **Acta y expediente** | el proceso completo, en Markdown y JSON |
 | **La sala** | el juicio animado en el navegador, en vivo, con el sonido del mazo |
+| **Dossier en PDF** | portada, resumen de una página, pruebas con fuente, ataques, jurado, sentencia y plan, con el SHA-256 del expediente: para llevar a la discusión |
+
+<p align="center">
+  <img width="38%" alt="Portada del dossier en PDF" src="assets/dossie-capa.png" />
+  <img width="38%" alt="Resumen de una página del dossier" src="assets/dossie-resumo.png" />
+  <br/><sub>El dossier en PDF (<code>tribunal.py exportar</code>): la portada y el resumen de una página.</sub>
+</p>
 
 <p align="center">
   <img width="49%" alt="Sentencia en la sala, en lenguaje de tribunal" src="assets/sala-sentenca.png" />
@@ -171,7 +178,7 @@ que un torneo no da: cómo reaccionarían personas reales y cuánto confiar en e
 versión 1.3: la doble revisión corrigió, por ~12 mil tokens, un ataque fatal exagerado que el torneo también había
 señalado.
 
-**Ingeniería.** 51 pruebas automáticas, Python puro sin dependencias, expediente validado en cada fase.
+**Ingeniería.** 52 pruebas automáticas, Python puro sin dependencias, expediente validado en cada fase.
 
 ## Instalación
 
@@ -264,6 +271,7 @@ python tribunal.py placar <autos>
 python tribunal.py validar <autos>
 python tribunal.py entrega <autos> [--enxuta]      # a resposta final, montada dos autos
 python tribunal.py ata <autos> -o ata.md [--linguagem natural]
+python tribunal.py exportar <autos> [-o arq.pdf]      # el dossier del juicio en PDF, para mostrar a otras personas
 python tribunal.py visualizar <autos> --abrir      # a sala; ?fase=N, ?linguagem=natural, ?som=0
 python tribunal.py comparar <autos_a> <autos_b>    # dois julgamentos do mesmo caso
 python tribunal.py linguagem natural               # ou tribunal

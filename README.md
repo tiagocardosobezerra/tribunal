@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Versão 1.6.0" src="https://img.shields.io/badge/vers%C3%A3o-1.6.0-e8c15a?style=flat-square" />
+  <img alt="Versão 1.7.0" src="https://img.shields.io/badge/vers%C3%A3o-1.7.0-e8c15a?style=flat-square" />
   <img alt="Skill do Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sem dependências" src="https://img.shields.io/badge/depend%C3%AAncias-nenhuma-2ea44f?style=flat-square" />
-  <img alt="51 testes" src="https://img.shields.io/badge/testes-51%20passando-2ea44f?style=flat-square" />
+  <img alt="52 testes" src="https://img.shields.io/badge/testes-52%20passando-2ea44f?style=flat-square" />
   <img alt="Licença MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-blue?style=flat-square" />
 </p>
 
@@ -112,6 +112,13 @@ Mãe Toinha, de 100 anos, que nunca usou celular.
 | **Placar por perfil** | "todos acima de 60 anos votaram contra por causa do cadastro": vale mais que o placar geral |
 | **Ata e autos** | o processo inteiro, em Markdown e JSON |
 | **A sala** | o julgamento animado no navegador, ao vivo, com o som do malhete |
+| **Dossiê em PDF** | capa, resumo de uma página, provas com fonte, ataques, júri, sentença e plano, com o SHA-256 dos autos: para levar à discussão |
+
+<p align="center">
+  <img width="38%" alt="Capa do dossiê em PDF" src="assets/dossie-capa.png" />
+  <img width="38%" alt="Resumo de uma página do dossiê" src="assets/dossie-resumo.png" />
+  <br/><sub>O dossiê em PDF (<code>tribunal.py exportar</code>): a capa e o resumo de uma página.</sub>
+</p>
 
 <p align="center">
   <img width="49%" alt="Sentença na sala, em linguagem de tribunal" src="assets/sala-sentenca.png" />
@@ -168,7 +175,7 @@ um torneio não traz: como pessoas reais reagiriam e o quanto confiar no resulta
 versão 1.3: a checagem dupla corrigiu, por ~12 mil tokens, um ataque fatal exagerado que o torneio também tinha
 apontado.
 
-**Engenharia.** 51 testes automáticos, Python puro sem dependências, autos validados a cada fase.
+**Engenharia.** 52 testes automáticos, Python puro sem dependências, autos validados a cada fase.
 
 ## Instalação
 
@@ -257,6 +264,7 @@ python tribunal.py placar <autos>
 python tribunal.py validar <autos>
 python tribunal.py entrega <autos> [--enxuta]      # a resposta final, montada dos autos
 python tribunal.py ata <autos> -o ata.md [--linguagem natural]
+python tribunal.py exportar <autos> [-o arq.pdf]      # o dossiê em PDF, para mostrar a outras pessoas
 python tribunal.py visualizar <autos> --abrir      # a sala; ?fase=N, ?linguagem=natural, ?som=0
 python tribunal.py comparar <autos_a> <autos_b>    # dois julgamentos do mesmo caso
 python tribunal.py linguagem natural               # ou tribunal

@@ -15,6 +15,7 @@ quando o usuário define as variáveis de ambiente, e nunca guarda a chave nos a
 
 import json
 import os
+import re
 import urllib.error
 import urllib.request
 
@@ -51,7 +52,10 @@ def _json_da_resposta(texto):
     raise ExternoFalhou('a resposta não tem JSON')
 
 
-def _pedir(cfg, briefing_txt, tempo=180):
+def _pedir(cfg, briefing_txt, tempo=None):
+    tempo = tempo or int(os.environ.get('TRIBUNAL_EXTERNO_TEMPO') or 900)
+    if 'qwen3' in cfg['modelo'].lower():
+        briefing_txt += '\n/no_think'   # o Qwen 3 pensa em voz alta por padrão; aqui só queremos os votos
     corpo = json.dumps({'model': cfg['modelo'], 'messages': [{'role': 'system', 'content': SISTEMA},
                                                              {'role': 'user', 'content': briefing_txt}]}).encode('utf-8')
     cab = {'Content-Type': 'application/json'}
@@ -69,16 +73,25 @@ def _pedir(cfg, briefing_txt, tempo=180):
         raise ExternoFalhou('resposta fora do formato de chat completions') from None
 
 
-def votar(briefing, destino, cfg=None):
+def votar(briefing, destino, cfg=None, tentativas=3):
     cfg = cfg or configurado()
     if not cfg:
         raise ExternoFalhou('defina TRIBUNAL_EXTERNO_MODELO (e a URL e a chave, se precisar)')
     with open(A.longo(briefing), encoding='utf-8') as f:
         txt = f.read()
-    obj = _json_da_resposta(_pedir(cfg, txt))
-    votos = obj.get('votos') if isinstance(obj, dict) else obj
-    if not isinstance(votos, list) or not votos or not all(isinstance(v, dict) and v.get('jurado') for v in votos):
-        raise ExternoFalhou('o JSON não é uma lista de votos com "jurado"')
+    erro = None
+    for _ in range(tentativas):   # modelos pequenos às vezes erram o JSON; o briefing é o mesmo, então repetir é seguro
+        try:
+            resposta = re.sub(r'<think>.*?</think>', '', _pedir(cfg, txt), flags=re.S)
+            obj = _json_da_resposta(resposta)
+            votos = obj.get('votos') if isinstance(obj, dict) else obj
+            if not isinstance(votos, list) or not votos or not all(isinstance(v, dict) and v.get('jurado') for v in votos):
+                raise ExternoFalhou('o JSON não é uma lista de votos com "jurado"')
+            break
+        except ExternoFalhou as e:
+            erro = e
+    else:
+        raise erro
     for v in votos:
         v['modelo'] = 'externo:' + cfg['modelo']
     os.makedirs(os.path.dirname(os.path.abspath(destino)), exist_ok=True)

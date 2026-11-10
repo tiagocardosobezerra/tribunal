@@ -161,6 +161,8 @@ como prova e roda `perito-feito <autos>`. No máximo 2 rodadas; depois, o que fa
 
 1. Entregue a resposta (formato abaixo) e registre `decisao_usuario`.
 2. Gere a ata: `ata <autos> -o <pasta>/ata.md`.
+   Para o usuário mostrar a outras pessoas: `exportar <autos>` gera `autos.pdf`, o dossiê com capa, resumo, provas,
+   contraditório, júri, sentença, plano e o SHA-256 dos autos. Ofereça sempre que o caso for base de uma discussão.
 3. Rode `fase <autos> sentenca`. A sala termina com o malhete; se o navegador bloquear o som, ela pausa
    num botão "Bater o malhete".
 4. Ofereça o Memory Card: `cartao enviar` (prévia) e `--confirmar` depois do "sim".

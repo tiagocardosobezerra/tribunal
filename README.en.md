@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Version 1.6.0" src="https://img.shields.io/badge/version-1.6.0-e8c15a?style=flat-square" />
+  <img alt="Version 1.7.0" src="https://img.shields.io/badge/version-1.7.0-e8c15a?style=flat-square" />
   <img alt="Claude Code skill" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-none-2ea44f?style=flat-square" />
-  <img alt="51 tests" src="https://img.shields.io/badge/tests-51%20passing-2ea44f?style=flat-square" />
+  <img alt="52 tests" src="https://img.shields.io/badge/tests-52%20passing-2ea44f?style=flat-square" />
   <img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" />
 </p>
 
@@ -114,6 +114,13 @@ engineer who wants backups, and Mãe Toinha, 100, who has never used a cell phon
 | **Scoreboard by profile** | "everyone over 60 voted against because of the sign-up": worth more than the overall score |
 | **Record and case file** | the whole process, in Markdown and JSON |
 | **The courtroom** | the trial animated in your browser, live, with the sound of the gavel |
+| **PDF dossier** | cover, one-page summary, sourced evidence, attacks, jury, verdict and plan, with the SHA-256 of the case file: to take to the discussion |
+
+<p align="center">
+  <img width="38%" alt="PDF dossier cover" src="assets/dossie-capa.png" />
+  <img width="38%" alt="PDF dossier one-page summary" src="assets/dossie-resumo.png" />
+  <br/><sub>The PDF dossier (<code>tribunal.py exportar</code>): the cover and the one-page summary.</sub>
+</p>
 
 <p align="center">
   <img width="49%" alt="Verdict in the courtroom, in court language" src="assets/sala-sentenca.png" />
@@ -170,7 +177,7 @@ brings what a tournament does not: how real people would react and how far to tr
 led to version 1.3. For ~12k tokens, the double check corrected an overstated fatal attack that the tournament had
 also raised.
 
-**Engineering.** 51 automated tests, pure Python with no dependencies, and the case file validated at every phase.
+**Engineering.** 52 automated tests, pure Python with no dependencies, and the case file validated at every phase.
 
 ## Installation
 
@@ -261,6 +268,7 @@ python tribunal.py placar <autos>
 python tribunal.py validar <autos>
 python tribunal.py entrega <autos> [--enxuta]      # a resposta final, montada dos autos
 python tribunal.py ata <autos> -o ata.md [--linguagem natural]
+python tribunal.py exportar <autos> [-o arq.pdf]      # the trial dossier as a PDF, to share with others
 python tribunal.py visualizar <autos> --abrir      # a sala; ?fase=N, ?linguagem=natural, ?som=0
 python tribunal.py comparar <autos_a> <autos_b>    # dois julgamentos do mesmo caso
 python tribunal.py linguagem natural               # ou tribunal
