@@ -163,8 +163,8 @@ como prova e roda `perito-feito <autos>`. No máximo 2 rodadas; depois, o que fa
 2. Gere a ata: `ata <autos> -o <pasta>/ata.md`.
    Para o usuário mostrar a outras pessoas: `exportar <autos>` gera `autos.pdf`, o dossiê com capa, resumo, provas,
    contraditório, júri, sentença, plano e o SHA-256 dos autos. Ofereça sempre que o caso for base de uma discussão.
-3. Rode `fase <autos> sentenca`. A sala termina com o malhete, sozinha; se o navegador bloquear o som,
-   a sentença sai muda e o som volta no primeiro clique.
+3. Rode `fase <autos> sentenca`. A sala abre numa janela do Edge ou do Chrome com o som
+   liberado e termina sozinha com o malhete.
 4. Ofereça o Memory Card: `cartao enviar` (prévia) e `--confirmar` depois do "sim".
 5. Recurso: júri novo (com `caso.recurso_de`, o `convocar --autos` deixa de fora quem já julgou), versão nova do caso.
 6. Desfecho: `cartao desfecho`, quando o usuário souber como terminou.

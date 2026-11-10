@@ -215,7 +215,7 @@ aside{border-left:1px solid var(--line);background:var(--panel);display:flex;fle
         <canvas id="retrato" width="32" height="32"></canvas>
         <div style="min-width:0">
           <div class="quem"><b id="lgNome">Tribunal</b><span class="papel" id="lgPapel">sessão</span></div>
-          <div class="fala" id="lgFala" aria-live="polite">Clique em <b>Assistir ao julgamento</b> para começar.</div>
+          <div class="fala" id="lgFala" aria-live="polite">O julgamento começa sozinho em instantes.</div>
         </div>
       </div>
       <div class="controles">
@@ -1058,9 +1058,16 @@ function telaInicio() {
   v.innerHTML = '<div class="janela"><div class="sup">⚖ ' + S2('UM JULGAMENTO EM ', 'UMA DECISÃO EM ') + DISP.length + S2(' FASES', ' ETAPAS') + '</div><h1>' + esc(CASO.pergunta || CASO.titulo) + '</h1>' +
     '<p>' + convocados.length + ' pessoas comuns, sorteadas de um elenco que representa o Brasil pelo IBGE, votam em segredo. ' + S2('Um promotor ataca, a defesa defende, e o juiz dá a sentença.', 'Um lado procura problemas, o outro defende, e o juiz dá a decisão final.') + '</p>' +
     '<div class="etapas">' + DISP.map(f => '<span>' + esc(f.nome) + '</span>').join('') + '</div>' +
-    '<div class="cta"><button class="grande" id="bComecar">▶ Assistir ao julgamento</button><small>com som · <kbd>espaço</kbd> pausa · <kbd>→</kbd> pula fase</small></div></div>';
+    '<div class="cta"><button class="grande" id="bComecar">▶ Assistir ao julgamento</button><small>com som · começa sozinho em <b id="contagem">5</b> s · <kbd>espaço</kbd> pausa · <kbd>→</kbd> pula fase</small></div></div>';
   v.classList.add('ve');
-  return new Promise(r => { const b = document.getElementById('bComecar'); b.focus(); b.onclick = () => { ligarAudio(); v.classList.remove('ve'); r(); }; });
+  ligarAudio();   // com o som liberado pelo navegador (a janela do --abrir), toca sem clique
+  return new Promise(r => {
+    const b = document.getElementById('bComecar'), cont = document.getElementById('contagem');
+    let n = 5, feito = false;
+    const ir = () => { if (feito) return; feito = true; clearInterval(t); ligarAudio(); v.classList.remove('ve'); r(); };
+    const t = setInterval(() => { n -= 1; if (cont) cont.textContent = String(Math.max(0, n)); if (n <= 0) ir(); }, 1000);
+    b.focus(); b.onclick = ir;
+  });
 }
 async function rodar() {
   ajustar(); sala(); render(); requestAnimationFrame(quadro);

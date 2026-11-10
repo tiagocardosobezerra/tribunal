@@ -69,7 +69,7 @@ try:
 except (AttributeError, ValueError):
     pass
 
-VERSAO = '1.7.1'
+VERSAO = '1.7.2'
 
 
 def _lista(x):
@@ -294,10 +294,27 @@ def gerar_sala(caminho, destino=None):
 
 
 def _abrir_no_navegador(destino):
+    """Abre a sala numa janela própria do Edge/Chrome com o som liberado (perfil separado, para a regra valer mesmo
+    com o navegador já aberto): o malhete toca sozinho, inclusive depois das recargas do modo ao vivo. Sem
+    Edge/Chrome, usa o navegador padrão."""
     import pathlib
+    import subprocess
+    import tempfile
     import webbrowser
+    from motor import exportar as EXP
+    url = pathlib.Path(destino).resolve().as_uri()
+    nav = EXP.navegador()
+    if nav and os.environ.get('TRIBUNAL_SALA_NAVEGADOR_PADRAO') != '1':
+        perfil = os.path.join(tempfile.gettempdir(), 'tribunal-sala')
+        try:
+            subprocess.Popen([nav, f'--app={url}', '--autoplay-policy=no-user-gesture-required', f'--user-data-dir={perfil}',
+                              '--no-first-run', '--no-default-browser-check', '--window-size=1440,900'],
+                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return True
+        except OSError:
+            pass
     try:
-        return bool(webbrowser.open(pathlib.Path(destino).resolve().as_uri()))
+        return bool(webbrowser.open(url))
     except webbrowser.Error:
         return False
 

@@ -3,6 +3,13 @@
 Todas as mudanças relevantes do Tribunal. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.7.2] — 2026-11-10
+
+### Mudou
+- **Som automático na sala.** O `--abrir` e o `abrir` abrem a sala numa janela própria do Edge ou do Chrome, com
+  autoplay liberado e um perfil separado, então o malhete toca sozinho mesmo depois das recargas do modo ao vivo.
+  Antes, cada recarga perdia a permissão de som. A tela inicial começa sozinha depois de 5 segundos.
+
 ## [1.7.1] — 2026-11-10
 
 ### Mudou
@@ -141,6 +148,7 @@ A versão que transforma a sentença em plano. Medida em um julgamento real cont
 Primeira versão: perito, promotor, defesa, júri de 100 brasileiros fictícios calibrados pelo IBGE, voto
 secreto dos 25, conselho de 7, sentença com confiança, sala em pixel art com o malhete e o Memory Card.
 
+[1.7.2]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.2
 [1.7.1]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.1
 [1.7.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.0
 [1.6.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.6.0
