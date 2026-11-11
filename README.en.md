@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Version 1.7.3" src="https://img.shields.io/badge/version-1.7.3-e8c15a?style=flat-square" />
+  <img alt="Version 1.8.0" src="https://img.shields.io/badge/version-1.8.0-e8c15a?style=flat-square" />
   <img alt="Claude Code skill" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-none-2ea44f?style=flat-square" />
-  <img alt="52 tests" src="https://img.shields.io/badge/tests-52%20passing-2ea44f?style=flat-square" />
+  <img alt="53 tests" src="https://img.shields.io/badge/tests-53%20passing-2ea44f?style=flat-square" />
   <img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" />
 </p>
 
@@ -107,6 +107,7 @@ engineer who wants backups, and Mãe Toinha, 100, who has never used a cell phon
 | | |
 |---|---|
 | **Decision and certainty** | the verdict and how far to trust it, with the gaps holding certainty down and what would raise it |
+| **Reasoned verdict** | report, grounds with weight and evidence, why not each other option, and the ruling, read by the judge in the courtroom |
 | **Plan** | ordered steps, targets per group, tests with the expected result, and the cheapest step, with cost and time |
 | **When to quit** | two or more triggers, each with a number and a deadline |
 | **What would change the decision** | 3 to 5 scenarios, including the one that leads to not going ahead |
@@ -179,7 +180,7 @@ brings what a tournament does not: how real people would react and how far to tr
 led to version 1.3. For ~12k tokens, the double check corrected an overstated fatal attack that the tournament had
 also raised.
 
-**Engineering.** 52 automated tests, pure Python with no dependencies, and the case file validated at every phase.
+**Engineering.** 53 automated tests, pure Python with no dependencies, and the case file validated at every phase.
 
 ## Installation
 

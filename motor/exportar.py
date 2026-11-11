@@ -114,6 +114,43 @@ def _lista(xs, ordenada=False):
     return f'<{t}>' + ''.join(f'<li>{e(x)}</li>' for x in xs) + f'</{t}>'
 
 
+def _fundamentos_html(s, T):
+    fs = [f for f in s.get('fundamentos') or [] if isinstance(f, dict)]
+    if not fs:
+        return f'<h3>{T("Fundamentação", "Por que esta decisão")}</h3><p>{e(s.get("fundamentacao"))}</p>' if s.get('fundamentacao') else ''
+    l = [f'<h3>{T("Fundamentos", "Por que esta decisão")}</h3>']
+    for i, f in enumerate(fs, 1):
+        l.append(f'<div class="fund{" decisivo" if f.get("peso") == "decisivo" else ""}"><div class="f-cab"><span class="f-n">{i}</span>'
+                 f'<b>{e(f.get("titulo"))}</b><span class="f-peso">{e(f.get("peso"))}</span></div><p>{e(f.get("texto"))}</p>'
+                 + (f'<div class="pequeno">Provas: {e(", ".join(f.get("provas") or []))}</div>' if f.get('provas') else '') + '</div>')
+    return ''.join(l)
+
+
+def _alternativas_html(s, T):
+    als = [a for a in s.get('alternativas') or [] if isinstance(a, dict) and a.get('opcao')]
+    if not als:
+        return ''
+    return (f'<h3>{T("Por que não as outras", "Por que não os outros caminhos")}</h3>' +
+            ''.join(f'<div class="alt"><b>{e(a["opcao"])}</b>' + (f' <span class="pequeno">· {e(a.get("votos_conselho"))} no conselho</span>'
+                    if a.get('votos_conselho') is not None else '') + f'<p>{e(a.get("por_que_nao"))}</p></div>' for a in als))
+
+
+def _contraditorio_html(s, T):
+    ct = s.get('contraditorio') or {}
+    if not (ct.get('caiu') or ct.get('de_pe')):
+        return ''
+    return (f'<h3>{T("O contraditório", "Os problemas e as respostas")}</h3>' +
+            (f'<p><b>{T("Caiu", "Respondido")}:</b> {e(ct.get("caiu"))}</p>' if ct.get('caiu') else '') +
+            (f'<p><b>{T("De pé", "Sem resposta")}:</b> {e(ct.get("de_pe"))}</p>' if ct.get('de_pe') else ''))
+
+
+def _condicoes_html(s):
+    orig = s.get('condicoes_origem') or {}
+    return '<ol class="condicoes">' + ''.join(
+        f'<li>{e(A.sem_numero(c))}' + (f' <span class="pequeno">(resolve {e(", ".join(orig.get(str(i), [])))})</span>' if orig.get(str(i)) else '') + '</li>'
+        for i, c in enumerate(s.get('condicoes') or [], 1)) + '</ol>'
+
+
 def html(autos, sha='', natural=False, versao=''):
     caso = autos['caso']
     j = autos.get('juri') or {}
@@ -272,9 +309,15 @@ def html(autos, sha='', natural=False, versao=''):
   <h2><span class="num">6</span>{T("Sentença", "A decisão")}</h2>
   <div class="caixa-veredito"><div class="cv-esq"><div class="rotulo">{T("Veredito", "Decisão")}</div><div class="cv-v">{e(s.get("veredito"))}</div>
     <div class="pequeno">Confiança {e(s.get("confianca"))}%{" · sentença do juiz independente" if s.get("por") == "juiz independente" else ""}</div></div></div>
-  {f'<h3>Fundamentação</h3><p>{e(s.get("fundamentacao"))}</p>' if s.get("fundamentacao") else ""}
+  {f'<p class="recomendacao">{e(s.get("recomendacao"))}</p>' if s.get("recomendacao") else ""}
+  {f'<h3>{T("Relatório", "O que aconteceu")}</h3><p>{e(s.get("relatorio"))}</p>' if s.get("relatorio") else ""}
+  {_fundamentos_html(s, T)}
+  {_alternativas_html(s, T)}
+  {_contraditorio_html(s, T)}
+  {f'<h3>{T("Dispositivo", "A decisão")}</h3><p class="dispositivo">{e(s.get("dispositivo"))}</p>' if s.get("dispositivo") else ""}
   {f'<h3>De onde vem a confiança</h3><p class="pequeno">{e(s.get("ajuste_da_confianca"))}</p>' if s.get("ajuste_da_confianca") else ""}
-  {f'<h3>{T("Condições", "O que precisa ser verdade")}</h3>' + _lista(s.get("condicoes"), True) if s.get("condicoes") else ""}
+  {f'<h3>{T("Condições", "O que precisa ser verdade")}</h3>' + _condicoes_html(s) if s.get("condicoes") else ""}
+  {f'<h3>{T("Ponto de virada", "O que mudaria a decisão")}</h3><p>{e(s.get("ponto_de_virada"))}</p>' if s.get("ponto_de_virada") else ""}
   {f'<h3>{T("Voto vencido", "Opinião contrária do juiz")}</h3><p>{e(s.get("voto_vencido"))}</p>' if s.get("voto_vencido") else ""}
 </section>''' if s else ''
 
@@ -417,6 +460,14 @@ tr { break-inside: avoid; }
 .voz { display: grid; grid-template-columns: 42mm 1fr; gap: 4mm; padding: 3mm 0; border-bottom: 1px solid #ece4d3; break-inside: avoid; }
 .v-voto { display: block; font-size: 7.6pt; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #b08a2a; margin-bottom: .8mm; }
 .passos { padding-left: 6mm; } .passos li { margin-bottom: 2mm; }
+.fund { border: 1px solid #e3d6b8; background: #fbf8f0; padding: 2.5mm 4mm; margin: 0 0 2.5mm; break-inside: avoid; }
+.fund.decisivo { border-left: 4px solid #c9a23f; }
+.f-cab { display: flex; gap: 2.5mm; align-items: center; font-family: "Segoe UI", Arial, sans-serif; margin-bottom: 1mm; }
+.f-n { background: #3f281c; color: #e8c15a; font-weight: 700; font-size: 8.5pt; padding: 0 2mm; }
+.f-peso { margin-left: auto; font-size: 7pt; text-transform: uppercase; letter-spacing: .1em; color: #b08a2a; }
+.alt { border-left: 3px solid #8c3a48; padding: 1mm 0 1mm 4mm; margin-bottom: 2.5mm; break-inside: avoid; }
+.dispositivo { font-weight: 700; font-size: 11pt; border-left: 4px solid #3f281c; padding-left: 4mm; }
+.condicoes li { margin-bottom: 1.5mm; }
 .abandono { border: 2px solid #7d2433; background: #fbf3f3; padding: 3mm 4mm; margin: 4mm 0; break-inside: avoid; }
 .aviso { background: #f6f1e4; border: 1px solid #e3d6b8; padding: 5mm 6mm; }
 .anexo { font-size: 7.8pt; } .anexo td { padding: 1.1mm 1.5mm; } .anexo td:first-child { white-space: nowrap; }

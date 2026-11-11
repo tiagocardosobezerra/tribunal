@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Versión 1.7.3" src="https://img.shields.io/badge/versi%C3%B3n-1.7.3-e8c15a?style=flat-square" />
+  <img alt="Versión 1.8.0" src="https://img.shields.io/badge/versi%C3%B3n-1.8.0-e8c15a?style=flat-square" />
   <img alt="Skill de Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sin dependencias" src="https://img.shields.io/badge/dependencias-ninguna-2ea44f?style=flat-square" />
-  <img alt="52 pruebas" src="https://img.shields.io/badge/pruebas-52%20pasando-2ea44f?style=flat-square" />
+  <img alt="53 pruebas" src="https://img.shields.io/badge/pruebas-53%20pasando-2ea44f?style=flat-square" />
   <img alt="Licencia MIT" src="https://img.shields.io/badge/licencia-MIT-blue?style=flat-square" />
 </p>
 
@@ -108,6 +108,7 @@ jubilada que pregunta por las copias de seguridad, la Mãe Toinha, de 100 años,
 | | |
 |---|---|
 | **Decisión y certeza** | el veredicto y cuánto confiar en él, con los vacíos que frenan la certeza y lo que la haría subir |
+| **Sentencia fundamentada** | relato, fundamentos con peso y pruebas, por qué no cada otra opción y el fallo, leídos por el juez en la sala |
 | **Plan** | pasos en orden, metas por grupo, pruebas con el resultado esperado y el paso más barato, con costo y tiempo |
 | **Cuándo abandonar** | dos o más señales de salida, cada una con un número y un plazo |
 | **Qué cambiaría la decisión** | de 3 a 5 escenarios, incluido el que lleva a no seguir |
@@ -180,7 +181,7 @@ que un torneo no da: cómo reaccionarían personas reales y cuánto confiar en e
 versión 1.3: la doble revisión corrigió, por ~12 mil tokens, un ataque fatal exagerado que el torneo también había
 señalado.
 
-**Ingeniería.** 52 pruebas automáticas, Python puro sin dependencias, expediente validado en cada fase.
+**Ingeniería.** 53 pruebas automáticas, Python puro sin dependencias, expediente validado en cada fase.
 
 ## Instalación
 

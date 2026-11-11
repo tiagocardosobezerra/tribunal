@@ -41,12 +41,12 @@ def _ataques(teses):
 
 FORMATO = {
     'promotor': '{"teses":[{"id":"A1","gravidade":"fatal|grave|leve","texto":"...","onde":"...","contraexemplo":"...","provas":["P1"]}],"melhor_tese_adversaria":"...","replica":"A melhor tese da defesa é ..."}',
-    'defesa': '{"teses":[{"texto":"...","provas":["P1"]}],"condicoes":["..."],"teste_barato":"...","melhor_tese_adversaria":"...","treplica":"A melhor tese da acusação é ..."}',
+    'defesa': '{"teses":[{"texto":"...","provas":["P1"]}],"condicoes":["sem número na frente: a lista já numera"],"teste_barato":"...","melhor_tese_adversaria":"...","treplica":"A melhor tese da acusação é ..."}',
     'replica': '{"respostas":[{"ataque":"A1","tipo":"concede|rebate","texto":"...","correcao":"... (se concede)"}]}',
     'autor': '{"id":"%s","apelido":"2 ou 3 palavras que um leigo entende (ex.: Fazer à mão primeiro)","titulo":"até 8 palavras","resumo":"2 frases simples","texto":"no máximo 350 palavras"}',
     'checagem': '{"A1":{"veredito":"confirma|rebaixa|derruba","gravidade":"fatal|grave|leve","motivo":"...","como_verifiquei":"a conta refeita ou o trecho exato da prova"}}',
     'plano': '{"recomendacao":"3 a 5 frases para o dono","certeza":{"valor":0,"por_que":"as lacunas pelo nome","sobe_se":"...","desce_se":"..."},"passo_mais_barato":{"o_que":"...","custo":"R$ ou zero","tempo":"horas ou dias"},"cenarios":[{"se":"o que pode acontecer","entao":"o que muda na decisão","certeza":"sobe|desce"}],"ordem":["1. ...","2. ..."],"proximo_passo":"igual ao passo 1","metas":[{"o_que":"...","grupo":"todos ou o grupo","como_medir":"...","meta":"número","prazo":"dias ou data"}],"testes":[{"o_que":"...","entrada":"...","esperado":"..."}],"criterio_de_abandono":"2 ou mais gatilhos, com número e prazo","cobertura":{"1":"em que passo a condição 1 é cumprida"},"hipoteses":["o que não está nas provas e precisa ser confirmado"],"atencao":["tensões com o que já está no ar, que não impedem o plano"],"conflitos":[],"pendencias_do_perito":["o que dá para verificar agora (site público, conta, documento) e ainda não foi verificado"]}',
-    'juiz': '{"veredito":"uma das OPÇÕES, igual","confianca":0,"ajuste_da_confianca":"de onde veio o número: a sugerida e cada ajuste","fundamentacao":"...","condicoes":["..."],"ponto_de_virada":"...","provas_decisivas":["P1"],"voto_vencido":null,"proximo_passo":"...","criterio_de_abandono":"...","ataques":[{"ataque":"A1","status":"corrigido|correcao_proposta|rebatido|de_pe","nota":"por quê","verificado":"só se corrigido: como se conferiu"}],"ataques_do_juiz":[{"id":"J1","gravidade":"fatal|grave|leve","texto":"falha que a acusação não viu"}]}',
+    'juiz': '{"relatorio":"3 ou 4 frases: o que se julgou e o que aconteceu no processo","veredito":"uma das OPÇÕES, igual","confianca":0,"certeza_em_uma_frase":"por que esta confiança, em palavras simples","ajuste_da_confianca":"de onde veio o número: a sugerida e cada ajuste","fundamentos":[{"titulo":"até 8 palavras","texto":"2 a 4 frases","provas":["P1"],"peso":"decisivo|relevante|menor"}],"alternativas":[{"opcao":"cada opção que NÃO venceu, igual","por_que_nao":"1 a 3 frases, com prova","votos_conselho":0}],"contraditorio":{"caiu":"o que a defesa derrubou, em 1 a 2 frases","de_pe":"o que ficou sem resposta e o peso disso"},"dispositivo":"a decisão em forma de sentença: Julgo ... (a opção), com as condições numeradas abaixo","recomendacao":"2 a 3 frases para o dono, em palavras do dia a dia","fundamentacao":"resumo da fundamentação em 1 parágrafo","condicoes":["..."],"condicoes_origem":{"1":["A1"]},"ponto_de_virada":"...","provas_decisivas":["P1"],"voto_vencido":null,"proximo_passo":"UMA ação curta (até 25 palavras)","criterio_de_abandono":"...","ataques":[{"ataque":"A1","status":"corrigido|correcao_proposta|rebatido|de_pe","nota":"por quê","verificado":"só se corrigido: como se conferiu"}],"ataques_do_juiz":[{"id":"J1","gravidade":"fatal|grave|leve","texto":"falha que a acusação não viu"}]}',
     'plano_ataque': '{"ataques":[{"id":"P1","gravidade":"fatal|grave|leve","onde":"campo e item do plano","texto":"o furo, com a conta refeita se for conta","correcao_sugerida":"..."}]}',
     'contraditorio': '{"X1":{"ataques":[{"id":"X1a","gravidade":"fatal|grave|leve","texto":"...","onde":"...","contraexemplo":"...","provas":[]}],"respostas":[{"ataque":"X1a","tipo":"concede|rebate","texto":"...","correcao":"..."}]}, "X2":{...}}',
 }
@@ -108,6 +108,14 @@ INSTRUCAO_JUIZ = (
     'ser verdade para o veredito valer, inclusive cada correção proposta. "ponto_de_virada": o fato que inverteria o '
     'veredito. "proximo_passo": a ação mais barata que mais reduz a dúvida. "criterio_de_abandono": com número e '
     'prazo. 7) "fundamentacao": por que este veredito, citando provas (P1...), o placar e onde o júri se dividiu. '
+    'A SENTENÇA TEM TRÊS PARTES, como uma sentença de verdade. RELATÓRIO: o que se julgou e o que aconteceu (quem '
+    'votou como, o que a acusação atacou, o que a defesa respondeu), sem opinar. FUNDAMENTOS: de 3 a 6, um por ponto '
+    'que decide, do mais pesado ao mais leve, cada um com as provas (P1...) e o peso; não repita o placar como '
+    'fundamento, explique POR QUE as pessoas e as provas apontam para lá. ALTERNATIVAS: para CADA opção que não '
+    'venceu, por que não ela, com prova e quantos do conselho votaram nela. CONTRADITÓRIO: o que caiu e o que ficou '
+    'de pé. DISPOSITIVO: a decisão em forma de sentença. Depois, a RECOMENDAÇÃO ao dono em palavras simples e a '
+    'certeza em uma frase. Em "condicoes_origem", para cada condição numerada, os ataques (A1, J1...) que ela '
+    'resolve. O "proximo_passo" é UMA ação curta, não um plano. '
     'Não favoreça nenhum lado nem quem conduziu o processo; não invente fato, número ou prova.')
 
 

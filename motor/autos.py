@@ -421,8 +421,7 @@ def ata_md(autos):
     s = autos.get('sentenca')
     if s:
         l += ['## Sentença', '', f'**Veredito: {s["veredito"]}** · confiança {s["confianca"]}%', '']
-        if s.get('fundamentacao'):
-            l += [s['fundamentacao'], '']
+        l.append(sentenca_md(s, nivel='###'))
         pares = [('Condições', s.get('condicoes')), ('Ponto de virada', s.get('ponto_de_virada')),
                  ('Provas decisivas', ', '.join(s.get('provas_decisivas', [])) or None),
                  ('Voto vencido', s.get('voto_vencido')), ('Próximo passo barato', s.get('proximo_passo')),
@@ -430,7 +429,7 @@ def ata_md(autos):
         for k, v in pares:
             if isinstance(v, list):
                 if v:
-                    l += [f'**{k}:**', ''] + [f'- {x}' for x in v] + ['']
+                    l += [f'**{k}:**', ''] + [f'{i}. {sem_numero(x)}' if k == 'Condições' else f'- {x}' for i, x in enumerate(v, 1)] + ['']
             elif v:
                 l += [f'**{k}:** {v}', '']
     if autos.get('plano'):
@@ -483,6 +482,54 @@ def plano_md(p, natural=False):
     return '\n'.join(l)
 
 
+def sem_numero(x):
+    """Tira a numeração que o autor escreveu no começo do texto (\"1. ...\"): quem numera é a lista."""
+    import re
+    return re.sub(r'^\s*\d+[.)]\s*', '', str(x))
+
+
+def sentenca_md(s, natural=False, enxuta=False, nivel='##'):
+    """As partes da sentença (rito 5): recomendação, relatório, fundamentos, por que não as outras opções,
+    contraditório e dispositivo. Casos antigos caem na fundamentação em texto corrido."""
+    from . import linguagem as LG
+    modo = 'natural' if natural else 'tribunal'
+    l = []
+    if s.get('recomendacao'):
+        l += [f'**{LG.t("recomendacao", modo)}:** {s["recomendacao"]}', '']
+    if s.get('certeza_em_uma_frase'):
+        l += [f'_{s["certeza_em_uma_frase"]}_', '']
+    if s.get('relatorio') and not enxuta:
+        l += [f'{nivel} {LG.t("relatorio", modo)}', '', s['relatorio'], '']
+    fs = [f for f in s.get('fundamentos') or [] if isinstance(f, dict)]
+    if fs:
+        l += [f'{nivel} {LG.t("fundamentos", modo)}', '']
+        for i, f in enumerate(fs, 1):
+            pv = f' _({", ".join(f["provas"])})_' if f.get('provas') else ''
+            peso = f' · {f["peso"]}' if f.get('peso') and not enxuta else ''
+            l.append(f'{i}. **{f.get("titulo", "")}**{peso}. {f.get("texto", "")}{pv}' if not enxuta
+                     else f'{i}. **{f.get("titulo", "")}.** {f.get("texto", "")}')
+        l.append('')
+    elif s.get('fundamentacao'):
+        l += [f'{nivel} {LG.t("fundamentos", modo)}', '', s['fundamentacao'], '']
+    als = [a for a in s.get('alternativas') or [] if isinstance(a, dict) and a.get('opcao')]
+    if als:
+        l += [f'{nivel} {LG.t("alternativas", modo)}', '']
+        l += [f'- **{LG.opcao(a["opcao"], modo)}**' + (f' ({a["votos_conselho"]} no conselho)' if a.get('votos_conselho') is not None and not natural else '')
+              + f': {a.get("por_que_nao", "")}' for a in als]
+        l.append('')
+    ct = s.get('contraditorio') or {}
+    if (ct.get('caiu') or ct.get('de_pe')) and not enxuta:
+        l += [f'{nivel} {LG.t("contraditorio", modo)}', '']
+        if ct.get('caiu'):
+            l.append(f'- **{"Respondido" if natural else "Caiu"}:** {ct["caiu"]}')
+        if ct.get('de_pe'):
+            l.append(f'- **{"Sem resposta" if natural else "De pé"}:** {ct["de_pe"]}')
+        l.append('')
+    if s.get('dispositivo'):
+        l += [f'{nivel} {LG.t("dispositivo", modo)}', '', f'**{s["dispositivo"]}**', '']
+    return '\n'.join(l)
+
+
 def entrega_md(autos, natural=False, enxuta=False):
     """O que se mostra ao usuário no fim: decisão, plano e problemas, montados direto dos autos (sem colagem à
     mão). A ata completa continua sendo o registro do processo. enxuta=True deixa só decisão, plano, riscos e
@@ -494,6 +541,7 @@ def entrega_md(autos, natural=False, enxuta=False):
         return '# ' + caso.get('titulo', '') + '\n\nAinda sem sentença.\n'
     l = [f'# {caso.get("titulo", "")}', '', f'_{caso.get("pergunta", "")}_', '',
          f'**{LG.t("veredito", modo)}: {LG.opcao(s["veredito"], modo)}** · {LG.t("confianca", modo)} {s.get("confianca")}%', '']
+    l.append(sentenca_md(s, natural=natural, enxuta=enxuta))
     if p:
         l.append(plano_md(p, natural=natural))
     else:
@@ -518,7 +566,7 @@ def entrega_md(autos, natural=False, enxuta=False):
                 l.append(f'- **{g}**{reb}: {t["texto"]}' + (f' → {stt}' if stt else '') + (f'. Correção: {cor}' if cor else ''))
         l.append('')
     if s.get('condicoes'):
-        l += ['## ' + LG.t('condicoes', modo), ''] + [f'{i}. {c}' for i, c in enumerate(s['condicoes'], 1)] + ['']
+        l += ['## ' + LG.t('condicoes', modo), ''] + [f'{i}. {sem_numero(c)}' for i, c in enumerate(s['condicoes'], 1)] + ['']
     falas, vistos = [], set()
     for v in autos.get('votos', []):
         if v.get('rodada') == 2 and v.get('motivo') and v.get('voto') not in vistos:

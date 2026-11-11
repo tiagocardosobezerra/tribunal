@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Versão 1.7.3" src="https://img.shields.io/badge/vers%C3%A3o-1.7.3-e8c15a?style=flat-square" />
+  <img alt="Versão 1.8.0" src="https://img.shields.io/badge/vers%C3%A3o-1.8.0-e8c15a?style=flat-square" />
   <img alt="Skill do Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sem dependências" src="https://img.shields.io/badge/depend%C3%AAncias-nenhuma-2ea44f?style=flat-square" />
-  <img alt="52 testes" src="https://img.shields.io/badge/testes-52%20passando-2ea44f?style=flat-square" />
+  <img alt="53 testes" src="https://img.shields.io/badge/testes-53%20passando-2ea44f?style=flat-square" />
   <img alt="Licença MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-blue?style=flat-square" />
 </p>
 
@@ -105,6 +105,7 @@ Mãe Toinha, de 100 anos, que nunca usou celular.
 | | |
 |---|---|
 | **Decisão e certeza** | o veredito e quanto confiar nele, com as lacunas que seguram a certeza e o que a faria subir |
+| **Sentença fundamentada** | relatório, fundamentos com peso e provas, por que não cada outra opção e o dispositivo, lidos pelo juiz na sala |
 | **Plano** | passos em ordem, metas por grupo, testes com o resultado esperado e o passo mais barato, com custo e tempo |
 | **Quando desistir** | dois ou mais gatilhos, cada um com número e prazo |
 | **O que mudaria a decisão** | de 3 a 5 cenários, inclusive o que leva a não seguir |
@@ -177,7 +178,7 @@ um torneio não traz: como pessoas reais reagiriam e o quanto confiar no resulta
 versão 1.3: a checagem dupla corrigiu, por ~12 mil tokens, um ataque fatal exagerado que o torneio também tinha
 apontado.
 
-**Engenharia.** 52 testes automáticos, Python puro sem dependências, autos validados a cada fase.
+**Engenharia.** 53 testes automáticos, Python puro sem dependências, autos validados a cada fase.
 
 ## Instalação
 

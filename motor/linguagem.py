@@ -58,6 +58,12 @@ TERMOS = {
     'lacuna': ('LACUNA', 'NÃO DEU PARA CHECAR'),
     'condicoes': ('Condições', 'O que precisa ajustar'),
     'ponto_de_virada': ('Ponto de virada', 'O que mudaria o resultado'),
+    'relatorio': ('Relatório', 'O que aconteceu'),
+    'fundamentos': ('Fundamentos', 'Por que esta decisão'),
+    'alternativas': ('Por que não as outras', 'Por que não os outros caminhos'),
+    'contraditorio': ('O contraditório', 'Os problemas e as respostas'),
+    'dispositivo': ('Dispositivo', 'A decisão'),
+    'recomendacao': ('Recomendação', 'O que eu faria'),
     'proximo_passo': ('Próximo passo barato', 'O que fazer agora'),
     'criterio_de_abandono': ('Critério de abandono', 'Quando desistir'),
     'voto_vencido': ('Voto vencido', 'O juiz discorda'),
@@ -150,6 +156,10 @@ def ata_simples(autos, placar, ids):
                 fim = f' → a defesa {t(r.get("tipo", ""), "natural")}'
             l.append(f'- {"**" + g + ":** " if g else ""}{x["texto"]}{fim}')
         l.append('')
+    from .autos import sentenca_md
+    parte = sentenca_md(s, natural=True)
+    if parte:
+        l += ['## Por que esta decisão', '', parte]
     if autos.get('plano'):
         from .autos import plano_md
         l.append(plano_md(autos['plano'], natural=True))

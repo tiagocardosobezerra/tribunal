@@ -176,6 +176,28 @@ aside{border-left:1px solid var(--line);background:var(--panel);display:flex;fle
 .bloco{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13.5px}
 .bloco h4{margin:0 0 4px;font-size:11px;letter-spacing:.6px;color:var(--faint);text-transform:uppercase}
 .bloco ul{margin:0;padding-left:18px}
+.janela.veredito{max-width:820px;text-align:left;max-height:calc(100vh - 40px)}
+#veuFinal{position:fixed;z-index:20;padding:20px}
+.topoSent{display:flex;gap:18px;align-items:center}
+.topoSent .anel{margin:0;flex:none}
+.topoSent h1{text-align:left}
+.certeza{font-size:13px;color:var(--muted);margin-top:-8px}
+.recom{background:#e8c15a14;border:1px solid #e8c15a55;border-radius:10px;padding:10px 12px;margin:12px 0;font-size:14px}
+.sentenca .sec{border-top:1px solid var(--line);padding:12px 0 4px}
+.sentenca h3{font-family:var(--px);color:var(--gold);font-size:13px;letter-spacing:.6px;margin:0 0 8px;text-transform:uppercase}
+.sentenca p{color:var(--ink);font-size:13.5px;margin:0 0 8px;line-height:1.55}
+.fund{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin-bottom:8px}
+.fund.decisivo{border-color:#e8c15a77}
+.fcab{display:flex;gap:8px;align-items:center;margin-bottom:4px;font-size:13.5px}
+.fcab .n{font-family:var(--px);color:#1a1322;background:var(--gold);border-radius:5px;padding:0 6px;font-size:12px}
+.peso{margin-left:auto;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--faint)}
+.pvs .pv,.pvs{font-size:11px}
+.pv{display:inline-block;background:#6aa7e82e;color:#8dbdf0;border-radius:5px;padding:0 6px;margin:0 4px 0 0;font-weight:700}
+.alt{margin-bottom:8px} .alt p{margin-top:3px}
+.faint{color:var(--faint);font-size:12px}
+.disp{font-weight:600}
+.conds{margin:0 0 8px;padding-left:20px;font-size:13.5px} .conds li{margin-bottom:5px}
+.abandono{border-left:3px solid var(--no);padding-left:8px}
 .carimbo{display:inline-block;margin-top:14px;border:2px solid var(--ok);color:var(--ok);font-family:var(--px);font-size:14px;padding:5px 10px;border-radius:6px;transform:rotate(-3deg)}
 .carimbo.rec{border-color:var(--no);color:var(--no)}
 
@@ -930,9 +952,40 @@ ROT.sentenca = async () => {
   const j = POR['@juiz'];
   convocados.forEach(id => pular(POR[id]));
   await malhete(1, false);
-  await falar(j, '<b>' + esc(T('veredito')) + ': ' + esc(rotulo(S.veredito)) + '</b> · ' + esc(T('confianca')) + ' ' + esc(S.confianca) + '%', 3600);
-  if (S.ponto_de_virada) await falar(j, '<b>' + esc(T('ponto_de_virada')) + ':</b> ' + esc(corta(S.ponto_de_virada, 220)), 4400);
-  if (S.proximo_passo) await falar(j, '<b>' + esc(T('proximo_passo')) + ':</b> ' + esc(corta(S.proximo_passo, 220)), 4400);
+  await falar(j, S2('Vistos e examinados os autos.', 'Vamos à decisão.'), 2200);
+  const ato = t => '<span class="chip" style="background:#e8c15a24;color:#e8c15a">' + esc(t) + '</span>';
+  if (S.relatorio) await falar(j, ato(T('relatorio')) + esc(corta(S.relatorio, 420)), 6800);
+  const funds = fundamentos();
+  if (funds.length) autoAba('provas');
+  for (let k = 0; k < funds.length; k++) {
+    const f = funds[k], pv = provasDe(f.provas);
+    provaAgora = pv[0] || null; render();
+    marcar(j, 'estrela', 1600);
+    await falar(j, ato(T('fundamentos') + ' ' + (k + 1) + '/' + funds.length + (f.peso ? ' · ' + f.peso : '')) +
+      (f.titulo ? '<b>' + esc(f.titulo) + '.</b> ' : '') + esc(corta(f.texto, 380)) +
+      (pv.length ? ' <span class="pvs">' + pv.map(esc).join(' · ') + '</span>' : ''), 7200);
+  }
+  provaAgora = null; render();
+  for (const al of S.alternativas || []) {
+    if (!al || !al.opcao) continue;
+    const quem = conselho.filter(id => { const v = voto(id, 2); return v && v.voto === al.opcao; }).map(id => POR[id]).filter(Boolean);
+    quem.forEach(c => { pular(c); marcar(c, icoOpc(al.opcao), 4200); });
+    await falar(j, ato(T('alternativas')) + '<b>' + esc(rotulo(al.opcao)) + ':</b> ' + esc(corta(al.por_que_nao, 340)), 6800, { focos: [j].concat(quem) });
+  }
+  const ct = S.contraditorio || {};
+  if (ct.caiu) await falar(j, ato(S2('O que caiu', 'O que foi respondido')) + esc(corta(ct.caiu, 300)), 5200);
+  if (ct.de_pe) await falar(j, ato(S2('O que ficou de pé', 'O que ficou sem resposta')) + esc(corta(ct.de_pe, 300)), 5200);
+  await malhete(1, true);
+  await falar(j, ato(T('dispositivo')) + '<b>' + esc(corta(S.dispositivo || (T('veredito') + ': ' + rotulo(S.veredito)), 360)) + '</b>', 5600);
+  const conds = S.condicoes || [];
+  for (let k = 0; k < conds.length; k++) {
+    await malhete(1, false);
+    await falar(j, '<b>' + (k + 1) + '.</b> ' + esc(corta(semNumero(conds[k]), 240)), 3600);
+  }
+  await falar(j, '<b>' + esc(T('veredito')) + ': ' + esc(rotulo(S.veredito)) + '</b> · ' + esc(T('confianca')) + ' ' + esc(S.confianca) + '%' +
+    (S.certeza_em_uma_frase ? '. ' + esc(corta(S.certeza_em_uma_frase, 220)) : ''), 5200);
+  if (S.ponto_de_virada) await falar(j, '<b>' + esc(T('ponto_de_virada')) + ':</b> ' + esc(corta(S.ponto_de_virada, 240)), 4800);
+  if (S.recomendacao) await falar(j, '<b>' + esc(T('recomendacao')) + ':</b> ' + esc(corta(S.recomendacao, 300)), 5600);
   const voce = POR['@voce']; voce.visivel = true; voce.x = L.porta[0]; voce.y = L.porta[1];
   await andar(voce, [L.gradil]); marcar(voce, 'estrela', 2400);
   const d = A.decisao_usuario || {};
@@ -944,23 +997,51 @@ ROT.sentenca = async () => {
   telaFinal();
 };
 
+// ================================================================ sentença: partes
+function fundamentos() {
+  if (Array.isArray(S.fundamentos) && S.fundamentos.length) return S.fundamentos.filter(f => f && (f.texto || f.titulo));
+  if (!S.fundamentacao) return [];
+  // casos antigos: a fundamentação era um texto corrido; vira fundamentos de 2 ou 3 frases cada
+  const frases = String(S.fundamentacao).match(/[^.!?]+[.!?]+(\s|$)/g) || [S.fundamentacao];
+  const out = [];
+  for (let i = 0; i < frases.length; i += 3) out.push({ titulo: '', texto: frases.slice(i, i + 3).join('').trim(), provas: (frases.slice(i, i + 3).join('').match(/\b[PL]\d+\b/g) || []) });
+  return out;
+}
+const semNumero = x => String(x).replace(/^\s*\d+[.)]\s*/, '');
+const provasDe = ids => [...new Set(ids || [])].filter(x => (A.provas || []).some(p => p.id === x));
+
 // ================================================================ tela final
 function telaFinal() {
   if (!S) return;
   const c = Math.max(0, Math.min(100, +S.confianca || 0)), Rr = 54, L2 = 2 * Math.PI * Rr, cor = c >= 70 ? '#5cc26b' : c >= 50 ? '#e9b23a' : '#e0574f';
   const d = A.decisao_usuario || {}, e2 = PL.estabilidade2;
   const p = r => OPC.map((o, i) => '<b style="color:' + COR[i] + '">' + (cont[r][o] || 0) + '</b>').join(' · ');
-  const lista = xs => '<ul>' + xs.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>';
-  const b = (t, x) => (x && (!Array.isArray(x) || x.length)) ? '<div class="bloco"><h4>' + t + '</h4>' + (Array.isArray(x) ? lista(x) : esc(x)) + '</div>' : '';
+  const secao = (t, corpo) => corpo ? '<section class="sec"><h3>' + esc(t) + '</h3>' + corpo + '</section>' : '';
+  const prov = ids => provasDe(ids).map(x => '<span class="pv">' + esc(x) + '</span>').join('');
+  const funds = fundamentos(), ct = S.contraditorio || {}, orig = S.condicoes_origem || {};
+  const plano = A.plano || {}, passos = (plano.ordem || []).slice(0, 3);
   document.getElementById('janelaFinal').innerHTML =
-    '<div class="sup">' + esc(T('sentenca').toUpperCase()) + '</div>' +
-    '<svg class="anel" viewBox="0 0 132 132" role="img" aria-label="Confiança ' + c + '%"><circle cx="66" cy="66" r="' + Rr + '" fill="none" stroke="#2f2640" stroke-width="12"/><circle cx="66" cy="66" r="' + Rr + '" fill="none" stroke="' + cor + '" stroke-width="12" stroke-linecap="round" stroke-dasharray="' + (L2 * c / 100) + ' ' + L2 + '" transform="rotate(-90 66 66)"/><text x="66" y="66" text-anchor="middle" fill="#f4eee3" font-family="Pixelify Sans, monospace" font-size="30">' + c + '%</text><text x="66" y="86" text-anchor="middle" fill="#a397b4" font-family="Inter, sans-serif" font-size="11">' + esc(T('confianca')) + '</text></svg>' +
-    '<h1>' + esc(rotulo(S.veredito)) + '</h1>' + (codigo(S.veredito) ? '<div class="sub" style="margin:-2px 0 6px">' + esc(descricaoOpc(S.veredito)) + '</div>' : '') +
+    '<div class="sup">' + esc(T('sentenca').toUpperCase()) + (S.por === 'juiz independente' ? ' · ' + S2('JUIZ INDEPENDENTE', 'JUIZ DE FORA') : '') + '</div>' +
+    '<div class="topoSent"><svg class="anel" viewBox="0 0 132 132" role="img" aria-label="Confiança ' + c + '%"><circle cx="66" cy="66" r="' + Rr + '" fill="none" stroke="#2f2640" stroke-width="12"/><circle cx="66" cy="66" r="' + Rr + '" fill="none" stroke="' + cor + '" stroke-width="12" stroke-linecap="round" stroke-dasharray="' + (L2 * c / 100) + ' ' + L2 + '" transform="rotate(-90 66 66)"/><text x="66" y="66" text-anchor="middle" fill="#f4eee3" font-family="Pixelify Sans, monospace" font-size="30">' + c + '%</text><text x="66" y="86" text-anchor="middle" fill="#a397b4" font-family="Inter, sans-serif" font-size="11">' + esc(T('confianca')) + '</text></svg>' +
+    '<div><h1>' + esc(rotulo(S.veredito)) + '</h1>' + (codigo(S.veredito) ? '<div class="sub" style="margin:-2px 0 6px">' + esc(descricaoOpc(S.veredito)) + '</div>' : '') +
     '<div class="sub">' + esc(T('conselho_curto')) + ' ' + p(2) + ' &nbsp;·&nbsp; ' + esc(T('sala')) + ' ' + p(1) + (e2 && e2.n ? ' &nbsp;·&nbsp; firme em ' + pct(e2.estabilidade) + ' das reamostragens' : '') + '</div>' +
-    '<div class="blocos">' + b(T('proximo_passo'), S.proximo_passo) + b(T('condicoes'), S.condicoes) + b(T('ponto_de_virada'), S.ponto_de_virada) + b(T('criterio_de_abandono'), S.criterio_de_abandono) + b(T('voto_vencido'), S.voto_vencido) + '</div>' +
+    (S.certeza_em_uma_frase ? '<div class="certeza">' + esc(S.certeza_em_uma_frase) + '</div>' : '') + '</div></div>' +
+    (S.recomendacao ? '<div class="recom"><b>' + esc(T('recomendacao')) + '.</b> ' + esc(S.recomendacao) + '</div>' : '') +
+    '<div class="sentenca">' +
+    secao(T('relatorio'), S.relatorio ? '<p>' + esc(S.relatorio) + '</p>' : '') +
+    secao(T('fundamentos'), funds.map((f, k) => '<div class="fund' + (f.peso === 'decisivo' ? ' decisivo' : '') + '"><div class="fcab"><span class="n">' + (k + 1) + '</span><b>' + esc(f.titulo || '') + '</b>' + (f.peso ? '<span class="peso">' + esc(f.peso) + '</span>' : '') + '</div><p>' + esc(f.texto) + '</p>' + (prov(f.provas) ? '<div class="pvs">' + prov(f.provas) + '</div>' : '') + '</div>').join('')) +
+    secao(T('alternativas'), (S.alternativas || []).filter(x => x && x.opcao).map(x => '<div class="alt"><b style="color:' + corOpc(x.opcao) + '">' + esc(rotulo(x.opcao)) + '</b>' + (x.votos_conselho != null ? ' <span class="faint">· ' + esc(x.votos_conselho) + ' ' + S2('no conselho', 'dos 7') + '</span>' : '') + '<p>' + esc(x.por_que_nao) + '</p></div>').join('')) +
+    secao(T('contraditorio'), (ct.caiu ? '<p><b>' + S2('Caiu', 'Respondido') + ':</b> ' + esc(ct.caiu) + '</p>' : '') + (ct.de_pe ? '<p><b>' + S2('De pé', 'Sem resposta') + ':</b> ' + esc(ct.de_pe) + '</p>' : '')) +
+    secao(T('dispositivo'), (S.dispositivo ? '<p class="disp">' + esc(S.dispositivo) + '</p>' : '') + ((S.condicoes || []).length ? '<ol class="conds">' + S.condicoes.map((x, k) => '<li>' + esc(semNumero(x)) + ((orig[String(k + 1)] || []).length ? ' <span class="faint">(' + S2('resolve', 'resolve') + ' ' + orig[String(k + 1)].map(esc).join(', ') + ')</span>' : '') + '</li>').join('') + '</ol>' : '')) +
+    secao(T('ponto_de_virada'), S.ponto_de_virada ? '<p>' + esc(S.ponto_de_virada) + '</p>' : '') +
+    secao(S2('Plano', 'O plano'), (passos.length ? '<ol class="conds">' + passos.map(x => '<li>' + esc(corta(String(x).replace(/^\d+\.\s*/, ''), 260)) + '</li>').join('') + '</ol>' : (S.proximo_passo ? '<p>' + esc(S.proximo_passo) + '</p>' : '')) +
+      ((plano.criterio_de_abandono || S.criterio_de_abandono) ? '<p class="abandono"><b>' + esc(T('criterio_de_abandono')) + ':</b> ' + esc(plano.criterio_de_abandono || S.criterio_de_abandono) + '</p>' : '')) +
+    secao(T('voto_vencido'), S.voto_vencido ? '<p>' + esc(S.voto_vencido) + '</p>' : '') +
+    '</div>' +
     (d.acatou === true ? '<span class="carimbo">' + esc(T('acatada')) + '</span>' : d.acatou === false ? '<span class="carimbo rec">' + esc(T('recurso')) + '</span>' : '') +
     '<div class="cta" style="justify-content:center;margin-top:16px"><button id="fRever">↺ Rever o julgamento</button><button id="fSala">Ver a sala</button></div>';
-  document.getElementById('veuFinal').classList.add('ve');
+  const vf = document.getElementById('veuFinal'); if (vf.parentNode !== document.body) document.body.appendChild(vf);
+  vf.classList.add('ve'); document.getElementById('janelaFinal').scrollTop = 0;
   document.getElementById('fSala').onclick = () => document.getElementById('veuFinal').classList.remove('ve');
   document.getElementById('fRever').onclick = () => irPara(0);
   legendaFixa(S2('Sessão encerrada', 'Fim'), T('sentenca').toLowerCase(), 'juiz', '<b>' + esc(rotulo(S.veredito)) + '</b> · ' + esc(T('confianca')) + ' ' + esc(S.confianca) + '%', OFICIAIS.juiz);

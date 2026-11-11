@@ -869,3 +869,31 @@ class Exportacao(unittest.TestCase):
             self.assertEqual(EXP.e('até 2026-12-08'), 'até 08/12/2026')
         finally:
             shutil.rmtree(pasta, ignore_errors=True)
+
+
+class SentencaEmPartes(unittest.TestCase):
+    """Rito 5: relatório, fundamentos, por que não as outras opções, contraditório e dispositivo."""
+
+    def test_partes_e_validacao(self):
+        from motor import contraditorio as CT
+        with open(EXEMPLO, encoding='utf-8') as f:
+            a = json.load(f)
+        a['rito'] = 5
+        a['sentenca']['por'] = 'juiz independente'
+        ops = A.opcoes(a)
+        erros = CT.validar(a, ops)
+        self.assertTrue(any('rito 5' in x and 'relatorio' in x for x in erros))
+        s = a['sentenca']
+        s.update({'relatorio': 'O que aconteceu.', 'dispositivo': 'Julgo...', 'recomendacao': 'Faça assim.',
+                  'fundamentos': [{'titulo': 'Um', 'texto': 'Porque sim.', 'provas': ['P1'], 'peso': 'decisivo'}],
+                  'alternativas': [{'opcao': ops[0], 'por_que_nao': 'Faltou prova.'}],
+                  'condicoes': ['1. Fazer X.', 'Fazer Y.']})
+        perdeu = [o for o in ops if o != s['veredito']]
+        if len(perdeu) > 1:
+            self.assertTrue(any('não diz por que não' in x for x in CT.validar(a, ops)))
+        s['alternativas'] = [{'opcao': o, 'por_que_nao': 'Faltou prova.'} for o in perdeu]
+        self.assertFalse([x for x in CT.validar(a, ops) if 'rito 5' in x])
+        md = A.sentenca_md(s)
+        for trecho in ('Relatório', 'Fundamentos', 'Por que não as outras', 'Dispositivo', '(P1)'):
+            self.assertIn(trecho, md)
+        self.assertEqual(A.sem_numero('1. Fazer X.'), 'Fazer X.')

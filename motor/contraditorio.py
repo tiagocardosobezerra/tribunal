@@ -90,6 +90,15 @@ def validar(autos, opcoes):
         if sem:
             e.append(f'FATAL sem checagem dupla ({", ".join(sem)}): rode debate --papel checagem e juntar-debate')
         e += validar_plano(autos)
+    if rito(autos) >= 5 and s and s.get('por') == 'juiz independente':
+        falta = [k for k in ('relatorio', 'fundamentos', 'alternativas', 'dispositivo', 'recomendacao') if not s.get(k)]
+        if falta:
+            e.append('rito 5: a sentença precisa das partes ' + ', '.join(falta) + ' (rode o juiz de novo)')
+        perdeu = [o for o in opcoes if o != s.get('veredito')]
+        tratadas = {str(x.get('opcao')) for x in s.get('alternativas') or [] if isinstance(x, dict)}
+        sem = [o for o in perdeu if o not in tratadas]
+        if s.get('alternativas') and sem:
+            e.append('rito 5: a sentença não diz por que não: ' + '; '.join(sem))
     if rito(autos) >= 4 and s and s.get('por') != 'juiz independente':
         e.append('rito 4: a sentença sai do juiz independente (debate --papel juiz e juntar-debate), não de quem '
                  'conduziu o processo')

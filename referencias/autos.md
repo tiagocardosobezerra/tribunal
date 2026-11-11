@@ -72,6 +72,7 @@ Exemplo completo: `exemplos/autos-exemplo.json`.
 | `caso.aberta` · `caso.status_quo` | não | pergunta aberta: dispara o concurso de propostas; o status quo sempre vira opção |
 | `acusacao.teses[]` | sim | `{id: "A1", gravidade: fatal\|grave\|leve, texto, onde, contraexemplo, provas}` |
 | `defesa.respostas[]` | sim, se houver ataques | `{ataque: "A1", tipo: concede\|rebate, texto, correcao}` |
+| `sentenca` (rito 5) | sim | `relatorio`, `fundamentos[]` (`titulo`, `texto`, `provas`, `peso`: decisivo\|relevante\|menor), `alternativas[]` (`opcao`, `por_que_nao`, `votos_conselho`), uma para cada opção que perdeu, `contraditorio` (`caiu`, `de_pe`), `dispositivo`, `recomendacao`, `certeza_em_uma_frase`, `condicoes_origem` (condição: ataques que ela resolve) |
 | `sentenca.ataques[]` | sim, se houver ataques | `{ataque: "A1", status: corrigido\|correcao_proposta\|rebatido\|de_pe, nota, verificado}`; FATAL de pé (ou só com correção proposta, no rito 2) trava a primeira opção |
 | `rito` | casos novos: 2 | rito 2 exige checagem dupla de todo FATAL (`acusacao.teses[].checagem`) e `plano` |
 | `plano` | rito 2, depois da sentença | `{ordem, proximo_passo, metas[], testes[], criterio_de_abandono, cobertura, hipoteses, conflitos}` do redator do plano |

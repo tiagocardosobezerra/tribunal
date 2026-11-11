@@ -3,6 +3,42 @@
 Todas as mudanças relevantes do Tribunal. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.8.0] — 2026-11-11
+
+A sentença à altura do rito.
+
+### Novo
+- **Rito 5: sentença em três partes** (casos novos). O juiz independente agora escreve:
+  - **relatório:** o que aconteceu no processo;
+  - **fundamentos:** de 3 a 6, cada um com peso (decisivo, relevante, menor) e as provas que o sustentam;
+  - **por que não as outras:** uma razão para cada opção que perdeu, com quantos do conselho votaram nela;
+  - **contraditório:** o que caiu e o que ficou de pé;
+  - **dispositivo:** a decisão em forma de sentença;
+  - **recomendação ao dono,** em palavras simples, e a certeza explicada em uma frase;
+  - **origem das condições:** para cada condição, os ataques que ela resolve.
+  O `validar` recusa, no rito 5, uma sentença sem essas partes ou sem a razão de alguma opção derrotada.
+- **A sala lê a sentença em três atos.** O juiz:
+  - abre com "Vistos e examinados os autos";
+  - lê o relatório;
+  - lê cada fundamento, e as provas citadas acendem na aba "Provas";
+  - explica por que não cada uma das outras opções, e quem votou nelas reage;
+  - diz o que caiu e o que ficou de pé no contraditório;
+  - bate o malhete e lê o dispositivo, com uma batida a cada condição.
+- **A tela final vira a sentença para ler,** ocupando a tela inteira:
+  - a recomendação;
+  - o relatório;
+  - os fundamentos em cartões;
+  - por que não as outras opções;
+  - o contraditório;
+  - o dispositivo com as condições ligadas aos ataques;
+  - o ponto de virada e o plano.
+- O **PDF**, a **ata** e a **entrega** usam a mesma estrutura.
+
+### Mudou
+- Casos antigos continuam funcionando. A sala agora mostra a fundamentação deles, em blocos, que antes não aparecia
+  na tela.
+- A numeração que o juiz escrevia dentro das condições não aparece mais dobrada.
+
 ## [1.7.3] — 2026-11-10
 
 ### Novo
@@ -159,6 +195,7 @@ A versão que transforma a sentença em plano. Medida em um julgamento real cont
 Primeira versão: perito, promotor, defesa, júri de 100 brasileiros fictícios calibrados pelo IBGE, voto
 secreto dos 25, conselho de 7, sentença com confiança, sala em pixel art com o malhete e o Memory Card.
 
+[1.8.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.8.0
 [1.7.3]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.3
 [1.7.2]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.2
 [1.7.1]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.1

@@ -151,6 +151,15 @@ juiz`), um subagente que só lê os autos e não fez a perícia. Ele dá o vered
 `voto_vencido`), o status de cada ataque, as falhas que a acusação não viu (J1...), a confiança a partir da
 sugerida, condições, ponto de virada, próximo passo e critério de abandono. O `validar` recusa, no rito 4, uma
 sentença que não veio dele. Nunca edite a sentença; se ela estiver errada, rode o juiz de novo com os autos corrigidos.
+**Rito 5** (casos novos): a sentença tem as três partes de uma sentença de verdade:
+- **relatório:** o que aconteceu no processo;
+- **fundamentos:** de 3 a 6, cada um com peso e provas;
+- **por que não:** uma razão para cada opção que perdeu;
+- **contraditório:** o que caiu e o que ficou de pé;
+- **dispositivo:** a decisão em forma de sentença.
+
+Ela também traz uma recomendação ao dono em palavras simples. O `validar` recusa a sentença sem essas partes. Na sala,
+o juiz lê a sentença em três atos, e a tela final mostra a sentença inteira.
 
 Depois, o **redator do plano** (`--papel plano`) transforma a sentença em passos, metas por grupo, pelo menos 6
 testes, critério de abandono e certeza explicada. Um promotor do plano o ataca (`--papel plano_ataque`) e o redator
