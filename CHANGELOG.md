@@ -3,6 +3,12 @@
 Todas as mudanças relevantes do Tribunal. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.8.1] — 2026-11-11
+
+### Corrigido
+- O teto de rodadas do perito agora vale também na revisão do plano. Antes, a revisão podia abrir uma pendência nova
+  e travar o caso.
+
 ## [1.8.0] — 2026-11-11
 
 A sentença à altura do rito.
@@ -195,6 +201,7 @@ A versão que transforma a sentença em plano. Medida em um julgamento real cont
 Primeira versão: perito, promotor, defesa, júri de 100 brasileiros fictícios calibrados pelo IBGE, voto
 secreto dos 25, conselho de 7, sentença com confiança, sala em pixel art com o malhete e o Memory Card.
 
+[1.8.1]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.8.1
 [1.8.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.8.0
 [1.7.3]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.3
 [1.7.2]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.2

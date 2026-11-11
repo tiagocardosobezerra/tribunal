@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Versão 1.8.0" src="https://img.shields.io/badge/vers%C3%A3o-1.8.0-e8c15a?style=flat-square" />
+  <img alt="Versão 1.8.1" src="https://img.shields.io/badge/vers%C3%A3o-1.8.1-e8c15a?style=flat-square" />
   <img alt="Skill do Claude Code" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="Sem dependências" src="https://img.shields.io/badge/depend%C3%AAncias-nenhuma-2ea44f?style=flat-square" />
-  <img alt="53 testes" src="https://img.shields.io/badge/testes-53%20passando-2ea44f?style=flat-square" />
+  <img alt="54 testes" src="https://img.shields.io/badge/testes-54%20passando-2ea44f?style=flat-square" />
   <img alt="Licença MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-blue?style=flat-square" />
 </p>
 
@@ -178,7 +178,7 @@ um torneio não traz: como pessoas reais reagiriam e o quanto confiar no resulta
 versão 1.3: a checagem dupla corrigiu, por ~12 mil tokens, um ataque fatal exagerado que o torneio também tinha
 apontado.
 
-**Engenharia.** 53 testes automáticos, Python puro sem dependências, autos validados a cada fase.
+**Engenharia.** 54 testes automáticos, Python puro sem dependências, autos validados a cada fase.
 
 ## Instalação
 

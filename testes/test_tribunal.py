@@ -897,3 +897,9 @@ class SentencaEmPartes(unittest.TestCase):
         for trecho in ('Relatório', 'Fundamentos', 'Por que não as outras', 'Dispositivo', '(P1)'):
             self.assertIn(trecho, md)
         self.assertEqual(A.sem_numero('1. Fazer X.'), 'Fazer X.')
+
+    def test_teto_vale_na_revisao(self):
+        from motor import debate as DB
+        p = DB._teto_do_perito({'perito_rodadas': 2}, {'pendencias_do_perito': ['abrir a doc'], 'hipoteses': []})
+        self.assertEqual(p['pendencias_do_perito'], [])
+        self.assertIn('Não verificado: abrir a doc', p['hipoteses'])

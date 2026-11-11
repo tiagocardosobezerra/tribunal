@@ -146,6 +146,14 @@ def _contexto_juiz(autos):
     return l
 
 
+def _teto_do_perito(autos, plano):
+    """Depois de MAX_RODADAS_PERITO rodadas, pendência nova vira hipótese "não verificada" e o plano segue."""
+    if plano.get('pendencias_do_perito') and autos.get('perito_rodadas', 0) >= MAX_RODADAS_PERITO:
+        plano['hipoteses'] = list(plano.get('hipoteses') or []) + ['Não verificado: ' + str(x) for x in plano['pendencias_do_perito']]
+        plano['pendencias_do_perito'] = []
+    return plano
+
+
 def briefing(caminho, papel, ident=None):
     if papel not in PAPEIS:
         raise DebateRecusado(f'papel inválido: {papel} (use {", ".join(PAPEIS)})')
@@ -217,9 +225,6 @@ def briefing(caminho, papel, ident=None):
         l += _contexto_plano(autos, s)
         if papel == 'plano':
             l += ['', 'SEU PAPEL: REDATOR DO PLANO. ' + INSTRUCAO_PLANO]
-            if autos.get('perito_rodadas', 0) >= MAX_RODADAS_PERITO:
-                l.append('O perito já fez as rodadas de verificação permitidas: NÃO abra pendências novas; o que ainda '
-                         'faltar verificar vai em "hipoteses".')
         elif papel == 'plano_ataque':
             l += ['', 'PLANO ATUAL (JSON):', json.dumps(autos['plano'], ensure_ascii=False), '',
                   'SEU PAPEL: PROMOTOR DO PLANO. Você não julga a decisão: procura os furos que impedem o dono de executar '
@@ -243,6 +248,9 @@ def briefing(caminho, papel, ident=None):
             '', 'SEU PAPEL: CONTRADITÓRIO DO CONCURSO. Primeiro, como PROMOTOR, faça de 2 a 4 ataques a CADA proposta '
             '(id = id da proposta + letra, gravidade, onde, contraexemplo, provas). Depois, para cada ataque, responda '
             'como o AUTOR daquela proposta: "concede" (com a correção) ou "rebate" (com prova). Seja duro e justo.']
+    if papel in ('plano', 'plano_revisao') and autos.get('perito_rodadas', 0) >= MAX_RODADAS_PERITO:
+        l.append('O perito já fez as rodadas de verificação permitidas: NÃO abra pendências novas; o que ainda '
+                 'faltar verificar vai em "hipoteses".')
     if papel == 'plano_revisao':
         formato = FORMATO['plano'][:-1] + ',"respostas":[{"ataque":"P1","tipo":"concede|rebate","texto":"..."}]}'
     else:
@@ -339,10 +347,7 @@ def juntar_debate(caminho):
                 s['ataques'].append({'ataque': x['id'], 'status': 'de_pe', 'nota': 'falha apontada pelo juiz'})
     d = ler('plano.json')
     if d and (autos.get('plano') or {}).get('versao', 1) < 2:
-        if d.get('pendencias_do_perito') and autos.get('perito_rodadas', 0) >= MAX_RODADAS_PERITO:
-            d['hipoteses'] = list(d.get('hipoteses') or []) + ['Não verificado: ' + str(x) for x in d['pendencias_do_perito']]
-            d['pendencias_do_perito'] = []
-        autos['plano'] = d
+        autos['plano'] = _teto_do_perito(autos, d)
         s = autos.get('sentenca')
         if s and d.get('proximo_passo'):
             s['proximo_passo'] = d['proximo_passo']
@@ -356,7 +361,7 @@ def juntar_debate(caminho):
     d = ler('plano_revisao.json')
     if d and autos.get('plano_ataques'):
         d['versao'] = 2
-        autos['plano'] = d
+        autos['plano'] = _teto_do_perito(autos, d)
         s = autos.get('sentenca')
         if s and d.get('proximo_passo'):
             s['proximo_passo'] = d['proximo_passo']

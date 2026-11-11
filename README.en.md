@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img alt="Version 1.8.0" src="https://img.shields.io/badge/version-1.8.0-e8c15a?style=flat-square" />
+  <img alt="Version 1.8.1" src="https://img.shields.io/badge/version-1.8.1-e8c15a?style=flat-square" />
   <img alt="Claude Code skill" src="https://img.shields.io/badge/Claude%20Code-skill-d97757?style=flat-square" />
   <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-none-2ea44f?style=flat-square" />
-  <img alt="53 tests" src="https://img.shields.io/badge/tests-53%20passing-2ea44f?style=flat-square" />
+  <img alt="54 tests" src="https://img.shields.io/badge/tests-54%20passing-2ea44f?style=flat-square" />
   <img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" />
 </p>
 
@@ -180,7 +180,7 @@ brings what a tournament does not: how real people would react and how far to tr
 led to version 1.3. For ~12k tokens, the double check corrected an overstated fatal attack that the tournament had
 also raised.
 
-**Engineering.** 53 automated tests, pure Python with no dependencies, and the case file validated at every phase.
+**Engineering.** 54 automated tests, pure Python with no dependencies, and the case file validated at every phase.
 
 ## Installation
 
