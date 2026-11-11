@@ -3,6 +3,14 @@
 Todas as mudanças relevantes do Tribunal. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.8.2] — 2026-11-11
+
+### Corrigido
+- A sala ao vivo não recarrega mais no meio da leitura. Antes, ela recarregava a cada 6 segundos e voltava ao início.
+  Agora só recarrega depois de 90 segundos sem uso, com a aba visível, e um clique no selo AO VIVO pausa ou retoma.
+- O progresso da sala fica guardado mesmo quando o navegador bloqueia um dos armazenamentos, então a recarga volta
+  para a mesma cena.
+
 ## [1.8.1] — 2026-11-11
 
 ### Corrigido
@@ -201,6 +209,7 @@ A versão que transforma a sentença em plano. Medida em um julgamento real cont
 Primeira versão: perito, promotor, defesa, júri de 100 brasileiros fictícios calibrados pelo IBGE, voto
 secreto dos 25, conselho de 7, sentença com confiança, sala em pixel art com o malhete e o Memory Card.
 
+[1.8.2]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.8.2
 [1.8.1]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.8.1
 [1.8.0]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.8.0
 [1.7.3]: https://github.com/tiagocardosobezerra/tribunal/releases/tag/v1.7.3

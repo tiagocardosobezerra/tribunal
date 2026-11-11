@@ -314,6 +314,12 @@ const JUR = Object.fromEntries((D.jurados || []).map(j => [j.id, j]));
 const VOTOS = A.votos || [];
 const voto = (id, r) => VOTOS.find(v => v.jurado === id && v.rodada === r);
 const CHAVE = 'tribunal2:' + (D.id || CASO.titulo);
+// progresso da sala: sessionStorage com localStorage de reserva, para uma recarga nunca voltar à tela inicial
+const memo = {
+  ler(k) { for (const s of ['sessionStorage', 'localStorage']) { try { const v = window[s].getItem(k); if (v != null) return v; } catch (e) {} } return null; },
+  gravar(k, v) { for (const s of ['sessionStorage', 'localStorage']) { try { window[s].setItem(k, v); } catch (e) {} } },
+  apagar(k) { for (const s of ['sessionStorage', 'localStorage']) { try { window[s].removeItem(k); } catch (e) {} } }
+};
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 const corta = (s, n) => { s = String(s || ''); return s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s; };
 // texto de ficha como frase: maiúscula no começo e ponto no fim (se ainda não terminar em pontuação ou aspas)
@@ -327,7 +333,7 @@ function tom(hex, d) { const n = parseInt(hex.slice(1), 16), f = v => Math.max(0
 document.getElementById('tTitulo').textContent = CASO.titulo;
 document.getElementById('tPergunta').textContent = CASO.pergunta || '';
 document.title = 'Tribunal · ' + CASO.titulo;
-if (SIMPLES) { document.getElementById('bFim').textContent = T('sentenca'); document.getElementById('supMalhete').textContent = 'A DECISÃO VAI SER LIDA'; }
+if (SIMPLES) { document.getElementById('bFim').textContent = T('sentenca'); const sm = document.getElementById('supMalhete'); if (sm) sm.textContent = 'A DECISÃO VAI SER LIDA'; }
 document.querySelectorAll('[data-ling]').forEach(b => { b.classList.toggle('on', b.dataset.ling === LING);
   b.onclick = () => { if (b.dataset.ling === LING) return; try { localStorage.setItem('tribunal:linguagem', b.dataset.ling); } catch (e) {} irPara(typeof faseAtual === 'number' ? faseAtual : 0); }; });
 
@@ -1120,11 +1126,11 @@ document.addEventListener('pointerdown', ligarAudio);
 document.addEventListener('keydown', ligarAudio);
 let faseAtual = 0;
 function pularFase() { pulando = true; esperas.splice(0).forEach(e => e.r()); P.forEach(c => { if (c.rota.length) { const q = c.rota[c.rota.length - 1]; c.x = q[0]; c.y = q[1]; c.rota = []; if (c.chegou) { const f = c.chegou; c.chegou = null; f(); } } }); }
-function irPara(i) { i = Math.min(i, PRONTAS - 1); try { sessionStorage.setItem(CHAVE + ':ir', String(Math.max(0, i))); } catch (e) {} location.reload(); }
+function irPara(i) { i = Math.min(i, PRONTAS - 1); memo.gravar(CHAVE + ':ir', String(Math.max(0, i))); location.reload(); }
 document.getElementById('bAvanca').onclick = pularFase;
 document.getElementById('bVolta').onclick = () => irPara(Math.max(0, faseAtual - 1));
 document.getElementById('bFim').onclick = () => irPara(DISP.length - 1);
-document.getElementById('bDeNovo').onclick = () => { try { sessionStorage.removeItem(CHAVE); } catch (e) {} irPara(0); };
+document.getElementById('bDeNovo').onclick = () => { memo.apagar(CHAVE); irPara(0); };
 document.addEventListener('keydown', e => {
   if (e.key === ' ' && e.target.tagName !== 'BUTTON') { e.preventDefault(); pausa(); }
   else if (e.key === 'ArrowRight') pularFase();
@@ -1154,7 +1160,7 @@ async function rodar() {
   ajustar(); sala(); render(); requestAnimationFrame(quadro);
   let ir = null, feitas = 0;
   if (URLQ.get('fase')) ir = Math.max(0, Math.min(PRONTAS - 1, (+URLQ.get('fase') || 1) - 1));
-  try { const x = sessionStorage.getItem(CHAVE + ':ir'); if (x != null) { ir = +x; sessionStorage.removeItem(CHAVE + ':ir'); } if (D.ao_vivo) feitas = +(sessionStorage.getItem(CHAVE) || 0); } catch (e) {}
+  const x = memo.ler(CHAVE + ':ir'); if (x != null) { ir = +x; memo.apagar(CHAVE + ':ir'); } if (D.ao_vivo) feitas = Math.min(+(memo.ler(CHAVE) || 0), PRONTAS);
   const inicio = ir != null ? ir : feitas;
   if (inicio === 0 && ir == null) await telaInicio();
   for (let i = 0; i < PRONTAS; i++) {
@@ -1168,13 +1174,20 @@ async function rodar() {
     turbo = false; pulando = false; focos = [];
     etiquetas.splice(0).forEach(e => e.b.remove());
     render();
-    if (D.ao_vivo) { try { sessionStorage.setItem(CHAVE, String(i + 1)); } catch (e) {} }
+    if (D.ao_vivo) memo.gravar(CHAVE, String(i + 1));
   }
   marcarLinha(PRONTAS); ocioso = true;
   if (D.ao_vivo) {
     document.getElementById('vivo').style.display = 'flex';
     legendaFixa('Sessão em andamento', 'ao vivo', '', 'Aguardando a próxima fase… a sala atualiza sozinha.', null);
-    setTimeout(() => location.reload(), 6000);
+    // recarrega para buscar fases novas só com a pessoa parada há 90 s, aba visível e sem pausa; clique no selo AO VIVO pausa
+    const vivo = document.getElementById('vivo');
+    let mexeu = Date.now(), vivoPausado = memo.ler(CHAVE + ':pausa') === '1';
+    const selo = () => { vivo.textContent = vivoPausado ? 'AO VIVO · pausado' : 'AO VIVO'; vivo.title = vivoPausado ? 'Atualização automática pausada: clique para religar' : 'Atualiza sozinha quando você para de mexer por 90 s. Clique para pausar.'; };
+    vivo.style.cursor = 'pointer'; selo();
+    vivo.onclick = ev => { ev.stopPropagation(); vivoPausado = !vivoPausado; memo.gravar(CHAVE + ':pausa', vivoPausado ? '1' : '0'); selo(); };
+    ['pointerdown', 'pointermove', 'wheel', 'keydown', 'scroll', 'touchstart', 'selectionchange'].forEach(t => document.addEventListener(t, () => { mexeu = Date.now(); }, { passive: true, capture: true }));
+    setInterval(() => { if (!vivoPausado && document.visibilityState === 'visible' && Date.now() - mexeu > 90000) location.reload(); }, 5000);
   }
 }
 rodar();
