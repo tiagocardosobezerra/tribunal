@@ -107,7 +107,7 @@ Each of the 100 fictional jurors stands for **1% of the population**, using quot
 2025 PNAD household survey**: age from 1 to 100, region, race, education, income, work, religion, internet use and
 disability. The cast's largest gap against IBGE is **0.6 percentage points**.
 
-<a href="https://tiagocardosobezerra.github.io/tribunal/#juri"><img width="100%" alt="The 100 jurors in a grid, colored by age group. Beside it, the card of a 100-year-old juror from Crato, Ceará, quoting her in Portuguese." src="assets/readme/juri.png" /></a>
+<a href="https://tiagocardosobezerra.github.io/tribunal/#juri"><img width="100%" alt="The 100 jurors in a grid, colored by age group. Beside it, the card of a 100-year-old juror from Crato, Ceará, quoting her in Portuguese." src="assets/readme/juri.svg" /></a>
 
 <p align="center"><sub><a href="https://tiagocardosobezerra.github.io/tribunal/#juri">Meet all 100 on the project page (in Portuguese): color them by age, region, income or internet use, and open each juror's card.</a></sub></p>
 

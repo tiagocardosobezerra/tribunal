@@ -108,7 +108,7 @@ PNAD 2025 (la encuesta nacional de hogares) del IBGE**: edad de 1 a 100 años, r
 ingreso, trabajo, religión, uso de internet y discapacidad. La mayor desviación del elenco frente al IBGE es de
 **0,6 puntos porcentuales**.
 
-<a href="https://tiagocardosobezerra.github.io/tribunal/#juri"><img width="100%" alt="Los 100 jurados en una cuadrícula, coloreados por edad. Al lado, la ficha de una jurada de 100 años de Crato, Ceará, con una frase suya en portugués." src="assets/readme/juri.png" /></a>
+<a href="https://tiagocardosobezerra.github.io/tribunal/#juri"><img width="100%" alt="Los 100 jurados en una cuadrícula, coloreados por edad. Al lado, la ficha de una jurada de 100 años de Crato, Ceará, con una frase suya en portugués." src="assets/readme/juri.svg" /></a>
 
 <p align="center"><sub><a href="https://tiagocardosobezerra.github.io/tribunal/#juri">Conoce a los 100 en la página del proyecto (en portugués): colores por edad, región, ingresos o internet, y la ficha de cada uno.</a></sub></p>
 

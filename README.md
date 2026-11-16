@@ -1,4 +1,4 @@
-<a href="https://tiagocardosobezerra.github.io/tribunal/"><img width="100%" alt="Tribunal: antes de apostar numa ideia, leve-a a julgamento. Um perito traz provas, um promotor ataca, a defesa responde e um júri de 100 brasileiros calibrados pelo IBGE vota em segredo. Ao lado, a sala em pixel art e a sentença: vale, se ajustar, com 62% de certeza." src="assets/readme/hero.png" /></a>
+<a href="https://tiagocardosobezerra.github.io/tribunal/"><img width="100%" alt="Tribunal: antes de apostar numa ideia, leve-a a julgamento. Um perito traz provas, um promotor ataca, a defesa responde e um júri de 100 brasileiros calibrados pelo IBGE vota em segredo. Ao lado, a sala em pixel art e a sentença: vale, se ajustar, com 62% de certeza." src="assets/readme/hero.svg" /></a>
 
 <p align="center">
   <a href="https://tiagocardosobezerra.github.io/tribunal/"><strong>Site do projeto</strong></a> ·
@@ -44,7 +44,7 @@ Serve para uma ideia de negócio, um app no ar, um pull request, uma decisão de
 O Tribunal pesquisa e anota as provas, convoca 25 jurados do rodízio, colhe o voto secreto, abre o debate, sorteia
 os 7 que decidem e devolve:
 
-<img width="100%" alt="Sentença de exemplo. Vale, se ajustar, certeza 62%. Comece por aqui: protótipo simples (até planilha e WhatsApp) com 5 mercadinhos do bairro por 30 dias. O que mudaria a decisão: menos de 3 dos 5 donos ainda usando depois de 30 dias. Quando desistir: se em 60 dias nenhum dono aceitar pagar R$ 20 por mês. O que as pessoas disseram: 'Se vier mensagem de cobrança, como eu sei que é do mercadinho mesmo?', ex-caminhoneiro, 59 anos." src="assets/readme/sentenca.png" />
+<img width="100%" alt="Sentença de exemplo. Vale, se ajustar, certeza 62%. Comece por aqui: protótipo simples (até planilha e WhatsApp) com 5 mercadinhos do bairro por 30 dias. O que mudaria a decisão: menos de 3 dos 5 donos ainda usando depois de 30 dias. Quando desistir: se em 60 dias nenhum dono aceitar pagar R$ 20 por mês. O que as pessoas disseram: 'Se vier mensagem de cobrança, como eu sei que é do mercadinho mesmo?', ex-caminhoneiro, 59 anos." src="assets/readme/sentenca.svg" />
 
 Com a ata completa, o placar por perfil de pessoa, o dossiê em PDF e a sala em pixel art terminando com três
 batidas do malhete.
@@ -57,7 +57,7 @@ viés que todas compartilham.
 
 O Tribunal separa o que cada papel faz melhor e obriga cada um a se justificar:
 
-<img width="100%" alt="Os oito papéis do Tribunal, cada um com sua regra. Perito: prova sem fonte é só alegação. Promotor: todo ataque tem gravidade e contraexemplo verificável. Verificador: rótulo, arredondamento ou texto não é fatal. Defesa: rebater só insistindo deixa o ataque de pé. Júri: 3 modelos diferentes no mesmo júri. Redator do plano: o plano é atacado e revisado antes de chegar a você. Juiz: não fez a perícia; um FATAL pendente trava o veredito pleno. Você: a última palavra é sua." src="assets/readme/papeis.png" />
+<img width="100%" alt="Os oito papéis do Tribunal, cada um com sua regra. Perito: prova sem fonte é só alegação. Promotor: todo ataque tem gravidade e contraexemplo verificável. Verificador: rótulo, arredondamento ou texto não é fatal. Defesa: rebater só insistindo deixa o ataque de pé. Júri: 3 modelos diferentes no mesmo júri. Redator do plano: o plano é atacado e revisado antes de chegar a você. Juiz: não fez a perícia; um FATAL pendente trava o veredito pleno. Você: a última palavra é sua." src="assets/readme/papeis.svg" />
 
 <details>
 <summary><strong>Os papéis em texto</strong></summary>
@@ -103,7 +103,7 @@ Cada um dos 100 jurados fictícios representa **1% da população**, com as cota
 IBGE**: idade de 1 a 100 anos, região, cor ou raça, escolaridade, renda, trabalho, religião, uso de internet e
 deficiência. O maior desvio do elenco contra o IBGE é de **0,6 ponto percentual**.
 
-<a href="https://tiagocardosobezerra.github.io/tribunal/#juri"><img width="100%" alt="Os 100 jurados em grade, coloridos por faixa de idade (20 de 0 a 14 anos, 22 de 15 a 29, 23 de 30 a 44, 19 de 45 a 59 e 16 com 60 ou mais). Ao lado, a ficha de Antônia Joaquina de Jesus, a Mãe Toinha, 100 anos, de Crato (CE): 'Ô meu fio, no meu tempo nem luz tinha. Se isso aí ajudar a gente a ver os menino de longe, é coisa boa, é.'" src="assets/readme/juri.png" /></a>
+<a href="https://tiagocardosobezerra.github.io/tribunal/#juri"><img width="100%" alt="Os 100 jurados em grade, coloridos por faixa de idade (20 de 0 a 14 anos, 22 de 15 a 29, 23 de 30 a 44, 19 de 45 a 59 e 16 com 60 ou mais). Ao lado, a ficha de Antônia Joaquina de Jesus, a Mãe Toinha, 100 anos, de Crato (CE): 'Ô meu fio, no meu tempo nem luz tinha. Se isso aí ajudar a gente a ver os menino de longe, é coisa boa, é.'" src="assets/readme/juri.svg" /></a>
 
 <p align="center"><sub><a href="https://tiagocardosobezerra.github.io/tribunal/#juri">Conheça os 100 no site</a>: cores por idade, região, renda ou internet, e a ficha de cada um.</sub></p>
 
@@ -149,7 +149,7 @@ Mãe Toinha, de 100 anos, que nunca usou celular.
 
 Números de julgamentos reais, não de demonstração. Inclusive os que não favorecem.
 
-<img width="100%" alt="Resultados. Custo: de cerca de 650 mil tokens na versão 1.0 para 150 a 260 mil hoje. Consistência: cinco julgamentos do mesmo caso, o mesmo veredito. Contra um torneio de 16 agentes: 85% da nota com 4% do custo (nota 71 contra 83,5; 260 mil tokens contra 6,8 milhões). O que o júri não mede: no teste cego, acertou 18 de 30, o que não se distingue do acaso; o piloto de 8 de 9 estava inflado." src="assets/readme/resultados.png" />
+<img width="100%" alt="Resultados. Custo: de cerca de 650 mil tokens na versão 1.0 para 150 a 260 mil hoje. Consistência: cinco julgamentos do mesmo caso, o mesmo veredito. Contra um torneio de 16 agentes: 85% da nota com 4% do custo (nota 71 contra 83,5; 260 mil tokens contra 6,8 milhões). O que o júri não mede: no teste cego, acertou 18 de 30, o que não se distingue do acaso; o piloto de 8 de 9 estava inflado." src="assets/readme/resultados.svg" />
 
 O júri **não prevê se um produto vai dar certo no mercado** melhor que o acaso. O piloto estava inflado pela
 redação das descrições e pela fama dos casos. O que o júri faz é mostrar **como pessoas comuns reagem** a uma ideia,
