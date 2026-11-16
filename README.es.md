@@ -24,7 +24,7 @@ Sirve para una idea de negocio, una app en producción, un pull request, una dec
 
 <p align="center">
   <img width="92%" alt="La sala del Tribunal durante el voto secreto: cada jurado reacciona con su propio voto" src="assets/sala-votacao.png" />
-  <br/><sub>La sala se abre en el navegador y sigue el juicio en vivo. <a href="https://tiagocardosobezerra.github.io/tribunal/"><strong>Ver la demostración</strong></a></sub>
+  <br/><sub>La sala se abre en el navegador y sigue el juicio en vivo. <a href="https://tiagocardosobezerra.github.io/tribunal/sala.html"><strong>Ver la demostración</strong></a> · <a href="https://tiagocardosobezerra.github.io/tribunal/">Página del proyecto</a> (en portugués)</sub>
 </p>
 
 ---
