@@ -1,6 +1,13 @@
 <img width="100%" alt="Tribunal: put anything on trial" src="assets/tribunal-banner.svg" />
 
 <p align="center">
+  <a href="https://tiagocardosobezerra.github.io/tribunal/"><strong>Project page (Portuguese)</strong></a> ·
+  <a href="https://tiagocardosobezerra.github.io/tribunal/sala.html"><strong>Watch a trial</strong></a> ·
+  <a href="#installation"><strong>Install</strong></a> ·
+  <a href="#measured-results"><strong>Results</strong></a>
+</p>
+
+<p align="center">
   <a href="README.md">Português</a> · <strong>English</strong> · <a href="README.es.md">Español</a>
 </p>
 
@@ -21,6 +28,16 @@ Brazilians calibrated to IBGE data** (Brazil's national statistics bureau) votes
 verdict with an **action plan, a point at which to quit, and a measured level of certainty**. You have the final word.
 
 Use it for a business idea, a live app, a pull request, a product decision or a document.
+
+<table>
+  <tr>
+    <td align="center" width="20%"><h3>100</h3><sub>fictional jurors, each 1% of Brazil</sub></td>
+    <td align="center" width="20%"><h3>0.6 pp</h3><sub>largest cast deviation from IBGE</sub></td>
+    <td align="center" width="20%"><h3>3</h3><sub>different models on one jury</sub></td>
+    <td align="center" width="20%"><h3>5 of 5</h3><sub>same verdict when the case is retried</sub></td>
+    <td align="center" width="20%"><h3>~US$ 1</h3><sub>in subagents for a full real case</sub></td>
+  </tr>
+</table>
 
 <p align="center">
   <img width="92%" alt="The Tribunal courtroom during the secret vote: each juror reacts with their own vote" src="assets/sala-votacao.png" />
@@ -89,6 +106,10 @@ different strategy, take a beating from the prosecution. The finalists go to the
 Each of the 100 fictional jurors stands for **1% of the population**, using quotas from **IBGE's 2022 Census and
 2025 PNAD household survey**: age from 1 to 100, region, race, education, income, work, religion, internet use and
 disability. The cast's largest gap against IBGE is **0.6 percentage points**.
+
+<a href="https://tiagocardosobezerra.github.io/tribunal/#juri"><img width="100%" alt="The 100 jurors in a grid, colored by age group. Beside it, the card of a 100-year-old juror from Crato, Ceará, quoting her in Portuguese." src="assets/readme/juri.png" /></a>
+
+<p align="center"><sub><a href="https://tiagocardosobezerra.github.io/tribunal/#juri">Meet all 100 on the project page (in Portuguese): color them by age, region, income or internet use, and open each juror's card.</a></sub></p>
 
 They are ordinary people, each with a story, values, fears, a bias and a way of talking: the woman who sells
 homemade popsicles and drops anything with a fee, the former truck driver who smells a scam everywhere, the retired

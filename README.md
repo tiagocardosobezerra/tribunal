@@ -1,4 +1,11 @@
-<img width="100%" alt="Tribunal: leve qualquer coisa a julgamento" src="assets/tribunal-banner.svg" />
+<a href="https://tiagocardosobezerra.github.io/tribunal/"><img width="100%" alt="Tribunal: antes de apostar numa ideia, leve-a a julgamento. Um perito traz provas, um promotor ataca, a defesa responde e um júri de 100 brasileiros calibrados pelo IBGE vota em segredo. Ao lado, a sala em pixel art e a sentença: vale, se ajustar, com 62% de certeza." src="assets/readme/hero.png" /></a>
+
+<p align="center">
+  <a href="https://tiagocardosobezerra.github.io/tribunal/"><strong>Site do projeto</strong></a> ·
+  <a href="https://tiagocardosobezerra.github.io/tribunal/sala.html"><strong>Assistir a um julgamento</strong></a> ·
+  <a href="#instalação"><strong>Instalar</strong></a> ·
+  <a href="#resultados-medidos"><strong>Resultados</strong></a>
+</p>
 
 <p align="center">
   <strong>Português</strong> · <a href="README.en.md">English</a> · <a href="README.es.md">Español</a>
@@ -13,21 +20,22 @@
   <img alt="Licença MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-blue?style=flat-square" />
 </p>
 
-<h3 align="center">Antes de apostar tempo e dinheiro numa ideia, leve-a a julgamento.</h3>
-
-O **Tribunal** é uma skill do [Claude Code](https://claude.com/claude-code) que troca a opinião de um assistente por
-um **processo**: um perito levanta provas com fonte, um promotor ataca, uma defesa responde, um júri de **100
-brasileiros calibrados pelo IBGE** vota em segredo e um juiz entrega uma sentença com **plano de ação, critério de
-desistência e certeza medida**. A última palavra é sua.
+O **Tribunal** é uma skill gratuita do [Claude Code](https://claude.com/claude-code) que troca a opinião de um
+assistente por um **processo**: um perito levanta provas com fonte, um promotor ataca, uma defesa responde, um júri
+de **100 brasileiros calibrados pelo IBGE** vota em segredo e um juiz entrega uma sentença com **plano de ação,
+critério de desistência e certeza medida**. A última palavra é sua.
 
 Serve para uma ideia de negócio, um app no ar, um pull request, uma decisão de produto ou um documento.
 
-<p align="center">
-  <img width="92%" alt="A sala do Tribunal durante o voto secreto: cada jurado reage com o próprio voto" src="assets/sala-votacao.png" />
-  <br/><sub>A sala abre no navegador e acompanha o julgamento ao vivo. <a href="https://tiagocardosobezerra.github.io/tribunal/sala.html"><strong>Ver a demonstração</strong></a> · <a href="https://tiagocardosobezerra.github.io/tribunal/">Página do projeto</a></sub>
-</p>
-
----
+<table>
+  <tr>
+    <td align="center" width="20%"><h3>100</h3><sub>jurados fictícios, cada um 1% do Brasil</sub></td>
+    <td align="center" width="20%"><h3>0,6 pp</h3><sub>maior desvio do elenco contra o IBGE</sub></td>
+    <td align="center" width="20%"><h3>3</h3><sub>modelos diferentes no mesmo júri</sub></td>
+    <td align="center" width="20%"><h3>5 de 5</h3><sub>mesmo veredito ao repetir o caso</sub></td>
+    <td align="center" width="20%"><h3>~US$ 1</h3><sub>em subagentes num caso real completo</sub></td>
+  </tr>
+</table>
 
 ## Em 30 segundos
 
@@ -36,14 +44,10 @@ Serve para uma ideia de negócio, um app no ar, um pull request, uma decisão de
 O Tribunal pesquisa e anota as provas, convoca 25 jurados do rodízio, colhe o voto secreto, abre o debate, sorteia
 os 7 que decidem e devolve:
 
-> **Vale, se ajustar · certeza 62%**
->
-> **Comece por aqui:** protótipo simples (até planilha e WhatsApp) com 5 mercadinhos do bairro por 30 dias.
-> **O que mudaria a decisão:** menos de 3 dos 5 donos ainda usando depois de 30 dias.
-> **Quando desistir:** se em 60 dias nenhum dono aceitar pagar R$ 20 por mês.
-> **O que as pessoas disseram:** *"Se vier mensagem de cobrança, como eu sei que é do mercadinho mesmo?"* (ex-caminhoneiro, 59 anos)
+<img width="100%" alt="Sentença de exemplo. Vale, se ajustar, certeza 62%. Comece por aqui: protótipo simples (até planilha e WhatsApp) com 5 mercadinhos do bairro por 30 dias. O que mudaria a decisão: menos de 3 dos 5 donos ainda usando depois de 30 dias. Quando desistir: se em 60 dias nenhum dono aceitar pagar R$ 20 por mês. O que as pessoas disseram: 'Se vier mensagem de cobrança, como eu sei que é do mercadinho mesmo?', ex-caminhoneiro, 59 anos." src="assets/readme/sentenca.png" />
 
-Com a ata completa, o placar por perfil de pessoa e a sala em pixel art terminando com três batidas do malhete.
+Com a ata completa, o placar por perfil de pessoa, o dossiê em PDF e a sala em pixel art terminando com três
+batidas do malhete.
 
 ## Por que um tribunal
 
@@ -52,6 +56,11 @@ ser muitas. Cem cópias do mesmo modelo com nomes diferentes pensam quase igual,
 viés que todas compartilham.
 
 O Tribunal separa o que cada papel faz melhor e obriga cada um a se justificar:
+
+<img width="100%" alt="Os oito papéis do Tribunal, cada um com sua regra. Perito: prova sem fonte é só alegação. Promotor: todo ataque tem gravidade e contraexemplo verificável. Verificador: rótulo, arredondamento ou texto não é fatal. Defesa: rebater só insistindo deixa o ataque de pé. Júri: 3 modelos diferentes no mesmo júri. Redator do plano: o plano é atacado e revisado antes de chegar a você. Juiz: não fez a perícia; um FATAL pendente trava o veredito pleno. Você: a última palavra é sua." src="assets/readme/papeis.png" />
+
+<details>
+<summary><strong>Os papéis em texto</strong></summary>
 
 | Papel | O que faz | A regra que não pode quebrar |
 |---|---|---|
@@ -63,6 +72,8 @@ O Tribunal separa o que cada papel faz melhor e obriga cada um a se justificar:
 | **Redator do plano** | transforma a sentença em passos | o plano é atacado e revisado antes de chegar a você |
 | **Juiz** | sentencia | um subagente independente, que só lê os autos e não fez a perícia; um FATAL pendente trava o veredito pleno |
 | **Você** | instância final | acata, ou recorre a um júri novo |
+
+</details>
 
 ## Como funciona
 
@@ -83,11 +94,18 @@ flowchart LR
 Uma pergunta aberta ("como resolvo X?") vira primeiro um **concurso de propostas**: três soluções escritas com
 estratégias diferentes apanham da acusação, e as finalistas vão ao júri ao lado do "deixar como está".
 
+O rito tem dez fases, do jeito do júri brasileiro: abertura, recusas, conselho, provas, voto secreto, acusação,
+defesa, réplica, deliberação e sentença. [Veja cada uma no site](https://tiagocardosobezerra.github.io/tribunal/#rito).
+
 ## O júri: 100 brasileiros que são o Brasil
 
 Cada um dos 100 jurados fictícios representa **1% da população**, com as cotas do **Censo 2022 e da PNAD 2025 do
 IBGE**: idade de 1 a 100 anos, região, cor ou raça, escolaridade, renda, trabalho, religião, uso de internet e
 deficiência. O maior desvio do elenco contra o IBGE é de **0,6 ponto percentual**.
+
+<a href="https://tiagocardosobezerra.github.io/tribunal/#juri"><img width="100%" alt="Os 100 jurados em grade, coloridos por faixa de idade (20 de 0 a 14 anos, 22 de 15 a 29, 23 de 30 a 44, 19 de 45 a 59 e 16 com 60 ou mais). Ao lado, a ficha de Antônia Joaquina de Jesus, a Mãe Toinha, 100 anos, de Crato (CE): 'Ô meu fio, no meu tempo nem luz tinha. Se isso aí ajudar a gente a ver os menino de longe, é coisa boa, é.'" src="assets/readme/juri.png" /></a>
+
+<p align="center"><sub><a href="https://tiagocardosobezerra.github.io/tribunal/#juri">Conheça os 100 no site</a>: cores por idade, região, renda ou internet, e a ficha de cada um.</sub></p>
 
 São pessoas comuns, cada uma com história, valores, medos, um viés e um jeito de falar: a vendedora de geladinho
 que desiste de qualquer taxa, o ex-caminhoneiro que vê golpe em tudo, a engenheira aposentada que quer backup, a
@@ -116,20 +134,30 @@ Mãe Toinha, de 100 anos, que nunca usou celular.
 | **Dossiê em PDF** | capa, resumo de uma página, provas com fonte, ataques, júri, sentença e plano, com o SHA-256 dos autos: para levar à discussão |
 
 <p align="center">
-  <img width="38%" alt="Capa do dossiê em PDF" src="assets/dossie-capa.png" />
-  <img width="38%" alt="Resumo de uma página do dossiê" src="assets/dossie-resumo.png" />
-  <br/><sub>O dossiê em PDF (<code>tribunal.py exportar</code>): a capa e o resumo de uma página.</sub>
-</p>
-
-<p align="center">
   <img width="49%" alt="Sentença na sala, em linguagem de tribunal" src="assets/sala-sentenca.png" />
   <img width="49%" alt="Sentença na sala, em linguagem natural" src="assets/sala-sentenca-natural.png" />
   <br/><sub>Duas linguagens, o mesmo julgamento: <strong>Tribunal</strong> (veredito, conselho, réplica) ou <strong>Natural</strong> (resultado, os 7 que decidem, resposta da defesa).</sub>
 </p>
 
+<p align="center">
+  <img width="38%" alt="Capa do dossiê em PDF" src="assets/dossie-capa.png" />
+  <img width="38%" alt="Resumo de uma página do dossiê" src="assets/dossie-resumo.png" />
+  <br/><sub>O dossiê em PDF (<code>tribunal.py exportar</code>): a capa e o resumo de uma página.</sub>
+</p>
+
 ## Resultados medidos
 
-Números de julgamentos reais, não de demonstração.
+Números de julgamentos reais, não de demonstração. Inclusive os que não favorecem.
+
+<img width="100%" alt="Resultados. Custo: de cerca de 650 mil tokens na versão 1.0 para 150 a 260 mil hoje. Consistência: cinco julgamentos do mesmo caso, o mesmo veredito. Contra um torneio de 16 agentes: 85% da nota com 4% do custo (nota 71 contra 83,5; 260 mil tokens contra 6,8 milhões). O que o júri não mede: no teste cego, acertou 18 de 30, o que não se distingue do acaso; o piloto de 8 de 9 estava inflado." src="assets/readme/resultados.png" />
+
+O júri **não prevê se um produto vai dar certo no mercado** melhor que o acaso. O piloto estava inflado pela
+redação das descrições e pela fama dos casos. O que o júri faz é mostrar **como pessoas comuns reagem** a uma ideia,
+grupo por grupo, e isso não é a mesma coisa. O valor do Tribunal está no processo: provas com fonte, ataques
+checados, juiz independente e um plano com critério de abandono que testa a ideia no mundo real.
+
+<details>
+<summary><strong>Tabelas completas e fontes</strong></summary>
 
 **Custo.** Cada papel roda num agente enxuto, que só lê e grava arquivos.
 
@@ -148,13 +176,11 @@ Números de julgamentos reais, não de demonstração.
 | Brier (0 é perfeito; chute = 0,25) | 0,141 | **0,227** |
 | Votos que reconheceram o produto | 5% | 8% |
 
-O júri **não prevê se um produto vai dar certo no mercado** melhor que o acaso. O piloto estava inflado pela
-redação das descrições e pela fama dos casos. O que o júri faz é mostrar **como pessoas comuns reagem** a uma ideia,
-grupo por grupo, e isso não é a mesma coisa. O valor do Tribunal está no processo: provas com fonte, ataques
-checados, juiz independente e um plano com critério de abandono que testa a ideia no mundo real. Detalhes e kit
-para repetir: [`validacao/cegos/`](validacao/cegos/resultado-2026-11-09.md).
+Detalhes e kit para repetir: [`validacao/cegos/`](validacao/cegos/resultado-2026-11-09.md).
 
-**Um jurado de fora do Claude** (Qwen 3, rodando local) julgou os mesmos casos com as mesmas fichas. Ele votou diferente do Claude em 38% dos votos, então a diversidade é real. Mas acertou 16 de 29, também perto do acaso: trocar de modelo muda a opinião da sala, não o poder de prever ([resultado](validacao/cegos/resultado-externo-2026-11-10.md)).
+**Um jurado de fora do Claude** (Qwen 3, rodando local) julgou os mesmos casos com as mesmas fichas. Ele votou
+diferente do Claude em 38% dos votos, então a diversidade é real. Mas acertou 16 de 29, também perto do acaso:
+trocar de modelo muda a opinião da sala, não o poder de prever ([resultado](validacao/cegos/resultado-externo-2026-11-10.md)).
 
 **Custo real de ponta a ponta.** Num caso real completo (rito 4), os subagentes gastaram 279 mil tokens, cerca de
 US$ 1. A orquestração na conversa principal pesa mais e cresce com o tamanho da conversa: de US$ 0,60, numa sessão
@@ -180,6 +206,8 @@ apontado.
 
 **Engenharia.** 54 testes automáticos, Python puro sem dependências, autos validados a cada fase.
 
+</details>
+
 ## Instalação
 
 Precisa do [Claude Code](https://claude.com/claude-code) e de Python 3.8 ou mais novo. Nada para instalar via pip.
@@ -204,15 +232,6 @@ cp ~/.claude/skills/tribunal/agentes/*.md ~/.claude/agents/
 Copy-Item $HOME\.claude\skills\tribunal\agentes\*.md $HOME\.claude\agents\
 ```
 
-**Opcional: um jurado de outra família de modelos.** Cópias do Claude pensam parecido. Com um modelo de fora, o
-lote 2 do júri roda nele, por qualquer API compatível com a da OpenAI. O briefing do caso vai para esse provedor. No teste cego, ele mudou 38% dos votos sem mudar o acerto: serve para ver se o veredito depende do modelo.
-
-```bash
-export TRIBUNAL_EXTERNO_MODELO=openai/gpt-5-mini      # no OpenRouter, com OPENROUTER_API_KEY definida
-# ou, de graça e sem sair da máquina:
-export TRIBUNAL_EXTERNO_MODELO=qwen3:8b TRIBUNAL_EXTERNO_URL=http://localhost:11434/v1   # Ollama
-```
-
 **3. Peça um julgamento** (numa sessão nova do Claude Code)
 
 > leva a julgamento a minha ideia de ...
@@ -221,6 +240,21 @@ export TRIBUNAL_EXTERNO_MODELO=qwen3:8b TRIBUNAL_EXTERNO_URL=http://localhost:11
 > devo fazer X ou Y?
 
 Na primeira vez, o Tribunal pergunta se você prefere termos de tribunal ou linguagem natural.
+
+<details>
+<summary><strong>Opcional: um jurado de outra família de modelos</strong></summary>
+
+Cópias do Claude pensam parecido. Com um modelo de fora, o lote 2 do júri roda nele, por qualquer API compatível
+com a da OpenAI. O briefing do caso vai para esse provedor. No teste cego, ele mudou 38% dos votos sem mudar o
+acerto: serve para ver se o veredito depende do modelo.
+
+```bash
+export TRIBUNAL_EXTERNO_MODELO=openai/gpt-5-mini      # no OpenRouter, com OPENROUTER_API_KEY definida
+# ou, de graça e sem sair da máquina:
+export TRIBUNAL_EXTERNO_MODELO=qwen3:8b TRIBUNAL_EXTERNO_URL=http://localhost:11434/v1   # Ollama
+```
+
+</details>
 
 ## Modos e custo
 
@@ -297,6 +331,12 @@ Histórico de versões: [`CHANGELOG.md`](CHANGELOG.md)
 - Foros de outros países, com o mesmo método de cotas.
 - Calibração automática da certeza a partir dos desfechos registrados.
 - Perícia de apps com navegação guiada pelos perfis do júri.
+
+---
+
+<p align="center">
+  <a href="https://tiagocardosobezerra.github.io/tribunal/sala.html"><strong>Assistir a um julgamento inteiro na sala</strong></a>
+</p>
 
 ## Autor
 

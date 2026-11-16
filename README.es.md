@@ -1,6 +1,13 @@
 <img width="100%" alt="Tribunal: lleva cualquier cosa a juicio" src="assets/tribunal-banner.svg" />
 
 <p align="center">
+  <a href="https://tiagocardosobezerra.github.io/tribunal/"><strong>Página del proyecto (en portugués)</strong></a> ·
+  <a href="https://tiagocardosobezerra.github.io/tribunal/sala.html"><strong>Ver un juicio</strong></a> ·
+  <a href="#instalación"><strong>Instalar</strong></a> ·
+  <a href="#resultados-medidos"><strong>Resultados</strong></a>
+</p>
+
+<p align="center">
   <a href="README.md">Português</a> · <a href="README.en.md">English</a> · <strong>Español</strong>
 </p>
 
@@ -21,6 +28,16 @@ brasileños calibrados con datos del IBGE** (el instituto nacional de estadísti
 dicta una sentencia con **plan de acción, criterio para abandonar y certeza medida**. La última palabra es tuya.
 
 Sirve para una idea de negocio, una app en producción, un pull request, una decisión de producto o un documento.
+
+<table>
+  <tr>
+    <td align="center" width="20%"><h3>100</h3><sub>jurados ficticios, cada uno 1% de Brasil</sub></td>
+    <td align="center" width="20%"><h3>0,6 pp</h3><sub>mayor desvío del elenco frente al IBGE</sub></td>
+    <td align="center" width="20%"><h3>3</h3><sub>modelos distintos en el mismo jurado</sub></td>
+    <td align="center" width="20%"><h3>5 de 5</h3><sub>mismo veredicto al repetir el caso</sub></td>
+    <td align="center" width="20%"><h3>~US$ 1</h3><sub>en subagentes en un caso real completo</sub></td>
+  </tr>
+</table>
 
 <p align="center">
   <img width="92%" alt="La sala del Tribunal durante el voto secreto: cada jurado reacciona con su propio voto" src="assets/sala-votacao.png" />
@@ -90,6 +107,10 @@ Cada uno de los 100 jurados ficticios representa el **1% de la población**, con
 PNAD 2025 (la encuesta nacional de hogares) del IBGE**: edad de 1 a 100 años, región, color o raza, escolaridad,
 ingreso, trabajo, religión, uso de internet y discapacidad. La mayor desviación del elenco frente al IBGE es de
 **0,6 puntos porcentuales**.
+
+<a href="https://tiagocardosobezerra.github.io/tribunal/#juri"><img width="100%" alt="Los 100 jurados en una cuadrícula, coloreados por edad. Al lado, la ficha de una jurada de 100 años de Crato, Ceará, con una frase suya en portugués." src="assets/readme/juri.png" /></a>
+
+<p align="center"><sub><a href="https://tiagocardosobezerra.github.io/tribunal/#juri">Conoce a los 100 en la página del proyecto (en portugués): colores por edad, región, ingresos o internet, y la ficha de cada uno.</a></sub></p>
 
 Son personas comunes, cada una con su historia, valores, miedos, un sesgo y su manera de hablar: la vendedora de
 helados caseros que abandona cualquier cosa que cobre comisión, el excamionero que ve estafas en todo, la ingeniera
